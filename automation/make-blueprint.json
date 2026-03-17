@@ -1,0 +1,403 @@
+{
+  "name": "GOD MODE CREDIT - Full Automation Stack",
+  "version": "1.0",
+  "description": "Complete Make.com blueprint for GOD MODE CREDIT funnel automation. Import each scenario separately in Make.com.",
+  "scenarios": [
+
+    {
+      "id": "scenario-01",
+      "name": "Payhip Sale → ConvertKit Tag + SMS Alert",
+      "description": "Fires when any product is purchased on Payhip. Tags buyer in ConvertKit and sends Edwin an SMS via Twilio.",
+      "trigger": {
+        "type": "webhook",
+        "app": "Webhooks by Make",
+        "event": "Custom webhook",
+        "note": "Set this webhook URL in Payhip Settings → Integrations → Webhooks"
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "Webhooks by Make",
+          "action": "Custom webhook",
+          "note": "Receives Payhip sale payload: {buyer_email, buyer_name, product_name, product_price, order_id}"
+        },
+        {
+          "order": 2,
+          "app": "ConvertKit",
+          "action": "Add Subscriber Tag",
+          "config": {
+            "email": "{{1.buyer_email}}",
+            "first_name": "{{1.buyer_name}}",
+            "tags": [
+              "buyer-{{1.product_name | replace: ' ', '-' | downcase}}",
+              "paying-customer"
+            ],
+            "note": "Tags subscriber as buyer of specific product"
+          }
+        },
+        {
+          "order": 3,
+          "app": "ConvertKit",
+          "action": "Trigger Automation",
+          "config": {
+            "email": "{{1.buyer_email}}",
+            "sequence_id": "REPLACE_WITH_POST_PURCHASE_SEQUENCE_ID",
+            "note": "Triggers the post-purchase email sequence for this product"
+          }
+        },
+        {
+          "order": 4,
+          "app": "Twilio",
+          "action": "Send SMS",
+          "config": {
+            "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+            "from": "+18446439825",
+            "message": "💰 NEW SALE: {{1.product_name}} — ${{1.product_price}} from {{1.buyer_name}} ({{1.buyer_email}}). Order #{{1.order_id}}"
+          }
+        },
+        {
+          "order": 5,
+          "app": "Notion",
+          "action": "Create Database Item",
+          "config": {
+            "database_id": "REPLACE_WITH_SALES_DATABASE_ID",
+            "properties": {
+              "Name": "{{1.buyer_name}}",
+              "Email": "{{1.buyer_email}}",
+              "Product": "{{1.product_name}}",
+              "Amount": "{{1.product_price}}",
+              "Date": "{{now}}",
+              "Order ID": "{{1.order_id}}"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario-02",
+      "name": "New Lead Magnet Subscriber → Welcome Sequence",
+      "description": "Fires when someone subscribes with tag lead-magnet-laws. Ensures they're in the welcome sequence and logs to Notion.",
+      "trigger": {
+        "type": "webhook",
+        "app": "ConvertKit",
+        "event": "New subscriber with tag",
+        "tag": "lead-magnet-laws"
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "ConvertKit",
+          "action": "Watch Subscribers",
+          "config": {
+            "trigger_tag": "lead-magnet-laws",
+            "note": "Watches for new subscribers tagged with lead-magnet-laws"
+          }
+        },
+        {
+          "order": 2,
+          "app": "Notion",
+          "action": "Create Database Item",
+          "config": {
+            "database_id": "REPLACE_WITH_LEADS_DATABASE_ID",
+            "properties": {
+              "Name": "{{1.first_name}} {{1.last_name}}",
+              "Email": "{{1.email}}",
+              "Source": "Lead Magnet",
+              "Date": "{{now}}",
+              "Status": "New Lead"
+            }
+          }
+        },
+        {
+          "order": 3,
+          "app": "Twilio",
+          "action": "Send SMS",
+          "config": {
+            "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+            "from": "+18446439825",
+            "message": "🎯 NEW LEAD: {{1.first_name}} ({{1.email}}) downloaded the lead magnet. They're in the 14-day sequence."
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario-03",
+      "name": "Credit Score Alert Handler",
+      "description": "Watches Gmail for Credit Karma score change alerts. Analyzes change direction and logs to Notion. Sends alert to Edwin.",
+      "trigger": {
+        "type": "gmail_watch",
+        "app": "Gmail",
+        "event": "Watch emails",
+        "filter": {
+          "from": "creditkarma.com",
+          "subject_contains": "credit score"
+        }
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "Gmail",
+          "action": "Watch Emails",
+          "config": {
+            "label": "INBOX",
+            "search_filter": "from:creditkarma.com"
+          }
+        },
+        {
+          "order": 2,
+          "app": "Text Parser",
+          "action": "Parse Text",
+          "config": {
+            "text": "{{1.body_text}}",
+            "pattern": "score (increased|decreased) by (\\d+) points",
+            "note": "Extracts direction and point change from email"
+          }
+        },
+        {
+          "order": 3,
+          "app": "Router",
+          "action": "Route",
+          "routes": [
+            {
+              "label": "Score Increased",
+              "condition": "{{2.group_1}} = increased",
+              "modules": [
+                {
+                  "app": "Twilio",
+                  "action": "Send SMS",
+                  "config": {
+                    "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+                    "from": "+18446439825",
+                    "message": "📈 SCORE UP {{2.group_2}} points! Keep the momentum going."
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Score Decreased",
+              "condition": "{{2.group_1}} = decreased",
+              "modules": [
+                {
+                  "app": "Twilio",
+                  "action": "Send SMS",
+                  "config": {
+                    "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+                    "from": "+18446439825",
+                    "message": "📉 SCORE DOWN {{2.group_2}} points. Check Credit Karma for cause. May need a new dispute."
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "order": 4,
+          "app": "Notion",
+          "action": "Create Database Item",
+          "config": {
+            "database_id": "REPLACE_WITH_CREDIT_TRACKING_DATABASE_ID",
+            "properties": {
+              "Date": "{{now}}",
+              "Change Direction": "{{2.group_1}}",
+              "Points Changed": "{{2.group_2}}",
+              "Email Subject": "{{1.subject}}"
+            }
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario-04",
+      "name": "30-Day Dispute Deadline Reminder",
+      "description": "Runs daily. Checks Notion dispute tracker for any disputes approaching their 30-day deadline. Sends reminder SMS.",
+      "trigger": {
+        "type": "schedule",
+        "app": "Make",
+        "event": "Schedule",
+        "interval": "every_day",
+        "time": "09:00"
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "Make",
+          "action": "Schedule trigger",
+          "config": {
+            "interval": "1 day",
+            "time": "09:00"
+          }
+        },
+        {
+          "order": 2,
+          "app": "Notion",
+          "action": "Search Database",
+          "config": {
+            "database_id": "REPLACE_WITH_DISPUTES_DATABASE_ID",
+            "filter": {
+              "property": "Deadline",
+              "date": {
+                "on_or_before": "{{addDays(now, 5)}}"
+              }
+            },
+            "note": "Finds disputes with deadlines in the next 5 days"
+          }
+        },
+        {
+          "order": 3,
+          "app": "Iterator",
+          "action": "Iterator",
+          "note": "Iterates over each approaching deadline dispute"
+        },
+        {
+          "order": 4,
+          "app": "Twilio",
+          "action": "Send SMS",
+          "config": {
+            "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+            "from": "+18446439825",
+            "message": "⚠️ DISPUTE DEADLINE IN {{dateDifference(3.Deadline, now, 'days')}} DAYS: {{3.Creditor}} dispute for {{3.Bureau}}. Check for response or escalate."
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario-05",
+      "name": "Monthly Revenue Report",
+      "description": "Runs on the 1st of each month. Pulls last month's sales from Notion and sends a summary SMS to Edwin.",
+      "trigger": {
+        "type": "schedule",
+        "app": "Make",
+        "event": "Schedule",
+        "interval": "monthly",
+        "day": 1,
+        "time": "08:00"
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "Make",
+          "action": "Schedule trigger"
+        },
+        {
+          "order": 2,
+          "app": "Notion",
+          "action": "Query Database",
+          "config": {
+            "database_id": "REPLACE_WITH_SALES_DATABASE_ID",
+            "filter": {
+              "property": "Date",
+              "date": {
+                "past_month": {}
+              }
+            }
+          }
+        },
+        {
+          "order": 3,
+          "app": "Math",
+          "action": "Aggregate",
+          "config": {
+            "aggregation": "SUM",
+            "field": "{{2.Amount}}",
+            "note": "Sums all sales amounts for the month"
+          }
+        },
+        {
+          "order": 4,
+          "app": "Twilio",
+          "action": "Send SMS",
+          "config": {
+            "to": "REPLACE_WITH_EDWIN_PHONE_NUMBER",
+            "from": "+18446439825",
+            "message": "📊 MONTHLY REPORT: Last month's revenue: ${{3.result}}. Total sales: {{2.total}}. Keep going. 🔥"
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario-06",
+      "name": "ManyChat Lead to ConvertKit",
+      "description": "When ManyChat captures an email from a DM interaction, adds the subscriber to ConvertKit with proper tag.",
+      "trigger": {
+        "type": "webhook",
+        "app": "Webhooks by Make",
+        "event": "Custom webhook",
+        "note": "Set this URL in ManyChat → Actions → Send to Webhook"
+      },
+      "modules": [
+        {
+          "order": 1,
+          "app": "Webhooks by Make",
+          "action": "Custom webhook",
+          "note": "Receives ManyChat payload: {email, first_name, trigger_keyword}"
+        },
+        {
+          "order": 2,
+          "app": "ConvertKit",
+          "action": "Add Subscriber",
+          "config": {
+            "email": "{{1.email}}",
+            "first_name": "{{1.first_name}}",
+            "tags": [
+              "lead-manychat",
+              "lead-{{1.trigger_keyword | downcase}}",
+              "source-tiktok"
+            ]
+          }
+        },
+        {
+          "order": 3,
+          "app": "Notion",
+          "action": "Create Database Item",
+          "config": {
+            "database_id": "REPLACE_WITH_LEADS_DATABASE_ID",
+            "properties": {
+              "Name": "{{1.first_name}}",
+              "Email": "{{1.email}}",
+              "Source": "ManyChat - {{1.trigger_keyword}}",
+              "Date": "{{now}}"
+            }
+          }
+        }
+      ]
+    }
+
+  ],
+
+  "setup_instructions": {
+    "step_1": "Create a Make.com account at make.com",
+    "step_2": "Create a new scenario for each scenario listed above",
+    "step_3": "Connect your apps: ConvertKit, Twilio, Notion, Gmail, Webhooks",
+    "step_4": "Replace all REPLACE_WITH_ placeholders with your actual IDs",
+    "step_5": "For Payhip webhook: copy the webhook URL from Scenario 01 and paste into Payhip Settings → Integrations",
+    "step_6": "For ManyChat webhook: copy the webhook URL from Scenario 06 and paste into ManyChat → Automation → Actions",
+    "step_7": "Test each scenario with a test purchase/subscription before going live",
+    "step_8": "Turn all scenarios ON"
+  },
+
+  "notion_databases_needed": [
+    {
+      "name": "Sales Database",
+      "fields": ["Name", "Email", "Product", "Amount", "Date", "Order ID"]
+    },
+    {
+      "name": "Leads Database",
+      "fields": ["Name", "Email", "Source", "Date", "Status", "Tags"]
+    },
+    {
+      "name": "Disputes Database",
+      "fields": ["Creditor", "Bureau", "Date Sent", "Deadline", "Status", "Response", "Notes"]
+    },
+    {
+      "name": "Credit Tracking Database",
+      "fields": ["Date", "Equifax", "Experian", "TransUnion", "Change Direction", "Points Changed", "Notes"]
+    }
+  ],
+
+  "n8n_migration_note": "When Mac Mini arrives: These scenarios can be rebuilt in self-hosted n8n for zero ongoing cost. Each Make.com scenario maps 1:1 to an n8n workflow. The webhook URLs will change but the logic is identical. Priority migration order: Scenario 01 (highest value), Scenario 04 (time-sensitive), Scenario 05 (reporting)."
+}
