@@ -9,6 +9,42 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Open ChatGPT or Claude. Paste this: *"I want to create a digital product about [topic you know well]. Give me 5 product ideas with titles, price points, and who would buy them."* Read the response. One of those ideas could be your first $1,000. You just did market research in 30 seconds that used to take a marketing team a week.
+
+---
+
+## THE $10K/MONTH BLUEPRINT AT A GLANCE
+
+```
+YOUR INCOME LADDER
+══════════════════
+
+    $10K+ ──── MONTH 4+ ────── Multiple products + clients
+       │                         + affiliates selling for you
+       │
+    $5K ────── MONTH 2-3 ────── Products live + traffic flowing
+       │                         + email converting + DMs catching
+       │
+    $2K ────── MONTH 1 ──────── First product + first content
+       │                         + first sales
+       │
+    $0 ─────── NOW ───────────── You reading this guide
+       │                         (but not for long)
+       │
+    BUILD IT    LAUNCH IT    AUTOMATE IT    COLLECT IT
+    (Week 1)    (Week 2)     (Week 3-4)     (Forever)
+
+MONTHLY TIME COMMITMENT:
+Month 1:  ████████████████████ 20 hrs (BUILDING)
+Month 2:  ████████████░░░░░░░░ 12 hrs (LAUNCHING)
+Month 3:  ████████░░░░░░░░░░░░  8 hrs (OPTIMIZING)
+Month 4+: ████░░░░░░░░░░░░░░░░  4 hrs (COLLECTING)
+```
+
+---
+
 ## Why This Guide Is Different
 
 You just learned how to fix your credit. Build business credit. Access funding. That's powerful. But funding without a business is just debt with extra steps.

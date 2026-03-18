@@ -9,6 +9,44 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Sign up for Kikoff. It's free. No credit check. Takes 3 minutes. It starts reporting to Equifax and TransUnion immediately. By the time you finish this guide, your credit building will have already started. Go to kikoff.com. Do it now. Come back.
+
+[YOUR REFERRAL LINK — COMING SOON]
+
+---
+
+## FIND YOUR STARTING POINT
+
+```
+WHAT'S YOUR SCORE?        HERE'S YOUR TIER
+══════════════════        ══════════════════
+
+300-400                → TIER 1 (Page 3)
+  "Starting from          Approve-everyone cards
+   scratch"               No credit check, $0 cost
+
+400-550                → TIER 2 (Page 5)
+  "Rebuilding"            Secured credit cards
+                          $200 deposit = real credit card
+
+550-650                → TIER 3 (Page 6)
+  "Growing"               Credit builder combos
+                          AI-optimized accounts
+
+650-680                → TIER 4 (Page 7)
+  "Almost there"          Graduation cards
+                          Real rewards, no deposit
+
+DON'T KNOW YOUR SCORE?
+  → Credit Karma (free): creditkarma.com
+  → Takes 3 minutes
+  → Then come back and find your tier
+```
+
+---
+
 ## The Truth Nobody Tells You
 
 Everyone tells you to "build your credit." Nobody tells you HOW when every application comes back DENIED.

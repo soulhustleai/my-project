@@ -9,6 +9,33 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Before Reading Another Word)
+
+Open your phone. Go to your recent calls. Screenshot every call from a number you don't recognize in the last 30 days. Save those screenshots to a folder called "Evidence." Congratulations — you may have just documented an FDCPA violation worth $1,000. Now keep reading.
+
+---
+
+## YOUR JOURNEY MAP
+
+```
+WHERE YOU ARE NOW          WHERE YOU'LL BE IN 7 DAYS
+━━━━━━━━━━━━━━━           ━━━━━━━━━━━━━━━━━━━━━━━━━
+Dodging calls              Making THEM dodge YOUR calls
+Feeling powerless          Knowing the EXACT laws they broke
+No idea what to do         Letters sent, complaints filed
+Stressed                   Attorney on speed dial (for FREE)
+They profit off you        YOU profit off THEM
+
+THE FDCPA POWER SHIFT:
+┌─────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│ Document │───→│  Send    │───→│  File    │───→│ Collect  │
+│ Evidence │    │ Letters  │    │Complaints│    │  $$$     │
+│ (Day 1)  │    │ (Day 2)  │    │ (Day 3)  │    │(Day 30+) │
+└─────────┘    └──────────┘    └──────────┘    └──────────┘
+```
+
+---
+
 ## Before We Start: A Quick Word
 
 Listen. You picked up this guide because some debt collector has been making your life hell. Maybe they're calling you at 7 in the morning. Maybe they told your mama about your Capital One bill. Maybe they threatened to have you arrested over a $300 medical bill.
@@ -39,6 +66,8 @@ So they wrote a law that:
 
 **Translation:** Every time a debt collector breaks this law, they basically handed you a lottery ticket. And you're about to learn how to cash it.
 
+Think of the FDCPA like the rules of basketball. The debt collector is playing the game. But every time they travel, double dribble, or foul you — the ref (the court) gives YOU free throws. And in this game, free throws are worth $1,000 each. They just keep fouling. You just keep shooting.
+
 ### Who Does This Apply To?
 
 The FDCPA covers **third-party debt collectors** — meaning:
@@ -57,6 +86,33 @@ The FDCPA covers **third-party debt collectors** — meaning:
 # CHAPTER 2: THE VIOLATIONS THAT PAY YOU
 
 Here's where it gets good. These are the things debt collectors do EVERY SINGLE DAY that are straight-up illegal. Every one of these is a violation you can sue for.
+
+## THE VIOLATION DETECTOR — Check Every Box That Applies
+
+```
+Have they done ANY of these? Check the boxes:
+
+[ ] Called before 8 AM or after 9 PM
+[ ] Called more than 7 times in one week
+[ ] Threatened to arrest you
+[ ] Told a family member about your debt
+[ ] Didn't send a validation notice within 5 days
+[ ] Kept collecting after you disputed in writing
+[ ] Added fees not in the original agreement
+[ ] Used a fake name or company name
+[ ] Sent letters that look like court documents
+[ ] Sued you in the wrong court
+[ ] Used profanity or abusive language
+[ ] Called your job after being told not to
+
+EVERY box you checked = a potential FDCPA violation
+EVERY violation = up to $1,000 + actual damages
+2+ boxes = call an attorney TODAY (it's free)
+```
+
+> **GOD MODE TIP:** Print this checklist. Tape it to your fridge. Every time a collector calls, check the boxes. You're building a case while eating dinner.
+
+---
 
 ## Violation #1 — Calling at Stupid Hours
 **Law:** 15 U.S.C. § 1692c(a)(1)
@@ -606,6 +662,51 @@ Now you have it.
 | Find a free attorney | consumeradvocates.org (NACA directory) |
 | Sue them | Federal or state court within 1 year of violation |
 | Collect your money | Up to $1,000 statutory + unlimited actual damages + attorney fees paid by them |
+
+---
+
+## YOUR GOD MODE CREDIT™ JOURNEY
+
+```
+WHERE YOU ARE IN THE SYSTEM:
+
+ ★ YOU ARE HERE
+ ↓
+[1] Collect What They Owe You ($17) ← THIS GUIDE
+     "Sue collectors who broke the law"
+          │
+          ▼
+[2] The Dispute Letter Pack ($27)
+     "15 letters that delete what they can't prove"
+          │
+          ▼
+[3] The AI Credit Repair Toolkit ($27)
+     "AI does what $1,500 agencies charge for"
+          │
+          ▼
+[4] Credit Ascension: Flagship ($47)
+     "The complete 300 → 750 playbook"
+          │
+          ▼
+[5] The AI x Credit Cheat Code ($67)
+     "AI mapped to every step of your journey"
+          │
+          ▼
+[6] The Business Credit Blueprint ($97)
+     "$0 to $100K in business funding"
+          │
+          ▼
+[7] Zero to $10K/Month ($97)
+     "Build a business that runs itself"
+          │
+          ▼
+     ╔═══════════════════════════╗
+     ║  300 → 750 → FUNDED →    ║
+     ║  AUTOMATED → FREEDOM     ║
+     ╚═══════════════════════════╝
+```
+
+**Next step:** You just learned how to make collectors pay YOU. Now clean up what's left on your report with **The Dispute Letter Pack** — 15 ready-to-send letters that make bureaus delete what they can't verify.
 
 ---
 

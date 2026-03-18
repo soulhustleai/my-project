@@ -9,6 +9,37 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Open ChatGPT or Claude (free). Paste this exact prompt:
+
+*"I have a credit score of [your score]. I have [number] negative items on my report. What are the top 3 things I should do THIS WEEK to start improving my score? Be specific and actionable."*
+
+Read the response. That's a free consultation that would cost $200 from a credit counselor. Now imagine having that level of advice for EVERY step of your credit journey. That's what this guide gives you.
+
+---
+
+## HOW THIS IS DIFFERENT FROM THE AI CREDIT REPAIR TOOLKIT
+
+The $27 Toolkit shows you the tools. **This guide shows you the SYSTEM.**
+
+```
+THE TOOLKIT ($27)           vs.    THE CHEAT CODE ($67)
+═══════════════════                ═══════════════════════
+"Here are the tools"               "Here's the MACHINE"
+Individual tool reviews             Complete automated workflows
+6 prompts                           30+ prompts for EVERY scenario
+"Use these tools"                   "Here's the exact sequence"
+Tools work independently            Tools work as ONE SYSTEM
+Good for getting started            Good for FINISHING the job
+
+Think of it like this:
+Toolkit = buying a hammer, saw, and nails separately
+Cheat Code = getting the full IKEA manual with every step mapped
+```
+
+---
+
 ## Why This Guide Exists
 
 There are credit repair guides. There are AI guides. But nobody — NOBODY — has connected them the way we're about to.
@@ -28,6 +59,28 @@ By the time you finish this guide, you'll have:
 - A business credit foundation for your next chapter
 
 Welcome to the cheat code.
+
+---
+
+## WHAT YOU'RE GETTING FOR $67
+
+```
+╔══════════════════════════════════════════════════════╗
+║  WHAT THIS REPLACES              WHAT IT COSTS THEM  ║
+╠══════════════════════════════════════════════════════╣
+║  Credit repair agency (6 months)    $993             ║
+║  Credit counseling session          $200             ║
+║  AI tool subscriptions (6 months)   $180             ║
+║  Financial advisor consultation     $300             ║
+║  Custom dispute letter writing      $150/letter      ║
+║                                                      ║
+║  TOTAL VALUE:                       $1,823+          ║
+║  YOUR PRICE:                        $67              ║
+║  YOUR SAVINGS:                      $1,756           ║
+║                                                      ║
+║  That's 96% off. And you keep it forever.            ║
+╚══════════════════════════════════════════════════════╝
+```
 
 ---
 

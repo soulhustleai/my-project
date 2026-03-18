@@ -9,6 +9,44 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Go to experian.com/boost. Sign up (free). Connect your bank account. Get credit for the bills you're already paying — phone, utilities, streaming. Average boost: 10-30 points. In 5 minutes. Before you read another word.
+
+Done? Good. Your score just went up while you were sitting there. THAT'S what AI-powered credit repair feels like. Now imagine that across every aspect of your credit journey.
+
+---
+
+## YOUR AI CREDIT REPAIR DASHBOARD
+
+```
+╔═══════════════════════════════════════════════════════════╗
+║              YOUR CREDIT REPAIR MACHINE                   ║
+╠═══════════════════════════════════════════════════════════╣
+║                                                           ║
+║  ANALYSIS LAYER    ░░░░░░░░░░░░░░░░░░░░  Not started     ║
+║  ► Dovly + Dispute AI + ChatGPT/Claude                    ║
+║                                                           ║
+║  DISPUTE LAYER     ░░░░░░░░░░░░░░░░░░░░  Not started     ║
+║  ► Automated + Strategic + Custom letters                 ║
+║                                                           ║
+║  MONITOR LAYER     ░░░░░░░░░░░░░░░░░░░░  Not started     ║
+║  ► Dispute Panda + Credit Karma + Experian                ║
+║                                                           ║
+║  BUILD LAYER       ░░░░░░░░░░░░░░░░░░░░  Not started     ║
+║  ► Kikoff + Self + Chime + CreditStrong                   ║
+║                                                           ║
+║  ┌─────────────────────────────────────────────────────┐  ║
+║  │ Score Today: ___    Goal: ___    Target Date: ___   │  ║
+║  └─────────────────────────────────────────────────────┘  ║
+╚═══════════════════════════════════════════════════════════╝
+
+Print this. Fill it in. Update it every 2 weeks.
+Watch those bars fill up as you work through this guide.
+```
+
+---
+
 ## The Game Has Changed
 
 Let me paint you a picture.

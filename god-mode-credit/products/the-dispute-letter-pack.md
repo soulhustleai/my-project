@@ -29,6 +29,63 @@ Let's fix this.
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Go to AnnualCreditReport.com. Pull your free credit reports from all three bureaus. You can do this weekly now (not just once a year). Don't read them yet — just pull them. We'll analyze together. That's your homework before Page 2.
+
+---
+
+## YOUR DISPUTE JOURNEY MAP
+
+```
+                    THE DISPUTE PIPELINE
+                    (Your 90-Day Credit Cleanup)
+
+MONTH 1                  MONTH 2                  MONTH 3
+┌──────────────┐        ┌──────────────┐        ┌──────────────┐
+│  ROUND 1     │        │  ROUND 2     │        │  ROUND 3     │
+│              │        │              │        │              │
+│ Pull reports │        │ "Verified"?  │        │ Third bureau │
+│ Identify     │───────→│ New angle!   │───────→│ CFPB if      │
+│ errors       │        │ MOV letter   │        │ still stuck  │
+│ Send to      │        │ CFPB comp.   │        │ Section 623  │
+│ Bureau #1    │        │ Bureau #2    │        │ Pay-for-del. │
+└──────────────┘        └──────────────┘        └──────────────┘
+    Score: +0               Score: +40-80           Score: +80-150
+    Confidence: "Hope"      Confidence: "OK wow"    Confidence: "GOD MODE"
+
+  ░░░░░░░░░░░░░░░░░░░   ████████░░░░░░░░░░░░░   ████████████████░░░░░
+  15% done                50% done                 85% done
+```
+
+---
+
+## THE 609 LETTER: LET'S TALK ABOUT IT
+
+Before we get to the templates, let's address the elephant in the room. You've seen it on TikTok. You've seen it on YouTube. "The SECRET 609 letter that FORCES bureaus to delete everything!"
+
+**Here's the truth:** Section 609 (15 U.S.C. § 1681g) gives you the right to SEE your credit file. That's it. It's a disclosure right, NOT a dispute right. It does NOT force bureaus to delete anything they can't produce an original contract for.
+
+Every legitimate credit expert, the CFPB, Experian itself, and every consumer finance publication confirms: **the "609 loophole" is a myth.**
+
+What ACTUALLY works? **Section 611 disputes** with specific, documented errors. That's what this pack is built on. Real law. Real results. Not TikTok fairy tales.
+
+> **GOD MODE TIP:** If anyone tries to sell you a "secret 609 template" for $97 — run. Everything you need is in this pack for $27. And it actually works.
+
+---
+
+## CRITICAL 2026 UPDATE: THE CFPB 45-DAY RULE
+
+As of February 2026, the CFPB now requires you to have **already disputed with the credit bureau AND waited at least 45 days** before they'll accept a credit reporting complaint. This changes the order of operations:
+
+1. First: Dispute with the bureau (Letters 1-12 in this pack)
+2. Wait 45 days
+3. THEN file CFPB complaint if unresolved (Letter 14)
+
+This is why we send certified mail — your USPS tracking receipt PROVES when you disputed and starts that 45-day clock.
+
+---
+
 ## HOW TO USE THIS PACK
 
 ### The Rules (Follow These or Waste Your Time)
@@ -1005,6 +1062,30 @@ Sincerely,
 ```
 
 > **Why this is powerful:** When debts get securitized (bundled and sold as investment products), the original note is often destroyed or lost. The debt buyer has a spreadsheet with your name and a number on it — but they may not have the actual PROOF they own YOUR debt. This letter forces them to either produce it or walk away. And many walk away.
+
+---
+
+## BONUS: THE RE-AGING DETECTOR
+
+Debt re-aging is ILLEGAL. It's when a collector resets the date of first delinquency (DOFD) to make an old debt look new — keeping it on your report longer than 7 years.
+
+**How to catch it:**
+```
+STEP 1: Pull all three credit reports
+STEP 2: Find the same collection on each report
+STEP 3: Compare the "Date of First Delinquency" (DOFD)
+
+  Equifax says:    March 2019
+  Experian says:   March 2019
+  TransUnion says: November 2022  ← WAIT. WHAT?
+
+That's re-aging. TransUnion is showing a date 3+ years
+NEWER than the other two. This is an FCRA violation.
+```
+
+**What to do:** Send a dispute letter to the bureau showing the different date, citing "illegal re-aging of debt in violation of 15 U.S.C. § 1681c." Attach screenshots from the other two bureaus showing the real DOFD. This is almost always an instant delete.
+
+> **GOD MODE TIP:** Re-aged debts are some of the EASIEST items to remove because the evidence is right there on your own reports. The bureaus can't argue with their own data.
 
 ---
 

@@ -9,6 +9,64 @@
 
 ---
 
+## YOUR 5-MINUTE QUICK WIN (Do This Right Now)
+
+Go to irs.gov and apply for an EIN. It's free. It takes 5 minutes. You'll get it instantly on screen. You don't need an LLC yet — you can get an EIN as a sole proprietor and upgrade to LLC later. But getting your EIN RIGHT NOW means you have a business tax ID before you finish reading this guide. Go. We'll wait.
+
+---
+
+## THE BUSINESS CREDIT ROADMAP
+
+```
+╔══════════════════════════════════════════════════════════╗
+║           YOUR PATH TO $100K+ BUSINESS CREDIT            ║
+╠══════════════════════════════════════════════════════════╣
+║                                                          ║
+║  MONTH 1:  THE ENTITY                                    ║
+║  ┌────────────────────────────────────────────────────┐  ║
+║  │ LLC → EIN → Bank Account → Phone → D-U-N-S        │  ║
+║  │ Available Credit: $0                               │  ║
+║  │ Progress: ░░░░░░░░░░░░░░░░░░░░ 10%                │  ║
+║  └────────────────────────────────────────────────────┘  ║
+║          │                                               ║
+║          ▼                                               ║
+║  MONTHS 2-3: THE VENDORS                                 ║
+║  ┌────────────────────────────────────────────────────┐  ║
+║  │ 5-7 net-30 accounts → Pay EARLY → Paydex forming  │  ║
+║  │ Available Credit: $2,000-$5,000                    │  ║
+║  │ Progress: █████░░░░░░░░░░░░░░░ 25%                │  ║
+║  └────────────────────────────────────────────────────┘  ║
+║          │                                               ║
+║          ▼                                               ║
+║  MONTHS 4-6: THE CARDS                                   ║
+║  ┌────────────────────────────────────────────────────┐  ║
+║  │ Business credit cards → CLI requests → Paydex 80+  │  ║
+║  │ Available Credit: $15,000-$30,000                  │  ║
+║  │ Progress: ██████████░░░░░░░░░░ 50%                │  ║
+║  └────────────────────────────────────────────────────┘  ║
+║          │                                               ║
+║          ▼                                               ║
+║  MONTHS 7-12: THE LINES                                  ║
+║  ┌────────────────────────────────────────────────────┐  ║
+║  │ Business LOC → More cards → CLI → Paydex 90+      │  ║
+║  │ Available Credit: $50,000-$100,000                 │  ║
+║  │ Progress: ███████████████░░░░░ 75%                │  ║
+║  └────────────────────────────────────────────────────┘  ║
+║          │                                               ║
+║          ▼                                               ║
+║  MONTHS 12-24: THE FUNDING                               ║
+║  ┌────────────────────────────────────────────────────┐  ║
+║  │ No-PG cards → SBA → Business stands alone          │  ║
+║  │ Available Credit: $100,000-$250,000+               │  ║
+║  │ Progress: ████████████████████ 100% GOD MODE       │  ║
+║  └────────────────────────────────────────────────────┘  ║
+╚══════════════════════════════════════════════════════════╝
+
+Print this. Put it on your wall. Cross off each phase as you complete it.
+```
+
+---
+
 ## The Biggest Lie They Told You
 
 They told you that you need money to make money. That you need investors. That you need rich parents. That you need connections. That you need to put your house on the line.
