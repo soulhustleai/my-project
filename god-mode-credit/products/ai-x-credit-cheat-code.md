@@ -1,5 +1,5 @@
 # THE AI x CREDIT CHEAT CODE
-## Every Step of Your Credit Journey, Powered by AI — From 300 to 750+ on Autopilot
+## AI-Powered Strategies for Every Stage of Your Credit Journey — From 300 to 750+
 ### A GOD MODE CREDIT™ Guide
 
 ---
@@ -164,7 +164,7 @@ Item: $1,200 Collection from "ABC Collections"
 
 Dovly says: Eligible for dispute — "unverified debt"
 Dispute AI says: Dispute with "balance inaccuracy" —
-   87% success rate with this angle
+   high success rate with this specific angle
 ChatGPT/Claude says: This collection is 6.5 years old.
    In 6 months it falls off automatically. Also, it
    appears to be from [original creditor] who had a
@@ -541,8 +541,8 @@ Please:
    - Bill of sale for this specific account
    - Power of attorney if collecting on behalf of another
 3. Explain what happens when they can't produce these
-   (spoiler: most can't because the original note was
-   destroyed during securitization)
+   (many debt buyers can't — especially for securitized
+   debt where the original note was lost during transfers)
 4. Draft a follow-up letter to the credit bureaus if the
    collector can't produce documentation, demanding
    deletion

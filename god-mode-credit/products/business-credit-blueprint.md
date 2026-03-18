@@ -79,7 +79,9 @@ Business credit is a separate credit profile for your BUSINESS — not you perso
 
 Read that again. **Without your personal SSN.**
 
-That means if the business credit card has a $10,000 limit and something goes sideways — your PERSONAL credit score doesn't get touched. Your mortgage isn't at risk. Your car note isn't affected. The business and you are legally separate entities.
+> **Real talk upfront:** No-personal-guarantee cards (Brex, Ramp) require established revenue. In Year 1, most business credit cards WILL require a personal guarantee. This guide shows you how to start there and graduate to no-PG products as your business credit strengthens. The path works — it just takes 12-24 months.
+
+That means once you build your business credit profile, if the business credit card has a $10,000 limit and something goes sideways — your PERSONAL credit score doesn't get touched. Your mortgage isn't at risk. Your car note isn't affected. The business and you are legally separate entities.
 
 This isn't a loophole. This is how the business world has operated for decades. The only problem? Nobody taught YOU how to do it.
 
@@ -507,6 +509,26 @@ Here's why they DON'T work anymore:
 
 ---
 
+# CHAPTER 5.8: UCC-1 FILINGS — WHAT LENDERS FILE AND WHY YOU NEED TO KNOW
+
+When you receive business financing — SBA loans, equipment financing, lines of credit — your lender files a **UCC-1 financing statement** with your state's Secretary of State. This is a public record that says: "[Lender] has a security interest in the assets of [Your Business]."
+
+**What you need to know:**
+
+1. **It's normal** — UCC-1 filings are standard practice for secured lending. Don't panic when you see one.
+
+2. **Blanket liens can block future financing** — A "blanket lien" UCC-1 covering ALL your business assets makes it harder to get additional loans because new lenders see an existing claim. Know what type of lien was filed before applying for more credit.
+
+3. **ALWAYS terminate when the loan is paid off** — Lenders don't always file a UCC-3 termination automatically. After paying off any secured loan, send a written demand for a UCC-3 termination. Under **UCC § 9-513**, they must file it within 20 business days of your demand for consumer goods.
+
+4. **Check for orphaned liens** — Search your business name in your state's Secretary of State UCC database before applying for major financing. Old liens from paid-off debts can block approvals. UCC-1 filings expire after 5 years if not renewed, but they may still show up.
+
+5. **How to search:** Go to your state's Secretary of State website → Business Services → UCC Filings Search → enter your exact business name.
+
+> **GOD MODE TIP:** Before applying for any business line of credit or SBA loan, search the UCC database for any existing filings against your business. Lenders WILL check. If there's an old lien from a paid-off debt, get it terminated first. This one step can mean the difference between approval and denial.
+
+---
+
 # CHAPTER 6: THE BUSINESS CREDIT STACKING METHOD
 
 This is the strategy that gets people $50K-$250K+ in total business credit. It's not one big approval — it's strategic layering.
@@ -552,6 +574,8 @@ THE RESULT:
 ├── Available funding: $100K-$250K+
 └── Monthly cost: $0 (pay in full, no interest)
 ```
+
+> **Honest disclaimer:** These ranges represent outcomes for businesses that execute every step correctly with good personal credit (680+) and some revenue. Your results will vary based on personal credit score, business revenue, banking relationships, and lender appetite. Average outcomes are lower than the top of each range. But the PATH works — the timeline just stretches or compresses based on where you start.
 
 ---
 
