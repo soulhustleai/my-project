@@ -12,12 +12,20 @@
 
 ## HOW TO USE
 
-1. Copy the prompt
+### Option A — Let MJ render text
+1. Copy the **Option A** prompt
 2. Paste into Midjourney
 3. Pick your favorite → Upscale (U1-U4) → Download
-4. **Done. No Canva. No editing.**
+4. If text is clean → Done
+5. If text is garbled → Re-roll (1-2 tries) or switch to Option B
 
-**If text still comes out wrong:**
+### Option B — IMAGE ONLY + Canva text (RECOMMENDED for speed)
+1. Copy the **Option B** prompt (generates image with NO text, just the visual)
+2. Paste into Midjourney → Upscale → Download
+3. Open `canva-text-overlay-specs.md` → Follow the 2-minute instructions
+4. **Done. Clean text every time, zero re-rolls.**
+
+**MJ text tips if using Option A:**
 - Re-roll — MJ v6.1 usually nails it within 1-2 tries
 - Add `--chaos 10` for slightly different layouts
 - Try `--s 1000` for even stronger typographic styling
@@ -50,16 +58,29 @@
 
 ## COVER 4: $27 Dispute Letter Pack
 
+**Option A — MJ renders text (re-roll if needed):**
 ```
 /imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, deep black background. Bold elegant gold serif text at top reads "DISPUTE LETTER PACK" in large warm antique gold lettering. An elegant stack of golden-edged documents with a golden wax seal stamp below the title, photorealistic CGI, warm antique gold metallic finish, golden glow behind the documents. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Minimalist luxury, premium editorial quality, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver
 ```
 
+**Option B — IMAGE ONLY (add text in Canva — see canva-text-overlay-specs.md):**
+```
+/imagine prompt: Luxury ebook cover background, vertical 6x9 format, deep black background. An elegant stack of golden-edged legal documents with an ornate golden wax seal stamp, centered composition with negative space at top and bottom for text placement, photorealistic CGI, warm antique gold metallic finish, golden volumetric light behind the documents, dramatic key lighting from above. Minimalist luxury, premium editorial quality, black and gold only, no text, no words, no letters --ar 2:3 --v 6.1 --s 750 --no text words letters writing red blue purple green silver
+```
+
 ---
 
-## COVER 5: $27 AI Credit Repair Toolkit
+## COVER 5: $27 AI Credit Repair Toolkit *(STILL NEEDED — NOT YET GENERATED)*
 
+**Option A — MJ renders text:**
 ```
-/imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, black background with subtle dark gold circuit pattern. Bold elegant gold serif text at top reads "AI CREDIT REPAIR TOOLKIT" in large warm antique gold lettering. A futuristic golden AI brain with neural network nodes below the title, photorealistic CGI, octane render, warm antique gold metallic finish, golden light emanation. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Luxury meets technology, premium editorial, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver teal cyan
+/imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, black background with subtle dark gold circuit pattern. Bold elegant gold serif text at top reads "AI CREDIT TOOLKIT" in large warm antique gold lettering. A futuristic golden AI brain with glowing neural network nodes and connection lines below the title, photorealistic CGI, octane render, warm antique gold metallic finish, golden light emanation from brain center. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Luxury meets technology, premium editorial, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver teal cyan
+```
+> NOTE: Shortened title to "AI CREDIT TOOLKIT" (3 words) — MJ handles 3 words better than 4. Full title goes on Canva if needed.
+
+**Option B — IMAGE ONLY (add text in Canva):**
+```
+/imagine prompt: Luxury ebook cover background, vertical 6x9 format, black background with subtle dark gold circuit board pattern. A futuristic golden AI brain with glowing neural network nodes and connection lines, centered composition with large negative space at top and bottom for text, photorealistic CGI, octane render, warm antique gold metallic finish, golden light emanation from brain center, digital particles floating upward. Luxury technology aesthetic, black and gold only, no text, no words --ar 2:3 --v 6.1 --s 750 --no text words letters writing red blue purple green silver teal cyan
 ```
 
 ---
@@ -82,16 +103,29 @@
 
 ## COVER 8: $97 Zero to $10K/Month
 
+**Option A — MJ renders text (re-roll if needed):**
 ```
-/imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, deep black background. Bold elegant gold serif text at top reads "ZERO TO 10K A MONTH" in large warm antique gold lettering. A sleek matte-black rocket with warm antique gold metallic trim below the title, studio render quality, defined golden exhaust trail, upward trajectory energy. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Explosive energy meets luxury, premium editorial quality, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver cartoon
+/imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, deep black background. Bold elegant gold serif text at top reads "ZERO TO 10K" in large warm antique gold lettering. A sleek matte-black rocket with warm antique gold metallic trim below the title, studio render quality, defined golden exhaust trail, upward trajectory energy. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Explosive energy meets luxury, premium editorial quality, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver cartoon
+```
+> NOTE: Shortened to "ZERO TO 10K" (3 words) — cleaner MJ text. "A MONTH" added in Canva subtitle.
+
+**Option B — IMAGE ONLY (add text in Canva — see canva-text-overlay-specs.md):**
+```
+/imagine prompt: Luxury ebook cover background, vertical 6x9 format, deep black background. A sleek matte-black rocket with warm antique gold metallic trim and accents, dramatic upward trajectory, defined golden exhaust trail with golden particles, centered composition with large negative space at top and bottom for text placement, studio render quality, cinematic lighting. Explosive energy meets luxury, premium editorial quality, black and gold only, no text, no words --ar 2:3 --v 6.1 --s 750 --no text words letters writing red blue purple green silver cartoon
 ```
 
 ---
 
 ## COVER 9: $197 Complete Bundle
 
+**Option A — MJ renders text (re-roll if needed):**
 ```
 /imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, deep black background with warm golden gradient at bottom. Bold elegant gold serif text at top reads "ZERO TO FUNDED" in massive warm antique gold lettering. Five golden book spines arranged in a row below the title, collected set aesthetic, photorealistic CGI, rich metallic gold finish like aged gold coins, golden light emanating from the collection. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Ultimate premium luxury, collectors edition energy, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver
+```
+
+**Option B — IMAGE ONLY (add text in Canva — see canva-text-overlay-specs.md):**
+```
+/imagine prompt: Luxury ebook cover background, vertical 6x9 format, deep black background with warm golden gradient at bottom edge. Five golden book spines arranged in a dramatic row, collected set aesthetic, photorealistic CGI, rich metallic gold finish like aged gold coins, golden light emanating upward from the collection, centered composition with large negative space at top and bottom for text placement. Ultimate premium luxury, collectors edition energy, black and gold only, no text, no words --ar 2:3 --v 6.1 --s 750 --no text words letters writing red blue purple green silver
 ```
 
 ---
@@ -104,10 +138,16 @@
 
 ---
 
-## COVER 11: Cards That Say Yes (FREE Guide)
+## COVER 11: Cards That Say Yes (FREE Guide) *(STILL NEEDED — NOT YET GENERATED)*
 
+**Option A — MJ renders text:**
 ```
 /imagine prompt: Luxury ebook cover, book cover design, typography, vertical 6x9 format, black background. Bold elegant gold serif text at top reads "CARDS THAT SAY YES" in large warm antique gold lettering. Three luxury golden credit cards fanned out at angle below the title, photorealistic CGI, rich metallic gold finish with embossed chip details, golden sparkle effects. Small elegant gold text at bottom reads "GOD MODE CREDIT" in warm antique gold serif. Ultra clean luxury financial design, premium banking aesthetic, black and gold only --ar 2:3 --v 6.1 --s 750 --no red blue purple green silver
+```
+
+**Option B — IMAGE ONLY (add text in Canva):**
+```
+/imagine prompt: Luxury ebook cover background, vertical 6x9 format, deep black background. Three luxury golden credit cards fanned out at dramatic angle, centered composition with large negative space at top and bottom for text placement, photorealistic CGI, rich metallic gold finish with embossed chip details, golden sparkle and particle effects, warm volumetric gold light from behind cards. Ultra clean luxury financial design, premium banking aesthetic, black and gold only, no text, no words --ar 2:3 --v 6.1 --s 750 --no text words letters writing numbers red blue purple green silver
 ```
 
 ---
@@ -143,18 +183,24 @@
 
 ## QUICK CHECKLIST
 
-| # | Product | Title on Cover |
-|---|---------|---------------|
-| 1 | FREE Lead Magnet | 5 FEDERAL LAWS |
-| 2 | $47 Flagship | CREDIT ASCENSION |
-| 3 | $17 FDCPA Guide | COLLECT WHAT THEY OWE YOU |
-| 4 | $27 Dispute Letters | DISPUTE LETTER PACK |
-| 5 | $27 AI Toolkit | AI CREDIT REPAIR TOOLKIT |
-| 6 | $67 AI Cheat Code | AI CREDIT CHEAT CODE |
-| 7 | $97 Business Blueprint | BUSINESS CREDIT BLUEPRINT |
-| 8 | $97 Zero to $10K | ZERO TO 10K A MONTH |
-| 9 | $197 Complete Bundle | ZERO TO FUNDED |
-| 10 | $37/mo Crowned Circle | THE CROWNED CIRCLE |
-| 11 | FREE Cards Guide | CARDS THAT SAY YES |
-| PFP | @godmodecredit | GMC |
-| Banner | @godmodecredit | GOD MODE CREDIT |
+| # | Product | Title on Cover | Status |
+|---|---------|---------------|--------|
+| 1 | FREE Lead Magnet | 5 FEDERAL LAWS | GENERATED |
+| 2 | $47 Flagship | CREDIT ASCENSION | GENERATED |
+| 3 | $17 FDCPA Guide | COLLECT WHAT THEY OWE YOU | GENERATED |
+| 4 | $27 Dispute Letters | DISPUTE LETTER PACK | NEEDS TEXT FIX (Canva) |
+| 5 | $27 AI Toolkit | AI CREDIT TOOLKIT | NOT YET GENERATED |
+| 6 | $67 AI Cheat Code | AI CREDIT CHEAT CODE | GENERATED |
+| 7 | $97 Business Blueprint | BUSINESS CREDIT BLUEPRINT | GENERATED |
+| 8 | $97 Zero to $10K | ZERO TO 10K | NEEDS TEXT FIX (Canva) |
+| 9 | $197 Complete Bundle | ZERO TO FUNDED | NEEDS TEXT FIX (Canva) |
+| 10 | $37/mo Crowned Circle | THE CROWNED CIRCLE | GENERATED |
+| 11 | FREE Cards Guide | CARDS THAT SAY YES | NOT YET GENERATED |
+| PFP | @godmodecredit | GMC | GENERATED |
+| Banner | @godmodecredit | GOD MODE CREDIT | GENERATED |
+
+### PRIORITY ACTION LIST
+1. **NOW:** Fix #4, #8, #9 text in Canva (see `canva-text-overlay-specs.md` — 2 min each)
+2. **NOW:** Generate #5 and #11 in MJ (use Option B for guaranteed clean results)
+3. **THEN:** Canva text overlay on #5 and #11
+4. **DONE:** All 11 covers + PFP + Banner complete
