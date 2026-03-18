@@ -214,10 +214,12 @@ Now let's talk about the part that matters: **what do you actually get when they
 
 Under **15 U.S.C. § 1692k**, you can recover:
 
-## 1. Statutory Damages — Up to $1,000
-This is the automatic money. You don't need to prove you were harmed. You just need to prove they broke the law. One violation = up to $1,000.
+## 1. Statutory Damages — Up to $1,000 Per Lawsuit
+This is the automatic money. You don't need to prove you were harmed. You just need to prove they broke the law.
 
-**Important detail:** The $1,000 cap is per lawsuit, not per violation. But here's the play: if violations happened at different times, they can be separate lawsuits. Talk to your attorney about strategy.
+**How it works:** The court can award up to $1,000 in statutory damages per lawsuit (not per individual violation). However, if you have violations from different collectors or clearly separate incidents, your attorney may recommend separate actions. The exact strategy depends on your situation — this is where having an attorney matters.
+
+> **GOD MODE TIP:** The $1,000 statutory cap is just the floor. The REAL money is in actual damages (emotional distress, lost wages) which have NO cap, plus the collector pays your attorney fees on top. A well-documented case of harassment can be worth $5,000-$25,000+.
 
 ## 2. Actual Damages — UNLIMITED
 This is where it gets serious. Actual damages cover:
@@ -239,8 +241,9 @@ Under **15 U.S.C. § 1692k(a)(3)**, if you win (or settle), the debt collector m
 **What this means for you:**
 - You pay NOTHING upfront
 - Your attorney works on contingency (they only get paid if you win)
-- When you win or settle, the collector pays the attorney SEPARATELY
-- You keep 100% of your damages
+- When you win or settle, the collector pays the attorney's fees SEPARATELY under the statute
+- Your statutory damages ($1,000) typically stay with you in full
+- For larger actual damage awards, discuss the split with your attorney upfront — most FDCPA attorneys are very fair because the fee-shifting makes the math work for everyone
 - Even a $1,000 case is worth taking because the attorney gets paid by the collector
 
 This is why FDCPA attorneys exist. This is why they take "small" cases. The fee-shifting makes EVERY documented violation worth pursuing.
@@ -282,9 +285,11 @@ Start a dedicated notebook, spreadsheet, or note on your phone. Every single tim
 
 Recording a debt collector call can be DEVASTATING evidence. But you need to know the rules:
 
-**One-party consent states (you can record without telling them):** Alabama, Alaska, Arizona, Arkansas, Colorado, Connecticut, DC, Georgia, Hawaii, Idaho, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Minnesota, Mississippi, Missouri, Nebraska, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Oregon, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, West Virginia, Wisconsin, Wyoming
+**One-party consent states (you can record without telling them):** Alabama, Alaska, Arizona, Arkansas, Colorado, DC, Georgia, Hawaii, Idaho, Indiana, Iowa, Kansas, Kentucky, Louisiana, Maine, Minnesota, Mississippi, Missouri, Nebraska, New Jersey, New Mexico, New York, North Carolina, North Dakota, Ohio, Oklahoma, Rhode Island, South Carolina, South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, West Virginia, Wisconsin, Wyoming
 
-**Two-party consent states (you MUST tell them you're recording):** California, Delaware, Florida, Illinois, Maryland, Massachusetts, Michigan, Montana, Nevada, New Hampshire, Oregon, Pennsylvania, Washington
+**Two-party/all-party consent states (you MUST tell them you're recording):** California, Connecticut, Delaware, Florida, Illinois, Maryland, Massachusetts, Michigan, Montana, Nevada, New Hampshire, Oregon, Pennsylvania, Washington
+
+> **IMPORTANT:** Recording laws change. Before recording ANY call, confirm your state's current law. When in doubt, just announce: "I want you to know this call is being recorded." Problem solved.
 
 > **Pro tip:** In two-party consent states, just say at the start of the call: "I want you to know this call is being recorded." If they stay on the line, they've consented. Most will — and then they'll still violate the law because they can't help themselves.
 
@@ -402,6 +407,8 @@ Sincerely,
 Send this the same way — certified mail, return receipt requested.
 
 > **The play:** Many people send BOTH letters — the validation request first (within 30 days), and if they verify, THEN the cease and desist. This forces them to prove the debt, then shuts down communication. Now they can't call, can't write, and any violation from here is documented ammunition.
+
+> **Past the 30-day window? Don't panic.** You can STILL dispute the debt — you just lose the automatic right to force them to stop collecting while they verify. Here's what to do instead: Skip straight to the Cease and Desist (Chapter 5), file your CFPB complaint (Chapter 7), and consult an attorney about any violations that have ALREADY occurred. The clock on those FDCPA claims hasn't expired — you have one year from each violation. The game isn't over. It just changes slightly.
 
 ---
 
