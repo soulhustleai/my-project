@@ -184,7 +184,20 @@ These require a security deposit (usually $200-$300) that becomes your credit li
 
 ## TIER 3: CREDIT BUILDING COMBOS (Score 500-600)
 
-### 10. Cred.ai
+### 10. Arro Card — The AI Credit Card
+**What it is:** A REAL unsecured credit card (not secured, not debit) that uses AI and your bank account data instead of your credit score for approval. **89% approval rate.** No deposit required.
+
+**How it works:** Connect your bank account. Arro approves you based on income and banking behavior, not credit score. Start with $50-$300 limit. Complete in-app financial education modules = your limit goes UP and your APR goes DOWN. Max limit: $2,500.
+
+**Cost:** $60/year (discounted in Year 1 based on starting limit)
+**Credit check:** Soft pull only (doesn't affect score)
+**Reports to:** Equifax, Experian, TransUnion
+**APR:** Starts at 16% (MUCH lower than typical subprime cards at 29%+)
+**Best for:** People who want a REAL credit card, not a secured card. The gamified education that actually rewards you with better terms is unlike anything else.
+
+> **GOD MODE TIP:** Arro is the only card where LEARNING literally lowers your interest rate. Complete the modules. Your wallet will thank you.
+
+### 11. Cred.ai
 **What it is:** An AI-powered credit card that automatically optimizes your payments for maximum credit score impact. It uses AI to time your payments so your utilization is always optimal when it's reported.
 
 **How it works:** Connect your bank. Spend with the card. Cred.ai's AI handles the rest — it pays at the perfect time for maximum FICO impact.
@@ -202,7 +215,7 @@ These require a security deposit (usually $200-$300) that becomes your credit li
 **Score impact:** Typically 10-30 points INSTANTLY
 **Best for:** Literally everyone. There's no reason NOT to do this.
 
-### 12. UltraFICO
+### 13. UltraFICO
 **What it is:** A free program that lets you link your checking/savings account to your FICO score calculation. If you manage your bank account responsibly (keeping a positive balance, avoiding overdrafts), it can boost your score.
 
 **Cost:** FREE

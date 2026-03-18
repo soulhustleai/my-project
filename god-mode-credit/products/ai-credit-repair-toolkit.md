@@ -80,16 +80,24 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 6. It tracks responses and follows up automatically
 
 **Pricing:**
-- **Free plan:** Basic credit monitoring + 1 dispute per month
-- **Premium:** ~$39.99/month — unlimited disputes, faster processing, priority support
+
+| Plan | Cost | What You Get |
+|------|------|-------------|
+| **Free** | $0/month | Monthly TransUnion report + score, disputes with TransUnion only |
+| **Premium** | $39.99/month | Unlimited disputes across ALL 3 bureaus, full monitoring, $1M identity theft insurance |
+| **Ultimate (Annual)** | **$99/year ($8.33/mo)** | Everything in Premium. This is the move. |
+
+**Results:** Free members average +38 points in 6 months. Premium members average **+93 points**. 91% reported success rate.
+
+> **GOD MODE TIP:** The annual plan at $8.33/month is the best deal in credit repair. That's less than Netflix. For automated disputes across all three bureaus. Just do it.
 
 **Best for:** People who want the most hands-off experience possible. You connect your info. Dovly does the rest.
 
 > **The anecdote:** Imagine Marcus. 27 years old, works two jobs, barely has time to eat dinner let alone write dispute letters. His score is 480. He's got 3 collections, 2 late payments, and a charge-off from a credit card he forgot about in college. Marcus signs up for Dovly on a Tuesday night at 11 PM in his boxers eating leftover Chinese food. By Wednesday morning, Dovly has already scanned his report, identified 6 items to dispute, and generated the first batch of letters. Marcus didn't write a word. Three months later, 4 of those 6 items are gone. His score is 580. Marcus is still eating Chinese food — but now he's looking at apartments he actually qualifies for.
 
-## Tool #2: Dispute AI — Your Strategic Dispute Brain
+## Tool #2: DisputeBee — Your Strategic Dispute Brain
 
-**What it does:** Dispute AI (also known as DisputeBee in some versions) is built specifically for credit disputes. It doesn't just send generic letters — it uses AI to analyze your specific situation and generate customized dispute strategies.
+**What it does:** DisputeBee is built specifically for credit disputes. It doesn't just send generic letters — it uses AI to analyze your specific situation and generate customized dispute strategies.
 
 **How it works:**
 1. Import your credit reports (upload or manual entry)
@@ -100,7 +108,7 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 
 **Key Feature:** Dispute AI doesn't just pick a random reason to dispute. It analyzes the item type, the age of the account, the reporting pattern, and the furnisher's history to choose the strategy most likely to succeed. That's something most human credit repair agents don't even do.
 
-**Pricing:** Varies by plan — typically $29-$49/month
+**Pricing:** Individual: ~$39/month | Business: $129/month (unlimited clients)
 
 **Best for:** People who want more control over the strategy but still want AI doing the heavy lifting.
 
@@ -502,18 +510,28 @@ Results? Maybe 30-50% of negative items removed. Maybe.
 
 | Tool | Cost |
 |------|------|
-| Dovly (free plan) | $0 |
-| Dispute AI (~3 months) | ~$99-$147 |
+| Dovly Annual Plan | **$99/year ($8.33/mo)** |
+| DisputeBee (~3 months for edge cases) | ~$117 |
 | Dispute Panda (free plan) | $0 |
-| ChatGPT (free tier) | $0 |
+| ChatGPT/Claude (free tier) | $0 |
 | Credit Karma | $0 |
 | Experian Boost | $0 |
 | Certified mail (15 letters) | ~$100 |
-| **TOTAL** | **$199-$247** |
+| **TOTAL** | **$316 for 12 months** |
+
+```
+COST COMPARISON VISUAL:
+
+Credit Repair Agency:  $993 ████████████████████████████████████
+Your AI Stack:         $316 ████████████
+                             ↑
+                        YOU SAVE $677
+                        AND get BETTER results
+```
 
 Results? You're running the SAME process — actually a BETTER process — because AI doesn't get tired, doesn't cut corners, and doesn't forget to follow up. And you have ChatGPT/Claude filling every gap with customized legal analysis.
 
-**Savings: $746-$794.** That's not marketing math. That's real math.
+**Savings: $677.** And the AI stack gets SMARTER over time while the agency sends the same template letters month after month.
 
 And here's the thing the credit repair companies don't tell you: even when you hire them, they're using dispute letter TEMPLATES. They're not writing custom letters for you. They're doing exactly what these AI tools do — but charging you 5x more and taking 3x longer.
 
