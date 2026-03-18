@@ -1176,7 +1176,23 @@ The full GOD MODE CREDIT™ path takes you from disputes → building new positi
 
 **Your journey:** Clean report → Build credit → Fund your business → Automate it → Live free.
 
-We'll see you at the next level.
+---
+
+## YOUR DISPUTES ARE SENT. HERE'S WHAT ACCELERATES EVERYTHING.
+
+While those letters are in the mail, don't sit still. Here's how to 10x your results:
+
+| Your Situation | Your Next Move | Price |
+|---|---|---|
+| Collectors harassing you while you wait | **Collect What They Owe You** — sue them and get PAID for their violations | $17 |
+| Want AI automating your disputes and strategy | **The AI Credit Repair Toolkit** — Dovly + DisputeBee + ChatGPT/Claude working as ONE system | $27 |
+| Want the COMPLETE 300 → 750 playbook | **Credit Ascension (Flagship)** — secret lenders, soft pull database, AI arsenal, 90-day plan, everything | $47 |
+| Want AI mapped to EVERY single step | **The AI x Credit Cheat Code** — the automated credit machine nobody else has | $67 |
+| Want EVERYTHING + save $108 | **Zero to Funded Bundle** — all products including business credit + automation playbook | $197 |
+
+**Bundle math:** This Dispute Letter Pack + AI Credit Repair Toolkit = $54 total. One month with a credit repair company = $149+. You're already winning.
+
+**Visit godmodecredit.com — your score is about to change. Make sure your strategy changes with it.**
 
 ---
 
