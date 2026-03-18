@@ -2,7 +2,7 @@
 ## The AI Automation Playbook — Build a Business That Runs Itself
 ### A GOD MODE CREDIT™ x SoulHustleAI Crossover Guide
 
-> **Product #9** | Price: $97 | Cover: `../assets/covers/08-zero-to-10k.png` | Status: FINALIZED
+> *Your complete roadmap from credit repair to automated income.*
 
 ---
 
@@ -49,7 +49,9 @@ Month 4+: ████░░░░░░░░░░░░░░░░  4 hrs (C
 
 ## Why This Guide Is Different
 
-You just learned how to fix your credit. Build business credit. Access funding. That's powerful. But funding without a business is just debt with extra steps.
+If you've been following the GOD MODE CREDIT™ system, you just learned how to fix your credit, build business credit, and access funding. That's powerful. And even if this is your first guide — you're in the right place. Everything here works whether you're using credit funding or bootstrapping from zero.
+
+But funding without a business is just debt with extra steps.
 
 This guide shows you how to build a REAL business that generates $10,000+ per month — using AI to do the work that would normally require 3-5 employees. No office. No payroll. No commute. Just you, a laptop, and AI tools doing the heavy lifting.
 
@@ -70,7 +72,7 @@ What you sell: Ebooks, templates, courses, guides, prompt packs, toolkits
 What AI does: Creates the products, writes the sales copy, generates social content, handles email marketing, manages customer delivery
 
 **Startup cost:** $0-$200
-**Monthly overhead:** $18-$50 (Later.com + email tool)
+**Monthly overhead:** $25-$65 (Later.com + email tool)
 **Revenue potential:** $2,000-$15,000/month
 **Time commitment:** 5-10 hrs/week after setup
 
@@ -79,7 +81,7 @@ THE DIGITAL PRODUCT MACHINE
 ============================
 Claude/ChatGPT writes your products
     → Payhip delivers them automatically
-    → ConvertKit nurtures buyers via email
+    → Kit (formerly ConvertKit) nurtures buyers via email
     → Later.com posts content daily
     → ManyChat captures leads from social
     → Make.com connects everything
@@ -132,25 +134,25 @@ Here's every tool you need and what role it plays. Think of each one as an emplo
 | Tool | Role | Cost | What It Replaces |
 |------|------|------|-----------------|
 | **Claude API / ChatGPT** | Content writer, strategist, copywriter | $0-$20/mo | $4,000/mo content writer |
-| **Make.com** | Workflow automation (connects everything) | $9-$29/mo | $3,000/mo operations manager |
-| **ConvertKit (Kit)** | Email marketing | $0 (free to 10K subs) | $2,000/mo email marketer |
-| **Later.com** | Social media scheduling | $18/mo | $1,500/mo social media manager |
+| **Make.com** | Workflow automation (connects everything) | $0-$19/mo | $3,000/mo operations manager |
+| **Kit** | Email marketing | $0 (free to 10K subs) | $2,000/mo email marketer |
+| **Later.com** | Social media scheduling | $25/mo | $1,500/mo social media manager |
 | **Payhip** | Product delivery + affiliate program | $0 (5% per sale) | $500/mo ecommerce platform |
 | **Stan Store** | Bio link + checkout | $29/mo | Custom landing pages |
 | **Notion** | Project management, CRM | $0 (free plan) | $1,000/mo project manager |
-| **Canva Pro** | Graphic design | $13/mo | $2,500/mo graphic designer |
+| **Canva Pro** | Graphic design | $15/mo | $2,500/mo graphic designer |
 
-**Total:** ~$69-$109/month
+**Total:** ~$80-$130/month
 **What it replaces:** ~$14,500/month in human salaries
 
-That's not a typo. Under $110/month replaces over $14,000/month in labor costs.
+That's not a typo. Under $130/month replaces over $14,000/month in labor costs.
 
 ## The Advanced Stack (Add as You Scale)
 
 | Tool | Role | Cost |
 |------|------|------|
 | **ElevenLabs** | AI voiceover (Zero voice for faceless content) | $5-$22/mo |
-| **Opus Clip** | Video repurposing (1 long video → 10 shorts) | $0-$19/mo |
+| **Opus Clip** | Video repurposing (1 long video → 10 shorts) | $0-$29/mo |
 | **ManyChat** | DM automation (auto-capture leads from comments) | $0-$15/mo |
 | **Voiceflow** | AI chatbot for customer support | $0-$50/mo |
 | **Metricool** | Analytics across all platforms | $0-$18/mo |
@@ -228,7 +230,7 @@ Repeat for each chapter. Claude can write 1,000-1,500 words per prompt in about 
 - Add product with Payhip checkout link
 - Add to your TikTok/IG bio
 
-**Step 3: ConvertKit (30 minutes)**
+**Step 3: Kit (30 minutes)**
 - Create email list
 - Set up automation: new buyer → tag → welcome email
 - AI writes the welcome email:
@@ -308,12 +310,15 @@ lighting, just swap scripts. OR use ElevenLabs for
 faceless content over screen recordings.
 
 STEP 4: Schedule (1 hour)
-Upload all to Later.com. Schedule 3-5 posts/day across
-TikTok + IG + YouTube Shorts.
+Upload all to Later.com. Schedule 1 post/day, cross-posted across
+TikTok + IG Reels + YouTube Shorts (that's 3-5 platform
+posts per day from a single piece of content).
 
 RESULT: 30 days of daily content. Done in 4 hours.
 Next content day: 30 days from now.
 ```
+
+> **Want fresh prompts every month without writing them yourself?** The Crowned Circle membership ($37/mo) delivers updated content prompts, trending hooks, and new templates monthly — plug them straight into this content engine.
 
 ## The ManyChat Lead Machine
 
@@ -327,7 +332,7 @@ Someone sees your TikTok
     → Comments the keyword (e.g., "GUIDE")
     → ManyChat auto-DMs them the link
     → They download the free lead magnet
-    → ConvertKit captures their email
+    → Kit captures their email
     → 14-day email sequence sells them products
     → They buy → Payhip delivers → Make.com tags them
     → Ascension sequence sells next product
@@ -352,6 +357,9 @@ Let's break down exactly how $10K/month works:
 | **TOTAL** | | | **$10,220** |
 
 80 + 40 + 25 + 15 = 160 sales/month = ~5 sales/day. With consistent content hitting 4 platforms and ManyChat capturing leads? Very doable.
+
+**What does that require in terms of traffic?**
+At a 1-2% conversion rate (standard for warm traffic), you need 8,000-16,000 visitors/month to your sales pages. That breaks down to roughly 270-530 daily visitors. With consistent content across 4 platforms and an email list of 2,000+, this is achievable by month 3-4.
 
 ## Revenue Stack 2: Products + Services
 
@@ -381,7 +389,7 @@ Let's break down exactly how $10K/month works:
 New client pays invoice (Square)
     → Make.com detects payment
     → Creates Notion project page (auto-filled)
-    → Sends welcome email (ConvertKit)
+    → Sends welcome email (Kit)
     → Creates project channels
     → Sends onboarding questionnaire
     → Adds to calendar for kickoff call
@@ -404,6 +412,8 @@ Monthly trigger (1st of month)
 Time saved: 15 hours per month
 Your time: 1 hour (review + approve)
 ```
+
+> **Tech note:** This workflow uses the Claude API, which is different from chatting with Claude in a browser. You'll need an Anthropic API key ($0-$20/month based on usage) and a Make.com HTTP module to connect them. If this sounds intimidating, start with the manual version: open Claude, paste your content prompt, copy the output. You can automate it later once you're comfortable.
 
 ## Workflow 3: Lead Follow-Up (Make.com + Twilio)
 
@@ -476,7 +486,7 @@ Not bad for someone whose staff don't exist.
 
 ## Week 2: Launch
 - [ ] Set up Payhip + Stan Store
-- [ ] Set up ConvertKit email list
+- [ ] Set up Kit email list
 - [ ] Write and schedule first 7 TikTok videos
 - [ ] Set up ManyChat DM automation
 - [ ] Create your free lead magnet
@@ -485,13 +495,13 @@ Not bad for someone whose staff don't exist.
 - [ ] Post daily across TikTok + IG + YouTube Shorts
 - [ ] Engage with comments (builds algorithm favor)
 - [ ] Set up Later.com and batch schedule next 2 weeks
-- [ ] Start ConvertKit email sequence
+- [ ] Start Kit email sequence
 
 ## Week 4: Optimize
 - [ ] Review what content performed best
 - [ ] Double down on winning formats
 - [ ] Create your second product
-- [ ] Set up Make.com workflow connecting Payhip → ConvertKit
+- [ ] Set up Make.com workflow connecting Payhip → Kit
 
 > **Accountability:** If you're at the end of this guide and you haven't opened Payhip yet — let me be real with you. You just read an entire playbook on building a $10K/month business. The tools are free or nearly free. The AI writes the content. The platforms handle delivery. The only missing piece is YOU actually doing it. Don't be the person who has 47 ebooks on making money and no money. Be the person who read ONE guide and took action the same day.
 

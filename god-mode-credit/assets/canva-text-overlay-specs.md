@@ -104,7 +104,7 @@
 - Position: Directly below title, centered
 
 **Step 5: Add price badge (optional)**
-- Text: `SAVE $108`
+- Text: `SAVE $85`
 - Font: Cinzel Bold
 - Size: 18pt
 - Color: #050505 (black text)

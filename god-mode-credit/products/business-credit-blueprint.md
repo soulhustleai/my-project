@@ -754,6 +754,7 @@ Your business credit profile is built. You have access to real funding. But fund
 
 | Your Goal | Your Next Move | Price |
 |---|---|---|
+| Want ALL 6 GOD MODE products + save $85 | **Zero to Funded Bundle** — the complete system from disputes to funding | $197 |
 | Build a business that runs itself with AI | **Zero to $10K/Month** — the exact playbook SoulHustleAI uses. AI employees, automated delivery, passive revenue | $97 |
 | Stay current + get monthly updates | **The Crowned Circle** — fresh vendor data, new AI prompts, community access, monthly templates | $37/mo |
 | Need custom AI automation for YOUR business | **SoulHustleAI** — we build the system FOR you | Book a call at soulhustleai.com |

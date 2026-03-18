@@ -61,7 +61,7 @@
 
 ### 10. "Zero to Funded: The Complete Bundle"
 - **Price:** $197
-- **Content:** All 5 paid credit products. Saves $108.
+- **Content:** All 6 paid credit products ($282 value). Saves $85.
 
 ### 11. "The Crowned Circle" Membership
 - **Price:** $37/mo

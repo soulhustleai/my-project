@@ -728,7 +728,7 @@ You just turned the tables on debt collectors. But the negative items on your re
 | Negative items on your report | **The Dispute Letter Pack** — 15 ready-to-send letters that force deletion | $27 |
 | Want AI doing the work for you | **The AI Credit Repair Toolkit** — automate your entire credit repair | $27 |
 | Want the COMPLETE system | **Credit Ascension** — the full 300 → 750 playbook | $47 |
-| Want ALL products + maximum savings | **Zero to Funded Bundle** — everything + business credit + automation. Save $108 | $197 |
+| Want ALL products + maximum savings | **Zero to Funded Bundle** — all 6 paid products. Save $85 | $197 |
 
 **You just made collectors pay YOU. Now imagine what happens when you clear your entire report.**
 

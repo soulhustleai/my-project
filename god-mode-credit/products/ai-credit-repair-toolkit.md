@@ -615,7 +615,7 @@ This toolkit showed you the AI tools. But the full system? That's a different le
 | AI mapped to EVERY step of credit repair | **The AI x Credit Cheat Code** — the complete automated machine | $67 |
 | Business credit ($50K-$250K in funding) | **The Business Credit Blueprint** — LLC to funded in 12 months | $97 |
 | A business that runs itself | **Zero to $10K/Month** — AI automation playbook | $97 |
-| EVERYTHING above + save $108 | **Zero to Funded Bundle** — the complete GOD MODE system | $197 |
+| EVERYTHING above + save $85 | **Zero to Funded Bundle** — all 6 products in the complete GOD MODE system | $197 |
 
 **You just learned the tools. The Cheat Code teaches the SYSTEM. That's the difference between improvement and transformation.**
 

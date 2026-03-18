@@ -326,7 +326,7 @@ You just learned how to BUILD credit from any starting point. But building is on
 | Errors/negatives on your report | **The Dispute Letter Pack** — 15 letters that delete what they can't prove | $27 |
 | Want AI to do the heavy lifting | **The AI Credit Repair Toolkit** — full AI-powered credit machine | $27 |
 | Want the COMPLETE system | **Credit Ascension** — the full 300 → 750 playbook with everything | $47 |
-| Want ALL products + maximum savings | **Zero to Funded Bundle** — everything above + business credit + automation. Save $108 | $197 |
+| Want ALL products + maximum savings | **Zero to Funded Bundle** — all 6 paid products. Save $85 | $197 |
 
 **The people who win aren't the ones who read one guide. They're the ones who build the complete system.**
 

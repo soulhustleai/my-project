@@ -694,7 +694,7 @@ You just built the most powerful AI credit repair system possible. Your score is
 |---|---|---|
 | Access $50K-$250K business funding | **The Business Credit Blueprint** — LLC to funded in 12 months, step by step | $97 |
 | Build a business that runs itself | **Zero to $10K/Month** — AI automation playbook (the SoulHustleAI method) | $97 |
-| Get EVERYTHING and save $108 | **Zero to Funded Bundle** — every product in the GOD MODE system | $197 |
+| Get EVERYTHING and save $85 | **Zero to Funded Bundle** — all 6 products in the GOD MODE system | $197 |
 | Monthly updates + community | **The Crowned Circle** — fresh templates, lender data, AI prompts monthly | $37/mo |
 
 **People who buy this guide and STOP here leave 90% of the opportunity on the table. The credit fix is Phase 1. The funding and business are where life actually changes.**
