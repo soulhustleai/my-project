@@ -166,9 +166,17 @@ Your personal credit has Equifax, Experian, and TransUnion. Your BUSINESS has it
 
 **What it does:** Shows you your D&B, Experian Business, AND Equifax Business scores in one dashboard. Also shows financing options you qualify for based on your actual scores.
 
-**Cost:** Free plan available (limited). Premium is ~$24.99/month.
+**Pricing:**
 
-**Recommendation:** Start with the free plan. Upgrade when you have active vendor accounts and need to monitor score changes.
+| Plan | Cost | What You Get |
+|------|------|-------------|
+| **Track** | $39.99/mo | D&B + Experian + Equifax scores, alerts |
+| **Build** | $49.99/mo | All Track features + one tradeline + bookkeeping |
+| **Expand** | $74.99/mo | Everything + FICO SBSS score + credit coaching |
+
+**What's FICO SBSS?** This is the score SBA lenders use to evaluate your business. Minimum 140 (out of 300) required for most SBA loans. Only available on Nav's Expand plan. When you're ready for SBA funding, this score matters.
+
+**Recommendation:** Start with Track ($39.99/mo). Upgrade to Expand when you're approaching SBA loan territory (12+ months in).
 
 ---
 
@@ -223,6 +231,75 @@ These approve almost anyone with a valid LLC and EIN. Start here.
 - **Reports to:** D&B, Equifax Business
 - **Credit limit:** $500-$1,000
 - **How to apply:** shirtsy.com
+
+## Tier 2: Multi-Bureau Reporters (Open These After You Have 3+ Starter Accounts)
+
+These report to TWO or THREE bureaus — they build your profile faster.
+
+### 7. Wise Business Plans
+- **What they sell:** Business plans, LLC formation, branding, website design
+- **Reports to:** Experian Business AND Equifax Business
+- **Annual fee:** $99
+- **Minimum spend:** $164
+- **How to apply:** wisebusinessplans.com
+- **Tip:** Two-bureau reporter. Worth the fee.
+
+### 8. NAMYNOT
+- **What they sell:** Digital marketing services
+- **Reports to:** Experian Business AND Equifax Business
+- **Credit available:** Up to $10,000
+- **How to apply:** namynot.com/net-30
+
+### 9. JJ Gold
+- **What they sell:** Corporate gifts, personal care, cosmetics
+- **Reports to:** Experian Business AND Equifax Business
+- **Requirements:** 30+ days established, EIN, utility bill, driver's license
+- **How to apply:** jjgold.com
+
+### 10. GoodNeon
+- **What they sell:** Indoor signage, wall art, neon signs
+- **Reports to:** Experian Business AND Equifax Business
+- **Credit limit:** Up to $5,000 revolving
+- **Requirements:** 2 prior net-30 vendor experiences, 30% deposit
+- **No membership fee**
+- **How to apply:** goodneon.com
+
+### 11. Business T-Shirt Club
+- **What they sell:** Wholesale apparel, custom print/embroidery
+- **Reports to:** Experian, Equifax, and others
+- **Annual fee:** $69.99
+- **How to apply:** affiliates.businesstshirtclub.com
+
+### 12. Growegy
+- **What they sell:** Project management, marketing AI, coaching
+- **Reports to:** Experian AND Equifax
+- **Cost:** $55/month or $600/year
+- **How to apply:** growegy.com
+- **Bonus:** Also functions as an AI marketing tool — double value
+
+### 13. Office Garner
+- **What they sell:** Apparel, office supplies, electronics, web design
+- **Reports to:** Experian Business
+- **Fee:** $69 processing fee
+- **How to apply:** officegarner.com/net-30-terms-account
+
+### 14. Newegg Business
+- **What they sell:** Technology products
+- **Reports to:** Experian Business
+- **How to apply:** neweggbusiness.com (need existing Newegg account first)
+
+### 15. Harbor Freight Commercial Card
+- **What they sell:** Tools, equipment, industrial supplies
+- **Reports to:** Experian Business
+- **How to apply:** harborfreight.com/commercial-card
+
+### 16. HD Supply
+- **What they sell:** Cleaning, PPE, plumbing, lighting (MRO products)
+- **Reports to:** Experian Business
+- **How to apply:** hdsupplysolutions.com/s/credit_application
+- **Best for:** Property management, maintenance businesses
+
+> **IMPORTANT DISCLAIMER:** Vendor reporting policies can change. Always verify current reporting status before applying. Monitor your business credit reports to confirm trades appear. Nav.com states: "It's up to each company to report accounts to business credit agencies."
 
 ## The Net-30 Strategy
 
@@ -332,7 +409,43 @@ Find CDFIs near you at **ofn.org/cdfi-locator**
 | **Hello Alice Grants** | $5K-$25K | Various — check categories monthly |
 | **Fundid** | Varies | Women-owned, minority-owned businesses |
 
+### Bonus: 0% Interest Microloans
+
+**Kiva** (kiva.org/borrow) — Up to $15,000 at **0% interest.** Yes, zero. Community-funded model. Takes about 30 days to fundraise. No credit score minimum. This is the best kept secret in small business funding.
+
+### More Legitimate Grants
+
+| Grant | Amount | Who Qualifies |
+|-------|--------|---------------|
+| **Amber Grant** (ambergrant.com) | $10K monthly + $25K annual | Women entrepreneurs |
+| **FedEx Small Business Grant** | Up to $50K | Annual competition, any small biz |
+| **NASE Growth Grants** (nase.org) | Up to $4K | NASE members (self-employed) |
+| **IFundWomen** (ifundwomen.com) | Varies | Women-owned businesses |
+| **USDA Rural Development** (rd.usda.gov) | Varies | Businesses in rural areas |
+
 > **Real talk on grants:** They exist. They're real. But they're competitive and take time to apply. Don't depend on grants as your primary funding. Build credit → get credit lines → use grants as bonus capital. Don't wait on a grant to start.
+
+---
+
+# CHAPTER 5.5: SHELF CORPORATIONS — THE TRUTH (Read This Before You Get Scammed)
+
+You'll see people selling "aged corporations" or "shelf corporations" — business entities formed years ago that sat unused. The pitch: "Buy a 3-year-old company, instantly look established, get bigger credit approvals."
+
+**In 2026? This is a waste of money and potentially ILLEGAL.**
+
+Here's why they DON'T work anymore:
+
+1. **Lenders use AI verification now.** They cross-reference your entity age against bank account history, tax returns, and actual revenue data. A 3-year-old entity with zero financial history = instant red flag.
+
+2. **The SBA explicitly prohibits shelf corporation use** for program circumvention.
+
+3. **Banks run KYC (Know Your Customer) checks** that detect zero operational history regardless of entity age.
+
+4. **Presenting a shelf corporation as an active business to get credit can be bank fraud** — a federal crime.
+
+5. **Credit bureaus cross-reference multiple data sources.** An entity with age but no trade history, no utility accounts, and no operational data gets flagged automatically.
+
+**The money you'd spend on a shelf corp ($1,500-$10,000+) is better spent on actual vendor accounts that build REAL credit in 3-6 months.** Don't fall for it.
 
 ---
 
@@ -403,6 +516,24 @@ Register with D&B EARLY. The D-U-N-S number is the foundation of your business c
 
 ## Mistake #6: Not Having a Business Phone and Address
 Lenders and vendors verify your business existence. A dedicated phone number (Google Voice is free) and a consistent address on all applications matters. Inconsistencies = denial.
+
+## Mistake #7: Inconsistent Business Information
+Your business name, address, phone, and EIN must be IDENTICAL across every application. Even minor differences (LLC vs. L.L.C., Suite vs. Ste) can prevent matching and slow your credit building.
+
+## Mistake #8: Not Opting Into Reporting
+Some vendors (like Quill) require you to OPT IN to having your payment history reported. If you don't check that box, you get zero credit benefit from your payments. Always confirm reporting is active.
+
+## Mistake #9: Using a Gmail/Yahoo Email for Applications
+Applications from gmail.com or yahoo.com are less credible. Set up a professional @yourbusiness.com email through Google Workspace (~$6/month). This small detail affects approval rates.
+
+## Mistake #10: Not Getting Listed in 411 Directory
+Many lenders verify businesses through 411 directory lookup. If your business phone isn't listed, it's a credibility flag. Use listyourself.net or similar to get into directory databases.
+
+## Mistake #11: Applying for SBA Loans Too Early
+SBA lenders want 2+ years of business tax returns. Applying at Month 6 wastes everyone's time and adds hard inquiries to your personal credit.
+
+## Mistake #12: Dropping Starter Vendors Once You Get Cards
+Those small net-30 accounts continue aging and strengthening your file. Keep placing small orders quarterly. Closing them shrinks your credit profile.
 
 ---
 
