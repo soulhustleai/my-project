@@ -70,10 +70,24 @@
 ---
 
 ## COVERS STATUS
-- `god_mode_cover_lead_magnet.png` — BUILT (ready for Canva text overlay)
-- `god_mode_cover_flagship.png` — BUILT (ready for Canva text overlay)
-- Midjourney prompts written and tested — 6 options across both products
-- **Next step:** Edwin generates in MJ, drops images, Claude adds text overlays (Cinzel font, gold #C9A033)
+
+| # | Product | Cover File | Status |
+|---|---------|-----------|--------|
+| 1 | 5 Federal Laws (Lead Magnet) | `covers/01-5-federal-laws.png` | FINALIZED |
+| 2 | Credit Ascension (Flagship) | `covers/02-credit-ascension.png` | FINALIZED |
+| 3 | Collect What They Owe You | `covers/03-collect-what-they-owe-you.png` | FINALIZED |
+| 4 | The Dispute Letter Pack | `covers/04-dispute-letter-pack.png` | FINALIZED |
+| 5 | AI Credit Repair Toolkit | `covers/05-ai-credit-repair-toolkit.png` | AWAITING MJ GENERATION |
+| 6 | AI x Credit Cheat Code | `covers/06-ai-credit-cheat-code.png` | FINALIZED |
+| 7 | Business Credit Blueprint | `covers/07-business-credit-blueprint.png` | FINALIZED |
+| 8 | Zero to $10K/Month | `covers/08-zero-to-10k.png` | FINALIZED |
+| 9 | Zero to Funded (Bundle) | `covers/09-zero-to-funded.png` | FINALIZED |
+| 10 | The Crowned Circle | `covers/10-crowned-circle.png` | FINALIZED |
+| 11 | Cards That Say Yes | `covers/11-cards-that-say-yes.png` | AWAITING MJ GENERATION |
+
+**Covers #4, #8, #9** — Approved by Edwin as-is. No text changes needed.
+**Covers #5, #11** — Edwin generating via MJ prompts. Claude handles text overlay + finalization.
+**All covers** — Stored in `god-mode-credit/assets/covers/` once finalized.
 
 ---
 

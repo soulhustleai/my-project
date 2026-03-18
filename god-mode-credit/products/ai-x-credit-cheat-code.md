@@ -2,6 +2,8 @@
 ## AI-Powered Strategies for Every Stage of Your Credit Journey — From 300 to 750+
 ### A GOD MODE CREDIT™ Guide
 
+> **Product #8** | Price: $67 | Cover: `../assets/covers/06-ai-credit-cheat-code.png` | Status: FINALIZED
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

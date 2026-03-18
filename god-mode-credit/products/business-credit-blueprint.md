@@ -2,6 +2,8 @@
 ## From $0 to $100K+ in Business Funding — Without Risking Your Personal Credit
 ### A GOD MODE CREDIT™ Guide
 
+> **Product #7** | Price: $97 | Cover: `../assets/covers/07-business-credit-blueprint.png` | Status: FINALIZED
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

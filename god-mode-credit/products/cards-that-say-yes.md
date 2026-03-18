@@ -2,6 +2,8 @@
 ## Credit Cards and Accounts That Approve You at ANY Score — Even 300
 ### A Free GOD MODE CREDIT™ Guide
 
+> **Product #11** | Price: FREE | Cover: `../assets/covers/11-cards-that-say-yes.png` | Status: AWAITING COVER
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

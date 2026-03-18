@@ -2,6 +2,8 @@
 ## The AI Automation Playbook — Build a Business That Runs Itself
 ### A GOD MODE CREDIT™ x SoulHustleAI Crossover Guide
 
+> **Product #9** | Price: $97 | Cover: `../assets/covers/08-zero-to-10k.png` | Status: FINALIZED
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

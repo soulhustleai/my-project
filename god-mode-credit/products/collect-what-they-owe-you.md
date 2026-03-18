@@ -2,6 +2,8 @@
 ## How to Sue a Debt Collector and Actually Win
 ### A GOD MODE CREDIT™ Guide
 
+> **Product #3** | Price: $17 | Cover: `../assets/covers/03-collect-what-they-owe-you.png` | Status: FINALIZED
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

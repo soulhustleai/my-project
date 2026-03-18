@@ -2,6 +2,8 @@
 ## 15 Done-for-You Letters That Make Credit Bureaus Delete What They Can't Prove
 ### A GOD MODE CREDIT™ Guide
 
+> **Product #4** | Price: $27 | Cover: `../assets/covers/04-dispute-letter-pack.png` | Status: FINALIZED
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*

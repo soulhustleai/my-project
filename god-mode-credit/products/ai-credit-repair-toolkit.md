@@ -2,6 +2,8 @@
 ## How to Use AI to Fix Your Credit Faster Than Any $1,500/Month Agency
 ### A GOD MODE CREDIT™ Guide
 
+> **Product #5** | Price: $27 | Cover: `../assets/covers/05-ai-credit-repair-toolkit.png` | Status: AWAITING COVER
+
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*
