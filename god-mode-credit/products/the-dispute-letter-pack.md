@@ -1180,6 +1180,10 @@ You have the tools. You have the words. You have the law on your side.
 
 Now go mail something.
 
+Remember: your credit score is not your worth. But reclaiming it IS an act of sovereignty. Every letter you send says: "I know my rights, and I'm not afraid to use them." That's GOD MODE.
+
+> Ready to go beyond disputes? **Credit Ascension** ($47) gives you the full 300-to-750 playbook — including the secret lenders and soft-pull database that make rebuilding fast.
+
 ---
 
 ## BONUS: MAKE THESE LETTERS LASER-SPECIFIC WITH AI
@@ -1239,5 +1243,5 @@ While those letters are in the mail, don't sit still. Here's how to 10x your res
 ---
 
 *© 2026 GOD MODE CREDIT™ — A SoulHustleAI Brand*
-*Educational purposes only. This guide is not legal advice. Consult a qualified attorney for advice specific to your situation.*
+**IMPORTANT:** This guide is for educational purposes only. It does not constitute legal advice, credit repair services, or a guarantee of any specific outcome. GOD MODE CREDIT does not submit disputes on your behalf or promise specific credit score improvements. You are the one doing the work — we provide the education and tools. Consult a licensed attorney for legal advice specific to your situation.
 *"Financial sovereignty is your birthright. We just hand you the keys."*
