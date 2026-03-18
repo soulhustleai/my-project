@@ -1061,6 +1061,8 @@ Sincerely,
 [Your Printed Name]
 ```
 
+> **Important nuance:** UCC Article 3 applies most directly to **negotiable instruments** — promissory notes (personal loans, mortgages, auto loans). For credit card debt, which is an open-end contract, the chain of title demand still works but rests more on FDCPA validation rights and contract assignment law rather than UCC § 3-301 specifically. Use this letter for ALL debt buyers — the documentation demand is valid regardless — just know the legal theory varies by debt type.
+
 > **Why this is powerful:** When debts get securitized (bundled and sold as investment products), the original note is often destroyed or lost. The debt buyer has a spreadsheet with your name and a number on it — but they may not have the actual PROOF they own YOUR debt. This letter forces them to either produce it or walk away. And many walk away.
 
 ---
@@ -1160,7 +1162,9 @@ and maintaining a professional, factual tone:
 [Paste the letter template]
 ```
 
-This AI-assist feature is just a taste of what's possible. If you want the FULL AI credit repair system — every tool, every prompt, every automation — check out **"The AI x Credit Cheat Code"** in the GOD MODE CREDIT™ collection. That's where we go deep.
+This AI-assist feature is just a taste of what's possible. If you want the FULL AI credit repair system — every tool, every prompt, every automation — check out **"The AI Credit Repair Toolkit"** ($27) for the tools, or **"The AI x Credit Cheat Code"** ($67) for the complete automated system. That's where we go deep.
+
+> **Bundle math:** This Dispute Letter Pack + The AI Credit Repair Toolkit = $54 total. One month with a traditional credit repair company = $99-$249. You just saved hundreds before you sent your first letter.
 
 ---
 

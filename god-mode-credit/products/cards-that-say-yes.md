@@ -13,7 +13,7 @@
 
 Sign up for Kikoff. It's free. No credit check. Takes 3 minutes. It starts reporting to Equifax and TransUnion immediately. By the time you finish this guide, your credit building will have already started. Go to kikoff.com. Do it now. Come back.
 
-[YOUR REFERRAL LINK — COMING SOON]
+**Get the latest signup links at godmodecredit.com/tools**
 
 ---
 
@@ -90,7 +90,7 @@ Every card/account below includes:
 **Reports to:** Equifax, TransUnion
 **Best for:** The absolute starting point if you have nothing
 
-[YOUR REFERRAL LINK — COMING SOON]
+**Get the latest signup links at godmodecredit.com/tools**
 
 ### 2. Self (formerly Self Lender)
 **What it is:** A credit builder savings account. You make monthly payments (building credit), and at the end of the term, you get the money back (minus interest/fees). You're literally saving money AND building credit at the same time.
@@ -102,7 +102,7 @@ Every card/account below includes:
 **Reports to:** Equifax, Experian, TransUnion (all three!)
 **Best for:** Building a diverse credit profile (this counts as an installment loan, which is different from a credit card)
 
-[YOUR REFERRAL LINK — COMING SOON]
+**Get the latest signup links at godmodecredit.com/tools**
 
 ### 3. Chime Credit Builder Card
 **What it is:** A secured credit card with no credit check and no annual fee. You load money onto it, then spend that money — and Chime reports it as credit card activity.
@@ -125,7 +125,7 @@ Every card/account below includes:
 **Reports to:** Equifax, Experian, TransUnion
 **Best for:** People who want to build credit AND savings simultaneously
 
-[YOUR REFERRAL LINK — COMING SOON]
+**Get the latest signup links at godmodecredit.com/tools**
 
 ### 5. Grow Credit
 **What it is:** Build credit by paying subscriptions you already have — Netflix, Spotify, Hulu, etc.

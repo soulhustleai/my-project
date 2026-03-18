@@ -148,7 +148,12 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 - ChatGPT: Free tier available, Plus is $20/month
 - Claude: Free tier available, Pro is $20/month
 
-**The key insight:** These aren't just chatbots. They know federal consumer protection law better than most paralegals. When you give them your specific details, they generate responses that are legally sound, properly cited, and customized to YOUR situation.
+**The key insight:** These AI assistants are remarkably good at legal analysis — but they're not infallible.
+
+> **HONESTY MOMENT: What AI Can't Do**
+> ChatGPT and Claude are extraordinary tools. But they are NOT licensed attorneys. They can occasionally hallucinate — confidently citing a statute that says something slightly different than what they claim. **Always verify any statute citation the AI gives you** before putting it in a letter. Use law.cornell.edu/uscode to double-check. Use the verified citations in our Dispute Letter Pack as your baseline. AI is your research assistant and draft writer — not your lawyer. For actual lawsuits, get an actual attorney (NACA directory: consumeradvocates.org).
+
+**With that said:** These tools know federal consumer protection law at a level that will genuinely surprise you. When you give them your specific details, they generate responses that are legally sound, properly cited, and customized to YOUR situation.
 
 **Best for:** Everything the specialized tools don't cover. Questions, customization, strategy, and research.
 
@@ -471,7 +476,7 @@ Removing negatives is half the game. Building positives is the other half. Here 
 | **Grow Credit** | Build credit paying subscriptions | Free tier available | All 3 bureaus |
 | **Extra Card** | Debit card that reports as credit | $8-$25/month | All 3 bureaus |
 
-[REFERRAL LINKS COMING SOON — Check godmodecredit.com for current links]
+**Visit godmodecredit.com/tools for current referral links, updated pricing, and exclusive signup bonuses.**
 
 ## The Growth Stack (For 500-650 Scores)
 
