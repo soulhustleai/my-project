@@ -1234,7 +1234,7 @@ While those letters are in the mail, don't sit still. Here's how to 10x your res
 | Want AI automating your disputes and strategy | **The AI Credit Repair Toolkit** — Dovly + DisputeBee + ChatGPT/Claude working as ONE system | $27 |
 | Want the COMPLETE 300 → 750 playbook | **Credit Ascension (Flagship)** — secret lenders, soft pull database, AI arsenal, 90-day plan, everything | $47 |
 | Want AI mapped to EVERY single step | **The AI x Credit Cheat Code** — the automated credit machine nobody else has | $67 |
-| Want EVERYTHING + save $108 | **Zero to Funded Bundle** — all products including business credit + automation playbook | $197 |
+| Want EVERYTHING + save $85 | **Zero to Funded Bundle** — all 6 paid products in the complete GOD MODE system | $197 |
 
 **Bundle math:** This Dispute Letter Pack + AI Credit Repair Toolkit = $54 total. One month with a credit repair company = $99-$249. You're already winning.
 
