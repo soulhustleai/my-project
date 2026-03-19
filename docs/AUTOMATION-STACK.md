@@ -1,6 +1,22 @@
 # Full Automation Stack — Hands-Off System
 
 > Goal: Days 1-30 Edwin builds. Days 31-60 machine takes over. Day 90+ Edwin monitors and collects. 1-2 hrs/week max.
+> **Updated: March 19, 2026 — All API keys configured. Scripts built.**
+
+---
+
+## API KEYS STATUS (all configured in `.env`)
+
+| Service | Key Status | Script |
+|---------|-----------|--------|
+| **HeyGen** | CONFIGURED | `scripts/heygen_video.py` |
+| **Buffer** | CONFIGURED | `scripts/buffer_schedule.py` |
+| **Make.com** | CONFIGURED | `scripts/make_webhooks.py` |
+| **ManyChat** | CONFIGURED | `scripts/manychat_setup.py` |
+| **ConvertKit (Kit)** | CONFIGURED | (via Make.com webhook) |
+| **Payhip** | CONFIGURED | (via Make.com webhook) |
+
+**Master orchestrator:** `scripts/pipeline.py`
 
 ---
 
@@ -8,16 +24,16 @@
 
 ```
 Claude API (scripts/captions/ebooks)
-    → ElevenLabs (Zero voiceover)
-    → Opus Clip (1 long video → 10 Reels/Shorts)
-    → Later.com (schedule to TikTok + IG + YouTube Shorts + Pinterest)
+    → HeyGen (AI avatar video — 9:16 vertical, auto-generated)
+    → Buffer (schedule to TikTok + IG + YouTube Shorts + Pinterest)
+    → OpusClip (optional: 1 long video → 10 Reels/Shorts)
 ```
 
 ### Content Batch Process
-1. Claude API generates 30 days of scripts
-2. ElevenLabs voices them (Zero - Jerry B voice)
-3. Opus Clip repurposes into short-form
-4. Later.com schedules everything
+1. `python scripts/pipeline.py --batch-prompts` → generates 21 Claude API prompts
+2. Claude API generates scripts (via Make.com scenario or manual)
+3. `python scripts/heygen_video.py --batch scripts/tiktok_scripts/` → AI avatar videos
+4. `python scripts/buffer_schedule.py --batch output/videos/ --captions captions.json` → scheduled
 5. Edwin reviews once monthly
 
 ---
@@ -71,10 +87,18 @@ Lead comes in (website/referral)
 
 ## Platform Details
 
-### Later.com (Replacing Buffer)
-- **Plan:** Starter ($18/mo)
-- **Why:** Auto-publishes to TikTok natively (Buffer doesn't)
-- **Platforms:** TikTok + IG + YouTube Shorts + Pinterest
+### HeyGen (AI Avatar Video)
+- **Plan:** Pro API ($99/mo)
+- **Why:** Script → finished 9:16 video in one API call. No filming needed.
+- **Script:** `python scripts/heygen_video.py --list-avatars` to pick your avatar
+- **API Key:** Configured in `.env`
+
+### Buffer (Social Scheduling — replacing Later.com)
+- **Plan:** Pro
+- **Why:** API access for automated scheduling. Supports TikTok, IG, YT, Pinterest.
+- **Script:** `python scripts/buffer_schedule.py --list-profiles` to see connected accounts
+- **Stagger posting:** TikTok first, IG +2hrs, YouTube +4hrs, Pinterest +6hrs
+- **API Key:** Configured in `.env`
 
 ### ConvertKit (Kit)
 - **Plan:** Free (up to 10K subscribers)
@@ -83,6 +107,14 @@ Lead comes in (website/referral)
 ### ManyChat
 - **Platforms:** TikTok DMs + Instagram DMs
 - **Trigger:** Comment keyword → auto-deliver lead magnet → warm to products
+- **Script:** `python scripts/manychat_setup.py --setup-guide` for full DM flow setup
+- **Keywords:** LAWS, GUIDE, AI, CREDIT, FREE
+- **API Key:** Configured in `.env`
+
+### Make.com (Automation Orchestrator)
+- **Script:** `python scripts/make_webhooks.py --setup-payhip-pipeline` for full setup guide
+- **Key scenario:** Payhip purchase webhook → ConvertKit tag + email sequence
+- **API Key:** Configured in `.env`
 
 ### Digistore24 — Three Plays
 1. **LIST** our products → 3,000+ active affiliates promote at no cost
@@ -117,3 +149,39 @@ TikTok (primary), Instagram Reels, YouTube Shorts, X
 3. **Divine Energy** — "They profit off your ignorance" — spiritual wealth lens = loyal tribe
 4. **Business Credit** — "$50K biz credit with no personal SSN" — high purchase intent
 5. **AI Income** — "My staff don't exist" — Zero energy, SH.AI brand content
+
+---
+
+## Quick Start Commands
+
+```bash
+# Install dependencies
+pip install -r scripts/requirements.txt
+
+# Check all API keys are configured
+python scripts/pipeline.py --check-keys
+
+# Generate 21 TikTok script prompts (all 5 pillars)
+python scripts/pipeline.py --batch-prompts
+
+# List available HeyGen avatars
+python scripts/heygen_video.py --list-avatars
+
+# Generate a video from a script
+python scripts/heygen_video.py --script "Your script text" --title "Video Title"
+
+# List connected Buffer profiles
+python scripts/buffer_schedule.py --list-profiles
+
+# Schedule a post across all platforms (staggered)
+python scripts/buffer_schedule.py --post "Caption text" --video-url URL --stagger
+
+# View ManyChat setup guide
+python scripts/manychat_setup.py --setup-guide
+
+# View Make.com Payhip→ConvertKit pipeline guide
+python scripts/make_webhooks.py --setup-payhip-pipeline
+
+# Full pipeline status
+python scripts/pipeline.py --status
+```
