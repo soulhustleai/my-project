@@ -184,6 +184,43 @@ Make it a habit: review your credit card statements within the first week of rec
 
 ---
 
+## YOUR RIGHTS CHEAT SHEET — PRINT THIS. TAPE IT TO YOUR WALL.
+
+> *You just absorbed five federal laws that change everything. This is the one-page version. Screenshot it. Print it. Laminate it if you're that person. This is your armor.*
+
+| **LAW** | **YEAR** | **CITATION** | **WHAT IT DOES (1 SENTENCE)** | **YOUR #1 POWER MOVE** | **PENALTY FOR VIOLATIONS** |
+|---|---|---|---|---|---|
+| **FCRA** — Fair Credit Reporting Act | 1970 | 15 U.S.C. § 1681 | Forces credit bureaus to investigate disputes and remove anything they can't verify within 30 days. | Pull all 3 reports at annualcreditreport.com and dispute every error — each one is a potential $1,000 violation. | $100–$1,000 per willful violation + actual damages + punitive damages + attorney's fees |
+| **FDCPA** — Fair Debt Collection Practices Act | 1977 | 15 U.S.C. § 1692 | Puts a leash on debt collectors — no threats, no lies, no harassment, and they MUST validate the debt if you ask. | Demand written debt validation under § 1692g. They can't collect what they can't prove. | Up to $1,000 per violation + actual damages + attorney's fees |
+| **FACTA** — Fair and Accurate Credit Transactions Act | 2003 | 15 U.S.C. § 1681 (amends FCRA) | Gives you free weekly credit reports, fraud alerts, and identity theft protections. | Place a free fraud alert on all 3 bureaus today — takes 5 minutes, costs nothing, adds real protection. | Same penalties as FCRA (it's an amendment) + additional identity theft remedies |
+| **ECOA** — Equal Credit Opportunity Act | 1974 | 15 U.S.C. § 1691 | Makes it illegal to deny you credit based on race, sex, religion, marital status, age, or public assistance. | Save every denial letter. If the reasons don't match your financials, file a CFPB complaint immediately. | Actual damages + punitive damages up to $10,000 (individual) or $500,000 / 1% of net worth (class action) |
+| **FCBA** — Fair Credit Billing Act | 1974 | 15 U.S.C. § 1666 | Gives you 60 days to dispute any billing error on your credit card — and they can't collect while investigating. | Review statements within 7 days. Dispute in writing via certified mail to the billing inquiry address (NOT payment address). | Creditor forfeits the first $50 of disputed amount + actual damages + attorney's fees |
+
+---
+
+### DID YOU KNOW? — Quick-Fire Stats That Hit Different
+
+**FCRA:**
+> One in five Americans has an error on their credit report. That's over **40 million people** paying higher rates, getting denied for apartments, and losing job offers — because of data THEY NEVER VERIFIED. You could be one of them right now and not even know it.
+
+**FDCPA:**
+> The FTC and CFPB receive **hundreds of thousands** of debt collection complaints every year — making it the #1 most-complained-about financial industry. Collectors bet on you not knowing your rights. That bet just stopped paying off.
+
+**FACTA:**
+> Before 2003, you had to **PAY** to see your own credit report. Think about that. A private company was profiting off data about YOUR life, and you couldn't even look at it for free. FACTA ended that. Now you can check weekly. Most people still don't.
+
+**ECOA:**
+> Until 1974, a bank could deny a woman a credit card just for being a woman — no male cosigner, no credit. The ECOA is only **52 years old.** Your mother or grandmother may have lived through that. The fight isn't ancient history. It's living memory.
+
+**FCBA:**
+> Americans dispute **billions of dollars** in credit card charges every year. But here's the part nobody talks about — if the creditor doesn't follow proper dispute procedures, they forfeit the right to collect even if the charge was legit. The process IS the protection.
+
+---
+
+> **THE CROWNED CONSUMER'S OATH:** *I do not beg institutions for what the law already guarantees me. I dispute with precision. I document everything. I know my rights by name, by code, and by section number. I am not a victim of the system — I am the most informed person in the room.*
+
+---
+
 ## YOUR NEXT MOVE: FROM INFORMED TO UNSTOPPABLE
 
 Let's take a breath and acknowledge what just happened.
