@@ -7,7 +7,7 @@
 ---
 
 *A product of GOD MODE CREDIT™ — a SoulHustleAI brand*
-*"Financial sovereignty is your birthright. We just hand you the keys."*
+*"Financial freedom is your birthright. We just hand you the crown."*
 
 ---
 
@@ -53,7 +53,7 @@ Watch those bars fill up as you work through this guide.
 
 Let me paint you a picture.
 
-It's 2019. You've got a 520 credit score. You Google "credit repair" and find a company that charges $149/month with a $99 setup fee. They tell you it'll take 6-12 months. You sign up. Every month they send a few dispute letters. Every month they charge your card. Six months later your score went up 40 points. They charged you $993. You could've done it yourself.
+It's 2019. You're 24. You've got a 520 credit score, a $3,200 collection from an old Verizon bill you swore you returned the phone for, and a charge-off from a Victoria's Secret card you opened at 19 because the cashier said "you'll save 15% today." You Google "credit repair" and find Lexington Law or some company like it. $149/month with a $99 setup fee. They tell you it'll take 6-12 months. You sign up because you're desperate and don't know what else to do. Every month they send a few template letters. Every month they charge your card. Six months later your score went up 40 points. They charged you $993 total. You could've done it yourself. You just didn't know how.
 
 Now it's 2026. And AI just made that entire business model obsolete.
 
@@ -158,6 +158,121 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 **With that said:** These tools know federal consumer protection law at a level that will genuinely surprise you. When you give them your specific details, they generate responses that are legally sound, properly cited, and customized to YOUR situation.
 
 **Best for:** Everything the specialized tools don't cover. Questions, customization, strategy, and research.
+
+---
+
+## TOOL COMPARISON MATRIX — THE FULL PICTURE
+
+Stop scrolling between sections. Here's every tool, side by side, so you can see exactly what each one brings to the table.
+
+| | **Dovly** | **DisputeBee** | **Dispute Panda** | **ChatGPT / Claude** |
+|---|---|---|---|---|
+| **Best For** | Hands-off automation — set it and forget it | Strategic, targeted disputes with precision | Ongoing monitoring + dispute tracking | Custom letters, legal research, strategy deep-dives |
+| **Disputes** | Fully automated — AI generates AND submits for you | AI picks the best reason, you review and send | Suggests strategies, tracks your active disputes | You prompt it, it drafts — unlimited custom letters |
+| **Monitoring** | Full monitoring on Premium/Ultimate | No built-in monitoring | This IS the monitoring tool — real-time alerts, all 3 bureaus | No monitoring — it's a conversation tool |
+| **Custom Letters** | No — uses its own AI-generated templates | Yes — customized to each item's specifics | Limited — focused on tracking, not drafting | UNLIMITED — any letter type, any situation, fully custom |
+| **Bureau Coverage** | Free: TransUnion only / Premium+: All 3 | All 3 bureaus | All 3 bureaus | N/A — you send the letters it writes |
+| **Cost** | Free / $39.99/mo / **$8.33/mo (annual)** | ~$39/mo individual | Free tier + premium options | Free tier / $20/mo for Plus/Pro |
+| **Automation Level** | 🟢 FULL — scans, generates, submits, follows up | 🟡 HIGH — analyzes and generates, you send | 🟡 MEDIUM — monitors and alerts, you act | 🔴 MANUAL — you prompt, it responds |
+
+> **Read it like this:** Left to right = most automated to most hands-on. Dovly does the work FOR you. DisputeBee does the THINKING for you. Dispute Panda does the WATCHING for you. ChatGPT/Claude does WHATEVER YOU ASK — but you have to ask.
+
+---
+
+## WHICH TOOL DO I START WITH?
+
+Don't overthink this. Answer ONE question and you'll know.
+
+```
+START HERE ──────────────────────────────────────────────
+
+  "I want someone else to handle it."
+   └──→ DOVLY. Sign up, connect your reports, let the
+        AI do the work. Start with free, upgrade to
+        annual ($8.33/mo) when you're ready for all 3
+        bureaus.
+
+  "I want to control the strategy myself."
+   └──→ DISPUTEBEE. You pick the items, the AI picks
+        the angles. Best dispute intelligence in the
+        game.
+
+  "I want to write my own custom letters
+   and go deep on legal strategy."
+   └──→ CHATGPT / CLAUDE. Free. Unlimited. Will draft
+        anything you ask. Pair with our Prompt Playbook
+        in Chapter 3.
+
+  "I just need something watching my reports
+   so I don't miss anything."
+   └──→ DISPUTE PANDA. Real-time monitoring. Alerts
+        when things change. Peace of mind.
+
+─────────────────────────────────────────────────────────
+
+  BEST COMBO (and it's not even close):
+
+  Dovly (automated disputes) + ChatGPT/Claude (custom)
+  = $8.33/mo + $0/mo = $8.33/mo total.
+
+  That's automated disputes across all 3 bureaus PLUS
+  unlimited custom legal letters and strategy. For less
+  than a Chipotle bowl.
+
+─────────────────────────────────────────────────────────
+```
+
+---
+
+## STACK COMBOS BY BUDGET
+
+Not everyone's starting from the same place financially. Here's what to run depending on what you can spend.
+
+### The $0/Month Stack (Broke But Crowned)
+
+You have ZERO dollars to spend on credit repair. That's fine. You can still make serious progress.
+
+| Tool | Cost | What You're Getting |
+|------|------|---|
+| Dovly Free Plan | $0 | Automated disputes with TransUnion |
+| ChatGPT/Claude Free Tier | $0 | Custom dispute letters, legal research, strategy |
+| Credit Karma | $0 | Monitoring for TransUnion + Equifax |
+| Experian Free | $0 | Real FICO score + Experian monitoring |
+| Experian Boost | $0 | Instant score boost (10-30 points typical) |
+| AnnualCreditReport.com | $0 | Full reports from all 3 bureaus |
+| **TOTAL** | **$0/month** | |
+
+> This stack alone can remove negatives, build your score, and monitor your progress. Don't let anyone tell you that you need to spend money to fix your credit. You don't. You need to spend TIME. And these tools make that time count.
+
+### The $8/Month Stack (The Sweet Spot)
+
+This is the stack that makes credit repair companies sweat at night.
+
+| Tool | Cost | What You're Getting |
+|------|------|---|
+| **Dovly Ultimate (Annual)** | **$8.33/mo** | Automated disputes across ALL 3 bureaus + monitoring + $1M ID theft insurance |
+| ChatGPT/Claude Free Tier | $0 | Unlimited custom letters and strategy |
+| Dispute Panda Free Tier | $0 | Additional monitoring and dispute tracking |
+| Credit Karma | $0 | VantageScore monitoring |
+| Experian Boost | $0 | Instant score lift |
+| **TOTAL** | **$8.33/month** | |
+
+> For the price of two coffees a month, you have automated disputes at all three bureaus, real-time monitoring, unlimited AI-generated custom letters, and identity theft insurance. Credit repair companies charge $150/month for LESS than this. Read that again.
+
+### The $50/Month Stack (Full Arsenal)
+
+You're serious. You want every advantage. This is the full credit repair WAR MACHINE.
+
+| Tool | Cost | What You're Getting |
+|------|------|---|
+| **Dovly Ultimate (Annual)** | **$8.33/mo** | Automated multi-bureau disputes + monitoring |
+| **DisputeBee Individual** | **$39/mo** | Strategic AI dispute intelligence for stubborn items |
+| ChatGPT Plus or Claude Pro | $20/mo | Faster responses, longer context, better analysis |
+| Dispute Panda Free Tier | $0 | Monitoring + tracking |
+| Credit Karma + Experian | $0 | Full score visibility |
+| **TOTAL** | **~$67/month** | |
+
+> Yes, it's $67 — not $50. But you'll only need DisputeBee for 2-3 months max while you nuke the stubborn items. After that, drop it and you're back to $8.33/month on maintenance mode with Dovly. Average total cost over 6 months: about $47/month. Compare that to $993 for a credit repair agency that does less. The math isn't even close.
 
 ---
 
@@ -380,7 +495,7 @@ You don't need to spend money to start. Here are the free tools that complement 
 
 **Typical boost:** 10-30 points. For free. In 5 minutes.
 
-> **The anecdote:** Deja has been paying her phone bill on time for 3 years. Her light bill? Never missed. Netflix? Always current. But none of those payments counted toward her credit score. She signed up for Experian Boost on her lunch break. Literally 5 minutes. Connected her bank account. Score went up 22 points. She didn't pay a bill she wasn't already paying. She didn't open a new account. She just got CREDIT for what she was already doing. That's the definition of a cheat code.
+> **The anecdote:** Deja, 23, Houston. Dental assistant. Score: 581 — SO close to qualifying for that apartment in Midtown she'd been eyeing (they wanted 600 minimum). She'd been paying her T-Mobile bill on time for 3 years and 4 months. Her CenterPoint Energy bill? 28 straight months, never missed. Netflix, Spotify, Hulu? All current, all autopay. But NONE of those payments counted toward her credit score. She signed up for Experian Boost on her lunch break between patients. Literally 5 minutes. Connected her Chase checking account. Experian found 3 years of T-Mobile payments, 2 years of energy payments, and her streaming subscriptions. Score went from 581 to 603. Twenty-two points. In five minutes. While eating a granola bar. She applied for that apartment the same week. Got approved. Deja didn't pay a bill she wasn't already paying. She didn't open a new account. She didn't spend a single dollar. She just got CREDIT for what she was already doing. That's the definition of a cheat code.
 
 ---
 
@@ -625,4 +740,4 @@ This toolkit showed you the AI tools. But the full system? That's a different le
 
 *© 2026 GOD MODE CREDIT™ — A SoulHustleAI Brand*
 *Educational purposes only. This guide does not constitute legal or financial advice.*
-*"Financial sovereignty is your birthright. We just hand you the keys."*
+*"Financial freedom is your birthright. We just hand you the crown."*
