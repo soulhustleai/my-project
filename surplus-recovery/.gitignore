@@ -12,6 +12,9 @@ env/
 # Downloads from scrapers
 services/source-monitor/downloads/
 
+# Parsed lead data (contains PII)
+data/*.json
+
 # Node (for dashboard)
 node_modules/
 .next/

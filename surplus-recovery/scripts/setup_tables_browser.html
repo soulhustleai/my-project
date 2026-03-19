@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Table Setup — One Click</title>
+    <style>
+        body { font-family: monospace; max-width: 800px; margin: 40px auto; padding: 20px; background: #0a0a0a; color: #e0e0e0; }
+        h1 { color: #C9A033; }
+        button { background: #C9A033; color: #000; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; font-weight: bold; font-family: monospace; margin: 10px 0; }
+        button:hover { background: #D4922A; }
+        button:disabled { background: #555; color: #999; cursor: not-allowed; }
+        .status { padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .success { background: #1a3a1a; color: #4ade80; }
+        .error { background: #3a1a1a; color: #f87171; }
+        .pending { background: #1a1a3a; color: #93c5fd; }
+        .info { background: #1a2a1a; color: #86efac; font-size: 12px; }
+        #log { max-height: 400px; overflow-y: auto; }
+        pre { background: #1a1a1a; padding: 10px; overflow-x: auto; font-size: 11px; max-height: 200px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <h1>⚡ Supabase Setup — Surplus Recovery</h1>
+    <p>This creates all 10 database tables in your Supabase project.</p>
+
+    <div style="margin: 20px 0;">
+        <label>Supabase URL: <input id="url" value="https://pjkurxtvvtxbpfearqhd.supabase.co" style="width:400px; background:#1a1a1a; color:#e0e0e0; border:1px solid #333; padding:5px; font-family:monospace;"></label><br><br>
+        <label>Service Role Key: <input id="key" type="password" value="" style="width:400px; background:#1a1a1a; color:#e0e0e0; border:1px solid #333; padding:5px; font-family:monospace;" placeholder="sb_secret_..."></label>
+    </div>
+
+    <button onclick="runSetup()" id="runBtn">CREATE ALL TABLES</button>
+    <button onclick="checkTables()" id="checkBtn">CHECK TABLE STATUS</button>
+
+    <div id="log"></div>
+
+    <hr style="border-color:#333; margin-top:30px;">
+    <p style="color:#666; font-size:11px;">If this doesn't work, copy the SQL below and paste it into Supabase SQL Editor manually.</p>
+    <details>
+        <summary style="cursor:pointer; color:#C9A033;">Show SQL (click to expand)</summary>
+        <pre id="sqlContent">Loading...</pre>
+    </details>
+
+<script>
+const SQL = `
+-- Enable UUID extension
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS county_sources (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  county TEXT NOT NULL,
+  state TEXT NOT NULL,
+  source_type TEXT NOT NULL CHECK (source_type IN ('foreclosure_surplus', 'tax_deed_overage', 'other')),
+  source_url TEXT NOT NULL,
+  data_format TEXT NOT NULL CHECK (data_format IN ('pdf', 'html_table', 'csv', 'portal_search')),
+  parser_id TEXT NOT NULL,
+  check_frequency_hours INT DEFAULT 24,
+  last_checked_at TIMESTAMPTZ,
+  last_success_at TIMESTAMPTZ,
+  consecutive_failures INT DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  scraper_config JSONB DEFAULT '{}',
+  parser_config JSONB DEFAULT '{}',
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS raw_downloads (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  source_id UUID REFERENCES county_sources(id) ON DELETE CASCADE,
+  file_path TEXT,
+  file_hash TEXT,
+  file_size_bytes INT,
+  download_status TEXT DEFAULT 'pending' CHECK (download_status IN ('pending', 'success', 'failed', 'processed')),
+  error_message TEXT,
+  downloaded_at TIMESTAMPTZ DEFAULT now(),
+  processed_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS claimants (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  full_name TEXT NOT NULL,
+  first_name TEXT,
+  last_name TEXT,
+  middle_name TEXT,
+  suffix TEXT,
+  current_address_line1 TEXT,
+  current_address_line2 TEXT,
+  current_city TEXT,
+  current_state TEXT,
+  current_zip TEXT,
+  phone_primary TEXT,
+  phone_secondary TEXT,
+  email TEXT,
+  date_of_birth DATE,
+  former_address TEXT,
+  enrichment_source TEXT,
+  enrichment_confidence DECIMAL(3,2),
+  address_verified BOOLEAN DEFAULT false,
+  phone_verified BOOLEAN DEFAULT false,
+  email_verified BOOLEAN DEFAULT false,
+  do_not_contact BOOLEAN DEFAULT false,
+  preferred_channel TEXT,
+  relationship TEXT,
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now(),
+  enriched_at TIMESTAMPTZ,
+  last_contacted_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS raw_records (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  download_id UUID REFERENCES raw_downloads(id) ON DELETE CASCADE,
+  source_id UUID REFERENCES county_sources(id),
+  raw_data JSONB NOT NULL,
+  case_number TEXT,
+  property_address TEXT,
+  owner_name TEXT,
+  surplus_amount DECIMAL(12,2),
+  sale_date DATE,
+  sale_type TEXT,
+  parse_status TEXT DEFAULT 'parsed' CHECK (parse_status IN ('parsed', 'failed', 'needs_review')),
+  parse_confidence DECIMAL(3,2),
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS opportunities (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  raw_record_id UUID REFERENCES raw_records(id),
+  source_id UUID REFERENCES county_sources(id),
+  county TEXT NOT NULL,
+  state TEXT NOT NULL,
+  case_number TEXT NOT NULL,
+  property_address TEXT,
+  owner_name TEXT,
+  surplus_amount DECIMAL(12,2) NOT NULL,
+  sale_date DATE,
+  sale_type TEXT NOT NULL DEFAULT 'foreclosure',
+  score DECIMAL(5,2),
+  status TEXT DEFAULT 'new',
+  claimant_id UUID REFERENCES claimants(id),
+  disqualification_reason TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now(),
+  UNIQUE(county, state, case_number)
+);
+
+CREATE TABLE IF NOT EXISTS outreach_events (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  opportunity_id UUID REFERENCES opportunities(id),
+  claimant_id UUID REFERENCES claimants(id),
+  channel TEXT NOT NULL CHECK (channel IN ('mail', 'sms', 'email', 'phone')),
+  direction TEXT NOT NULL CHECK (direction IN ('outbound', 'inbound')),
+  event_type TEXT NOT NULL,
+  template_id TEXT,
+  content_preview TEXT,
+  external_id TEXT,
+  metadata JSONB DEFAULT '{}',
+  sequence_step INT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS cases (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  opportunity_id UUID REFERENCES opportunities(id),
+  claimant_id UUID REFERENCES claimants(id),
+  county TEXT NOT NULL,
+  state TEXT NOT NULL,
+  case_number TEXT NOT NULL,
+  property_address TEXT,
+  surplus_amount DECIMAL(12,2),
+  fee_percentage DECIMAL(4,2) DEFAULT 30.00,
+  fee_amount DECIMAL(12,2),
+  status TEXT DEFAULT 'signed',
+  agreement_signed_at TIMESTAMPTZ,
+  agreement_url TEXT,
+  docs_complete BOOLEAN DEFAULT false,
+  claim_filed_at TIMESTAMPTZ,
+  claim_tracking_number TEXT,
+  claim_approved_at TIMESTAMPTZ,
+  disbursement_amount DECIMAL(12,2),
+  disbursement_received_at TIMESTAMPTZ,
+  client_paid_at TIMESTAMPTZ,
+  client_paid_amount DECIMAL(12,2),
+  closed_at TIMESTAMPTZ,
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS documents (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  case_id UUID REFERENCES cases(id) ON DELETE CASCADE,
+  doc_type TEXT NOT NULL,
+  file_path TEXT,
+  file_name TEXT,
+  status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'collected', 'generated', 'signed', 'notarized')),
+  uploaded_by TEXT,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  type TEXT NOT NULL CHECK (type IN ('founder_action', 'alert', 'info', 'error')),
+  priority TEXT NOT NULL CHECK (priority IN ('p1_urgent', 'p2_action', 'p3_review', 'p4_info')),
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  related_entity_type TEXT,
+  related_entity_id UUID,
+  is_read BOOLEAN DEFAULT false,
+  is_actioned BOOLEAN DEFAULT false,
+  sent_via TEXT[] DEFAULT '{}',
+  created_at TIMESTAMPTZ DEFAULT now(),
+  actioned_at TIMESTAMPTZ
+);
+
+CREATE TABLE IF NOT EXISTS audit_log (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  entity_type TEXT NOT NULL,
+  entity_id UUID NOT NULL,
+  action TEXT NOT NULL,
+  old_value JSONB,
+  new_value JSONB,
+  actor TEXT NOT NULL DEFAULT 'system',
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+-- Indexes
+CREATE INDEX IF NOT EXISTS idx_raw_downloads_source ON raw_downloads(source_id);
+CREATE INDEX IF NOT EXISTS idx_raw_downloads_status ON raw_downloads(download_status);
+CREATE INDEX IF NOT EXISTS idx_raw_records_download ON raw_records(download_id);
+CREATE INDEX IF NOT EXISTS idx_raw_records_case ON raw_records(case_number);
+CREATE INDEX IF NOT EXISTS idx_claimants_name ON claimants(full_name);
+CREATE INDEX IF NOT EXISTS idx_claimants_dnc ON claimants(do_not_contact) WHERE do_not_contact = true;
+CREATE INDEX IF NOT EXISTS idx_opportunities_status ON opportunities(status);
+CREATE INDEX IF NOT EXISTS idx_opportunities_score ON opportunities(score DESC);
+CREATE INDEX IF NOT EXISTS idx_opportunities_county ON opportunities(county, state);
+CREATE INDEX IF NOT EXISTS idx_outreach_opportunity ON outreach_events(opportunity_id);
+CREATE INDEX IF NOT EXISTS idx_outreach_channel ON outreach_events(channel);
+CREATE INDEX IF NOT EXISTS idx_outreach_created ON outreach_events(created_at);
+CREATE INDEX IF NOT EXISTS idx_cases_status ON cases(status);
+CREATE INDEX IF NOT EXISTS idx_documents_case ON documents(case_id);
+CREATE INDEX IF NOT EXISTS idx_notifications_unread ON notifications(is_read) WHERE is_read = false;
+CREATE INDEX IF NOT EXISTS idx_notifications_priority ON notifications(priority);
+CREATE INDEX IF NOT EXISTS idx_audit_entity ON audit_log(entity_type, entity_id);
+CREATE INDEX IF NOT EXISTS idx_audit_created ON audit_log(created_at);
+
+-- Updated_at triggers
+CREATE OR REPLACE FUNCTION update_updated_at()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = now();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DO $$ BEGIN
+  CREATE TRIGGER tr_county_sources_updated BEFORE UPDATE ON county_sources FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TRIGGER tr_opportunities_updated BEFORE UPDATE ON opportunities FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TRIGGER tr_claimants_updated BEFORE UPDATE ON claimants FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TRIGGER tr_cases_updated BEFORE UPDATE ON cases FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+DO $$ BEGIN
+  CREATE TRIGGER tr_documents_updated BEFORE UPDATE ON documents FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+`;
+
+document.getElementById('sqlContent').textContent = SQL;
+
+function log(msg, cls='pending') {
+    const el = document.getElementById('log');
+    el.innerHTML += '<div class="status ' + cls + '">' + msg + '</div>';
+    el.scrollTop = el.scrollHeight;
+}
+
+async function supaFetch(path, opts={}) {
+    const base = document.getElementById('url').value;
+    const key = document.getElementById('key').value;
+    return fetch(base + path, {
+        ...opts,
+        headers: {
+            'apikey': key,
+            'Authorization': 'Bearer ' + key,
+            'Content-Type': 'application/json',
+            ...(opts.headers||{})
+        }
+    });
+}
+
+async function checkTables() {
+    document.getElementById('log').innerHTML = '';
+    const tables = ['county_sources','raw_downloads','raw_records','claimants','opportunities','outreach_events','cases','documents','notifications','audit_log'];
+    for (const t of tables) {
+        try {
+            const r = await supaFetch('/rest/v1/' + t + '?limit=0');
+            if (r.ok) {
+                const data = await r.json();
+                log('✓ ' + t + ' exists', 'success');
+            } else {
+                log('✗ ' + t + ' missing', 'error');
+            }
+        } catch(e) {
+            log('✗ ' + t + ': ' + e.message, 'error');
+        }
+    }
+}
+
+async function runSetup() {
+    const btn = document.getElementById('runBtn');
+    btn.disabled = true;
+    btn.textContent = 'RUNNING...';
+    document.getElementById('log').innerHTML = '';
+
+    log('Starting table creation...', 'pending');
+    log('Note: This uses the Supabase SQL Editor approach.', 'info');
+    log('Opening Supabase SQL Editor...', 'pending');
+
+    const base = document.getElementById('url').value;
+    const projectId = base.split('//')[1].split('.')[0];
+    const sqlEditorUrl = 'https://supabase.com/dashboard/project/' + projectId + '/sql/new';
+
+    // Copy SQL to clipboard
+    try {
+        await navigator.clipboard.writeText(SQL);
+        log('✓ SQL copied to clipboard!', 'success');
+        log('Opening Supabase SQL Editor in new tab...', 'pending');
+        window.open(sqlEditorUrl, '_blank');
+        log('', 'info');
+        log('INSTRUCTIONS:', 'success');
+        log('1. The SQL is already on your clipboard', 'success');
+        log('2. In the SQL Editor tab: Ctrl+V (paste) → Click "Run"', 'success');
+        log('3. Come back here and click "CHECK TABLE STATUS"', 'success');
+    } catch(e) {
+        log('Could not copy to clipboard. Please copy the SQL manually from below.', 'error');
+        window.open(sqlEditorUrl, '_blank');
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'CREATE ALL TABLES';
+}
+</script>
+</body>
+</html>
