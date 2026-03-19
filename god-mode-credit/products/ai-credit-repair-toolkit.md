@@ -1,5 +1,5 @@
 # THE AI CREDIT REPAIR TOOLKIT
-## How to Use AI to Fix Your Credit Faster Than Any $1,500/Month Agency
+## How to Use AI to Fix Your Credit Faster Than Expensive Credit Repair Agencies
 ### A GOD MODE CREDIT™ Guide
 
 > **Product #5** | Price: $27 | Cover: `../assets/covers/05-ai-credit-repair-toolkit.png` | Status: AWAITING COVER
@@ -89,7 +89,7 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 | **Premium** | $39.99/month | Unlimited disputes across ALL 3 bureaus, full monitoring, $1M identity theft insurance |
 | **Ultimate (Annual)** | **$99/year ($8.33/mo)** | Everything in Premium. This is the move. |
 
-**Results:** Free members average +38 points in 6 months. Premium members average **+93 points**. 91% reported success rate.
+**Results:** Dovly reports that their members have seen meaningful score improvements, with Premium members seeing better results due to multi-bureau disputes. Individual results vary — your outcome depends on what's on your report and your specific circumstances.
 
 > **GOD MODE TIP:** The annual plan at $8.33/month is the best deal in credit repair. That's less than Netflix. For automated disputes across all three bureaus. Just do it.
 
@@ -600,7 +600,7 @@ Open a new tab. Sign up for Credit Karma. It's free. It takes 3 minutes. That's 
 
 Then come back to Day 2 of the plan and keep going.
 
-Your future self will thank you. The version of you who's looking at a 750 credit score and getting approved for that apartment, that car, that business loan — that version of you started by closing this guide and opening Credit Karma.
+Your future self will thank you. The version of you who's watching their score climb and getting approved for things that used to be out of reach — that version of you started by closing this guide and opening Credit Karma.
 
 Go.
 

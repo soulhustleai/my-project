@@ -255,6 +255,8 @@ You buy stuff you need for your business, pay within 30 days, and every on-time 
 
 These approve almost anyone with a valid LLC and EIN. Start here.
 
+> **Note:** Vendor URLs and reporting policies change frequently. Visit **godmodecredit.com/vendors** for the most current links, application instructions, and reporting confirmations.
+
 ### 1. Uline
 - **What they sell:** Shipping supplies, packaging, industrial supplies
 - **Reports to:** D&B
@@ -330,7 +332,7 @@ These report to TWO or THREE bureaus — they build your profile faster.
 - **What they sell:** Wholesale apparel, custom print/embroidery
 - **Reports to:** Experian, Equifax, and others
 - **Annual fee:** $69.99
-- **How to apply:** affiliates.businesstshirtclub.com
+- **How to apply:** businesstshirtclub.com (search for their business credit program)
 
 ### 12. Growegy
 - **What they sell:** Project management, marketing AI, coaching
@@ -717,24 +719,26 @@ Please suggest 10 vendor accounts I should open, with:
 You started with a credit score under 600 and $0 in business funding.
 
 Now look at where you are:
-- **Personal credit:** 700+ (cleaned up with disputes, built with credit builder accounts)
-- **Business credit:** 80+ Paydex, 75+ Experian Business
-- **Available funding:** $50K-$250K+ across vendor accounts, credit cards, and credit lines
+- **Personal credit:** Improved and optimized through disputes and credit building
+- **Business credit:** Strong Paydex and Experian Business scores from consistent vendor payments
+- **Available funding:** Vendor accounts, business credit cards, and credit lines building over time
 - **Personal risk:** Minimal (business credit stands on its own)
 
 This is the GOD MODE CREDIT™ path:
 
 ```
-300 Score + $0
-    ↓ (Dispute + AI tools = 3 months)
-650 Score + Clean Report
-    ↓ (Credit builders + optimization = 3 months)
-720 Score + Strong Profile
-    ↓ (LLC + vendors + business cards = 6 months)
-720 Personal + 80+ Paydex + $100K Business Credit
+WHERE YOU START + $0
+    ↓ (Dispute + AI tools — ongoing)
+CLEANER REPORT + BUILDING POSITIVE CREDIT
+    ↓ (Credit builders + optimization — ongoing)
+STRONGER PROFILE + REAL APPROVALS
+    ↓ (LLC + vendors + business cards — 6-12 months)
+PERSONAL + BUSINESS CREDIT WORKING TOGETHER
     ↓ (Fund your business or invest)
 FREEDOM
 ```
+
+*Timeline and results vary based on individual circumstances. This is an illustrative path, not a guaranteed outcome.*
 
 Every step builds on the last. Nothing is wasted. Every dollar you put into building your credit is leverage for the next level.
 

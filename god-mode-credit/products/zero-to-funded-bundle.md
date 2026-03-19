@@ -48,10 +48,10 @@ You already know where you need to go. The only question is whether you're going
 |---|---------|-------------|-----------------|
 | 1 | **Collect What They Owe You** | How to sue debt collectors under the FDCPA and actually win. Flip the power. | $17 |
 | 2 | **The Dispute Letter Pack** | 15 ready-to-send FCRA dispute letter templates. Copy, fill in, mail. | $27 |
-| 3 | **The AI Credit Repair Toolkit** | Use Dovly, DisputeBee, Dispute Panda, and ChatGPT/Claude as your AI credit repair army. Replaces $1,500/month agencies. | $27 |
+| 3 | **The AI Credit Repair Toolkit** | Use Dovly, DisputeBee, Dispute Panda, and ChatGPT/Claude as your AI credit repair army. Better results than expensive agencies. | $27 |
 | 4 | **Credit Ascension** (Flagship) | The complete 300-to-750+ playbook. Secret lenders list, soft-pull credit union database, 90-day action plan. 10 full chapters. | $47 |
 | 5 | **The AI x Credit Cheat Code** | AI tools mapped to every single step of the credit journey. Nobody else has this product. | $67 |
-| 6 | **The Business Credit Blueprint** | From LLC formation to $100K+ in business funding — without risking your personal credit. D&B, Experian Business, net-30 accounts, SBA prep. | $97 |
+| 6 | **The Business Credit Blueprint** | From LLC formation to real business funding — without risking your personal credit. D&B, Experian Business, net-30 accounts, SBA prep. | $97 |
 
 ---
 
@@ -99,7 +99,7 @@ Products: Credit Ascension + AI x Credit Cheat Code
 Mission:  The full playbook. Secret lenders, soft-pull databases,
           credit-building stacks. AI mapped to every step so
           you're not guessing.
-Result:   Score climbing. Approvals coming. Momentum building.
+Result:   Credit profile strengthening. Doors opening. Momentum building.
 
          ↓
 
@@ -108,7 +108,7 @@ PHASE 4: GET FUNDED (Month 3-12)
 Product: The Business Credit Blueprint
 Mission: Build business credit from scratch. LLC, EIN, D&B Paydex,
          net-30 accounts, credit lines, SBA prep.
-Result:  Access to $100K+ in business funding.
+Result:  Positioned to pursue business funding opportunities.
          Personal credit stays untouched.
 ```
 
@@ -138,7 +138,7 @@ Both paths lead to the same place. The bundle just gets you there faster and che
 They charge you monthly and send the SAME dispute letters you'll find in this bundle. They take 6-12 months. You pay $1,200-$3,000 total. With this bundle, you pay $197 once, own everything forever, and move at YOUR pace.
 
 **From other credit education products:**
-Most teach you to dispute and stop there. This system takes you from collections defense → dispute letters → AI-powered repair → full credit rebuilding → business credit → $100K+ in funding. Nobody else connects all those dots.
+Most teach you to dispute and stop there. This system takes you from collections defense → dispute letters → AI-powered repair → full credit rebuilding → business credit → real funding opportunities. Nobody else connects all those dots.
 
 **From YouTube "gurus":**
 Free advice is worth what you paid for it. Half of it is wrong (looking at you, Section 609 myths). This is battle-tested, legally accurate, and spiritually grounded. No fluff. No upsells inside the products. Just the complete system.

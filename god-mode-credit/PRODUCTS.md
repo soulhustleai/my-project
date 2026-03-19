@@ -71,22 +71,24 @@
 
 ## COVERS STATUS
 
-| # | Product | Cover File | Status |
-|---|---------|-----------|--------|
-| 1 | 5 Federal Laws (Lead Magnet) | `covers/01-5-federal-laws.png` | FINALIZED |
-| 2 | Credit Ascension (Flagship) | `covers/02-credit-ascension.png` | FINALIZED |
-| 3 | Collect What They Owe You | `covers/03-collect-what-they-owe-you.png` | FINALIZED |
-| 4 | The Dispute Letter Pack | `covers/04-dispute-letter-pack.png` | FINALIZED |
-| 5 | AI Credit Repair Toolkit | `covers/05-ai-credit-repair-toolkit.png` | AWAITING MJ GENERATION |
-| 6 | AI x Credit Cheat Code | `covers/06-ai-credit-cheat-code.png` | FINALIZED |
-| 7 | Business Credit Blueprint | `covers/07-business-credit-blueprint.png` | FINALIZED |
-| 8 | Zero to $10K/Month | `covers/08-zero-to-10k.png` | FINALIZED |
-| 9 | Zero to Funded (Bundle) | `covers/09-zero-to-funded.png` | FINALIZED |
-| 10 | The Crowned Circle | `covers/10-crowned-circle.png` | FINALIZED |
-| 11 | Cards That Say Yes | `covers/11-cards-that-say-yes.png` | AWAITING MJ GENERATION |
+| # | Product | Cover File | Status | Text Issues (Canva Fix Later) |
+|---|---------|-----------|--------|-------------------------------|
+| 1 | 5 Federal Laws (Lead Magnet) | `covers/01-5-federal-laws.png` | RECEIVED | "FEDERAL" repeated twice, "LAWS CREDIT" garbled — scales of justice image |
+| 2 | Cards That Say Yes | `covers/02-cards-that-say-yes.png` | NEEDS MJ GENERATION | — |
+| 3 | Collect What They Owe You | `covers/03-collect-what-they-owe-you.png` | RECEIVED | Top text garbled "TGEDIT CREET CREINE" — gavel image |
+| 4 | The Dispute Letter Pack | `covers/04-dispute-letter-pack.png` | RECEIVED — CLEAN | Text reads "DISPUTE PACK" + "GOD MODE CREDIT" — book stack + wax seal |
+| 5 | AI Credit Repair Toolkit | `covers/05-ai-credit-repair-toolkit.png` | NEEDS MJ GENERATION | — |
+| 6 | Credit Ascension (Flagship) | `covers/06-credit-ascension.png` | RECEIVED | "CREDIIT" (double I), "ASCENSSION" (double S) — gold crown image |
+| 7 | Business Credit Blueprint | `covers/07-business-credit-blueprint.png` | NEEDS MJ GENERATION | — |
+| 8 | AI x Credit Cheat Code | `covers/08-ai-credit-cheat-code.png` | RECEIVED — CLEAN | "AI CREDIT CHEAT CODE" + "GOD MODE CREDIT" — gold key image |
+| 9 | Zero to $10K/Month | `covers/09-zero-to-10k.png` | NEEDS MJ GENERATION | — |
+| 10 | Zero to Funded (Bundle) | `covers/10-zero-to-funded.png` | NEEDS MJ GENERATION | — |
+| 11 | The Crowned Circle | `covers/11-crowned-circle.png` | NEEDS MJ GENERATION | — |
 
-**Covers #4, #8, #9** — Approved by Edwin as-is. No text changes needed.
-**Covers #5, #11** — Edwin generating via MJ prompts. Claude handles text overlay + finalization.
+**Covers received (5 of 11):** #1, #3, #4, #6, #8
+**Clean covers (no text fix needed):** #4 (Dispute Pack), #8 (AI Cheat Code)
+**Covers needing Canva text overlay:** #1, #3, #6 (minor MJ spelling errors — 2-min fix each)
+**Covers still needed:** #2, #5, #7, #9, #10, #11 (6 remaining)
 **All covers** — Stored in `god-mode-credit/assets/covers/` once finalized.
 
 ---

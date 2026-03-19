@@ -2,7 +2,7 @@
 ## Credit Cards and Accounts That Approve You at ANY Score — Even 300
 ### A Free GOD MODE CREDIT™ Guide
 
-> **Product #11** | Price: FREE | Cover: `../assets/covers/11-cards-that-say-yes.png` | Status: AWAITING COVER
+> **Product #2** | Price: FREE | Cover: `../assets/covers/02-cards-that-say-yes.png` | Status: AWAITING COVER
 
 ---
 
@@ -49,7 +49,7 @@ DON'T KNOW YOUR SCORE?
 
 ---
 
-## The Truth Nobody Tells You
+## THE TRUTH NOBODY TELLS YOU
 
 Everyone tells you to "build your credit." Nobody tells you HOW when every application comes back DENIED.
 
@@ -184,10 +184,10 @@ These require a security deposit (usually $200-$300) that becomes your credit li
 
 ---
 
-## TIER 3: CREDIT BUILDING COMBOS (Score 500-600)
+## TIER 3: CREDIT BUILDING COMBOS (Score 550-650)
 
 ### 10. Arro Card — The AI Credit Card
-**What it is:** A REAL unsecured credit card (not secured, not debit) that uses AI and your bank account data instead of your credit score for approval. **89% approval rate.** No deposit required.
+**What it is:** A REAL unsecured credit card (not secured, not debit) that uses AI and your bank account data instead of your credit score for approval. **High approval rates even with low scores.** No deposit required.
 
 **How it works:** Connect your bank account. Arro approves you based on income and banking behavior, not credit score. Start with $50-$300 limit. Complete in-app financial education modules = your limit goes UP and your APR goes DOWN. Max limit: $2,500.
 
@@ -214,7 +214,7 @@ These require a security deposit (usually $200-$300) that becomes your credit li
 
 **Cost:** FREE
 **Credit check:** None (it IS the credit bureau)
-**Score impact:** Typically 10-30 points INSTANTLY
+**Score impact:** Many users see a boost within minutes (results vary)
 **Best for:** Literally everyone. There's no reason NOT to do this.
 
 ### 13. UltraFICO (Bonus)
@@ -225,7 +225,7 @@ These require a security deposit (usually $200-$300) that becomes your credit li
 
 ---
 
-## TIER 4: GRADUATION CARDS (Score 600-680)
+## TIER 4: GRADUATION CARDS (Score 650-680)
 
 Once your score hits this range from the cards above, these open up:
 
@@ -268,12 +268,12 @@ Here's exactly what to do, in order:
 
 **Month 4-6:**
 - [ ] Apply for Discover it Secured or Capital One Platinum Secured
-- [ ] Your score should be 50-100 points higher than where you started
+- [ ] Consistent on-time payments building your profile
 
 **Month 7-12:**
-- [ ] Secured cards graduating to unsecured
-- [ ] Score approaching 650-700
-- [ ] Ready for real credit cards
+- [ ] Secured cards potentially graduating to unsecured
+- [ ] Score trending upward from multiple positive tradelines
+- [ ] Qualifying for more products as your profile strengthens
 
 ---
 
@@ -325,7 +325,7 @@ You just learned how to BUILD credit from any starting point. But building is on
 | Collectors harassing you | **Collect What They Owe You** — sue them and get PAID | $17 |
 | Errors/negatives on your report | **The Dispute Letter Pack** — 15 letters that delete what they can't prove | $27 |
 | Want AI to do the heavy lifting | **The AI Credit Repair Toolkit** — full AI-powered credit machine | $27 |
-| Want the COMPLETE system | **Credit Ascension** — the full 300 → 750 playbook with everything | $47 |
+| Want the COMPLETE system | **Credit Ascension** — the full playbook from any score to financial sovereignty | $47 |
 | Want ALL products + maximum savings | **Zero to Funded Bundle** — all 6 paid products. Save $85 | $197 |
 
 **The people who win aren't the ones who read one guide. They're the ones who build the complete system.**
