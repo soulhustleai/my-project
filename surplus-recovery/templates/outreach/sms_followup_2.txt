@@ -1,0 +1,1 @@
+Hi {{claimant_first_name}}, just following up — {{county}} County is still holding approximately ${{surplus_amount}} from the sale of your property at {{property_short_address}}. We can help you recover these funds at no upfront cost. Interested? Reply YES or call {{business_phone}}. Reply STOP to opt out.

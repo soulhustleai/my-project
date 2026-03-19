@@ -1,0 +1,1 @@
+Hi {{claimant_first_name}}, this is {{sender_name}} from {{business_name}}. We recently sent you a letter about surplus funds (~${{surplus_amount}}) held by {{county}} County from the sale of your property at {{property_short_address}}. You can verify with the Clerk at {{clerk_phone}}. Would you like to learn more? Reply YES or call {{business_phone}}. Reply STOP to opt out.
