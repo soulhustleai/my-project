@@ -158,6 +158,104 @@ That's not a typo. Under $130/month replaces over $14,000/month in labor costs.
 | **Metricool** | Analytics across all platforms | $0-$18/mo |
 | **n8n** | Self-hosted Make.com alternative (unlimited) | $0 (self-hosted) |
 
+## REAL COST BREAKDOWN — What You're Actually Paying at Each Stage
+
+Stop guessing. Here's exactly what your monthly costs look like as you grow. No hidden fees, no "oh I forgot about that subscription." This is the full picture.
+
+```
+STAGE 1: THE STARTUP ($0-$1K/mo revenue)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tool                        Cost        Notes
+─────────────────────────── ─────────── ──────────────────────────
+Claude/ChatGPT Free         $0          Free tiers are enough
+Make.com Free               $0          1,000 ops/month
+Kit Free                    $0          Free up to 10K subscribers
+Payhip Free                 $0          They take 5% per sale
+Canva Free                  $0          Free plan works fine
+Notion Free                 $0          Free plan works fine
+ManyChat Free               $0          Free for basic DM automation
+Later.com Free              $0          Free plan = 5 posts/month
+─────────────────────────── ─────────── ──────────────────────────
+TOTAL:                      $0/month    ← Not a typo. Zero dollars.
+PROFIT MARGIN:              95%         (Payhip takes 5% per sale)
+
+This is why digital products are Crowned. Your overhead is
+literally zero. Every dollar after Payhip's cut is yours.
+```
+
+```
+STAGE 2: GETTING TRACTION ($1K-$5K/mo revenue)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tool                        Cost        Why Upgrade
+─────────────────────────── ─────────── ──────────────────────────
+Claude API / ChatGPT Plus   $20/mo      Better outputs, API access
+Make.com Core               $9/mo       10K ops, scenarios stay on
+Kit Free                    $0          Still free under 10K subs
+Payhip Free                 $0          Still free (5% per sale)
+Canva Pro                   $15/mo      Brand kit, premium templates
+Later.com Starter           $25/mo      Unlimited posts + analytics
+ManyChat Pro                $15/mo      Advanced DM flows
+Notion Free                 $0          Free plan still works
+─────────────────────────── ─────────── ──────────────────────────
+TOTAL:                      ~$84/month
+AT $3K REVENUE:             97% margin
+AT $5K REVENUE:             98% margin
+
+You're paying $84/month to run a business that would cost
+$14,000+/month in human salaries. That's a 99.4% discount.
+```
+
+```
+STAGE 3: REAL MOMENTUM ($5K-$10K/mo revenue)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tool                        Cost        Why Upgrade
+─────────────────────────── ─────────── ──────────────────────────
+Claude API                  $20/mo      Content generation at scale
+Make.com Pro                $16/mo      Priority execution, logs
+Kit Creator                 $29/mo      Advanced automations, funnels
+Payhip Plus                 $29/mo      0% transaction fee (saves $$$)
+Canva Pro                   $15/mo      Same as before
+Later.com Growth            $45/mo      Full analytics + collab
+ManyChat Pro                $15/mo      Same as before
+ElevenLabs Starter          $5/mo       Faceless content voiceovers
+Metricool                   $18/mo      Cross-platform analytics
+─────────────────────────── ─────────── ──────────────────────────
+TOTAL:                      ~$192/month
+AT $7.5K REVENUE:           97% margin
+AT $10K REVENUE:            98% margin
+
+Note on Payhip Plus ($29/mo): Once you're doing $580+/month
+in sales, the $29 flat fee is CHEAPER than the 5% transaction
+fee. Do the math. At $5K/month, you save $221/month by upgrading.
+```
+
+```
+STAGE 4: SCALED & CROWNED ($10K+/mo revenue)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tool                        Cost        Why Upgrade
+─────────────────────────── ─────────── ──────────────────────────
+Claude API                  $20/mo      Same — usage-based
+Make.com Teams              $29/mo      Unlimited team members
+Kit Creator                 $29/mo      Same as before
+Payhip Plus                 $29/mo      Same — 0% fees
+Canva Pro                   $15/mo      Same as before
+Later.com Advanced          $80/mo      Full suite + team features
+ManyChat Pro                $15/mo      Same as before
+ElevenLabs Creator          $22/mo      More voice minutes
+Metricool                   $18/mo      Same as before
+Opus Clip Pro               $29/mo      Video repurposing at scale
+Voiceflow                   $50/mo      AI chatbot for support
+─────────────────────────── ─────────── ──────────────────────────
+TOTAL:                      ~$336/month
+AT $10K REVENUE:            97% margin
+AT $20K REVENUE:            98% margin
+
+You're running a $10K-$20K/month business for less than
+most people pay for car insurance. Let that sink in.
+```
+
+**The Bottom Line:** You can literally start at $0/month and scale to $10K/month revenue while never spending more than $336/month on tools. Show me another business model with 97%+ profit margins. I'll wait.
+
 ---
 
 # CHAPTER 3: BUILD YOUR FIRST DIGITAL PRODUCT IN ONE WEEKEND
@@ -432,6 +530,242 @@ Your time: 0 minutes (unless they respond)
 
 ---
 
+# MAKE.COM SETUP WALKTHROUGH — Your Automation Command Center
+
+You've seen the workflows. Now let's actually BUILD them. This is the part most "gurus" skip — they show you the vision but leave you staring at a blank screen. Not here. We're going step by step until your automations are live and running.
+
+## Step 1: Create Your Make.com Account
+
+1. Go to **make.com** and click "Get started free"
+2. Sign up with your business email (the one tied to your LLC if you have one)
+3. Free plan gives you **1,000 operations/month** — that's enough to start
+4. Once you're in the dashboard, click **"Create a new scenario"** — that's Make.com's word for "automation workflow"
+
+```
+MAKE.COM PLAN GUIDE
+━━━━━━━━━━━━━━━━━━━
+FREE:   1,000 ops/month   → Good for $0-$500/mo revenue
+CORE:   10,000 ops/month   → $9/mo  → Good for $500-$2K/mo
+PRO:    10,000 ops/month   → $16/mo → Good for $2K-$10K/mo
+         (includes priority execution + full-text log search)
+TEAMS:  10,000 ops/month   → $29/mo → Good for $10K+/mo
+
+One "operation" = one action in your workflow.
+A 5-step workflow uses 5 operations per run.
+200 sales/month × 5 steps = 1,000 ops. Free plan covers it.
+```
+
+## Step 2: Your First Scenario — Payhip Sale → Kit Tag → Welcome Email
+
+This is the bread-and-butter automation. Someone buys your product, they automatically get tagged in Kit and receive a welcome email. Zero manual work.
+
+**Here's exactly how to build it:**
+
+1. In Make.com, click **"Create a new scenario"**
+2. Click the **"+"** button in the center of the canvas
+3. Search for **"Webhooks"** → Select **"Custom webhook"**
+4. Click **"Add"** → Name it "Payhip Purchase Webhook" → Click **"Save"**
+5. Copy the webhook URL that appears
+
+**Now connect Payhip:**
+6. Log into **Payhip** → Go to **Account Settings** → **Webhooks**
+7. Paste the Make.com webhook URL
+8. Select event: **"Sale completed"**
+9. Save it
+
+**Back in Make.com — add the Kit module:**
+10. Click the **"+"** after your webhook module
+11. Search for **"Kit"** (it may still show as "ConvertKit") → Select **"Add a Subscriber"**
+12. Connect your Kit account (you'll need your Kit API key — find it in Kit → Settings → Developer)
+13. Set it up:
+    - **Email:** Map the `buyer_email` field from the webhook
+    - **First Name:** Map `buyer_name`
+    - **Tag:** Create a tag like "purchased-[product-name]"
+
+**Add the welcome email trigger:**
+14. In **Kit**, go to **Automations** → **New Automation**
+15. Trigger: **"Tag is added"** → Select your purchase tag
+16. Action: **"Send email sequence"** → Select your welcome sequence
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              SCENARIO 1: PAYHIP → KIT FLOW                  │
+│                                                             │
+│  ┌──────────┐    ┌──────────────┐    ┌─────────────────┐   │
+│  │  PAYHIP  │───→│  WEBHOOK     │───→│  KIT: ADD       │   │
+│  │  (Sale)  │    │  (Catch)     │    │  SUBSCRIBER     │   │
+│  └──────────┘    └──────────────┘    │  + TAG          │   │
+│                                      └────────┬────────┘   │
+│                                               │             │
+│                                      ┌────────▼────────┐   │
+│                                      │  KIT: TRIGGER   │   │
+│                                      │  WELCOME EMAIL  │   │
+│                                      │  SEQUENCE       │   │
+│                                      └─────────────────┘   │
+│                                                             │
+│  Modules used: Webhooks, Kit (ConvertKit)                   │
+│  Operations per run: 2                                      │
+│  Runs: Every time someone buys                              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Step 3: The ManyChat → Kit → Payhip Pipeline
+
+This is the lead capture machine. Someone comments on your TikTok, ManyChat DMs them, they get your free lead magnet, Kit nurtures them with emails, and they buy your product on Payhip. All automatic.
+
+**ManyChat Setup:**
+1. Go to **manychat.com** → Sign up → Connect your Instagram account
+2. Go to **Automation** → **New Flow**
+3. **Trigger:** Select "Instagram" → "Comment contains keyword"
+4. Set keyword to something like **"GUIDE"** or **"FREE"**
+5. **Action 1:** Send DM with your lead magnet link
+6. **Action 2:** Use the **"External Request"** action (this calls Make.com)
+
+**Make.com Scenario:**
+7. Create a new scenario in Make.com
+8. Add **"Webhooks → Custom webhook"** as the trigger
+9. Copy that webhook URL and paste it into ManyChat's External Request URL
+10. Add module: **"Kit → Add a Subscriber"**
+    - Email: Map from ManyChat data
+    - Tag: "lead-magnet-downloaded"
+11. Add module: **"Kit → Add subscriber to a sequence"**
+    - Select your 14-day nurture sequence
+
+**Kit Email Sequence (14-day nurture):**
+- **Day 1:** Welcome + deliver lead magnet + "here's what to expect"
+- **Day 2:** Quick win / one tip from your paid product
+- **Day 3:** Your story — why you created this
+- **Day 5:** Deep-dive value email (teach something real)
+- **Day 7:** Social proof / testimonial / results
+- **Day 9:** "Here's what's holding you back" (pain point)
+- **Day 11:** Product reveal — soft pitch with value
+- **Day 13:** FAQ / objection handling
+- **Day 14:** Final push — limited-time offer + scarcity
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│         SCENARIO 2: MANYCHAT → KIT → PAYHIP PIPELINE            │
+│                                                                  │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌─────────────┐  │
+│  │ TIKTOK / │──→│ MANYCHAT │──→│ MAKE.COM │──→│ KIT: ADD    │  │
+│  │ IG POST  │   │ (Auto-DM │   │ (Webhook │   │ SUBSCRIBER  │  │
+│  │ Comment: │   │  + lead  │   │  catch)  │   │ + TAG +     │  │
+│  │ "GUIDE"  │   │  magnet) │   │          │   │ SEQUENCE    │  │
+│  └──────────┘   └──────────┘   └──────────┘   └──────┬──────┘  │
+│                                                       │         │
+│                                               ┌───────▼───────┐ │
+│                                               │ 14-DAY EMAIL  │ │
+│                                               │ NURTURE       │ │
+│                                               │ SEQUENCE      │ │
+│                                               └───────┬───────┘ │
+│                                                       │         │
+│                                               ┌───────▼───────┐ │
+│                                               │ PAYHIP: SALE  │ │
+│                                               │ (Auto-deliver │ │
+│                                               │  product)     │ │
+│                                               └───────┬───────┘ │
+│                                                       │         │
+│                                               ┌───────▼───────┐ │
+│                                               │ MAKE.COM:     │ │
+│                                               │ TAG BUYER IN  │ │
+│                                               │ KIT → START   │ │
+│                                               │ ASCENSION     │ │
+│                                               │ SEQUENCE      │ │
+│                                               └───────────────┘ │
+│                                                                  │
+│  Modules: Webhooks, ManyChat, Kit, HTTP                          │
+│  Operations per run: 3-4                                         │
+│  Runs: Every time someone comments your keyword                  │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+## Step 4: Monthly Content Generation with Claude API
+
+This one's more advanced but absolutely Crowned-level. Make.com calls the Claude API on the 1st of every month, generates your content scripts, and saves them to Notion. You just review and approve.
+
+**Build it:**
+1. New scenario in Make.com
+2. **Trigger:** Select **"Schedule"** → Set to run on the **1st of every month** at 9:00 AM
+3. **Module 1:** Add **"HTTP → Make a request"**
+   - URL: `https://api.anthropic.com/v1/messages`
+   - Method: POST
+   - Headers:
+     - `x-api-key`: Your Anthropic API key
+     - `anthropic-version`: `2023-06-01`
+     - `content-type`: `application/json`
+   - Body:
+   ```json
+   {
+     "model": "claude-sonnet-4-20250514",
+     "max_tokens": 4096,
+     "messages": [{"role": "user", "content": "Generate 21 TikTok/Reels scripts for a [YOUR NICHE] account. Include hook, body, CTA for each. Mix educational, authority, story, trend, and promotional content. Format each with a number, title, and the full script."}]
+   }
+   ```
+4. **Module 2:** Add **"Notion → Create a Page"**
+   - Database: Your Content Calendar database
+   - Title: "Content Scripts — [Month] [Year]"
+   - Body: Map the Claude API response text
+5. **Module 3:** Add **"Email → Send an email"** (or Slack/Discord notification)
+   - To: Your email
+   - Subject: "Your monthly content scripts are ready to review"
+   - Body: Link to the Notion page
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│       SCENARIO 3: MONTHLY CONTENT GENERATION                │
+│                                                             │
+│  ┌──────────┐    ┌──────────────┐    ┌─────────────────┐   │
+│  │ SCHEDULE │───→│  HTTP: CALL  │───→│  NOTION:        │   │
+│  │ (1st of  │    │  CLAUDE API  │    │  CREATE PAGE    │   │
+│  │  month)  │    │  (Generate   │    │  (Save scripts  │   │
+│  │          │    │   scripts)   │    │   to calendar)  │   │
+│  └──────────┘    └──────────────┘    └────────┬────────┘   │
+│                                               │             │
+│                                      ┌────────▼────────┐   │
+│                                      │  EMAIL / SLACK  │   │
+│                                      │  NOTIFICATION   │   │
+│                                      │  "Scripts ready │   │
+│                                      │   to review!"   │   │
+│                                      └─────────────────┘   │
+│                                                             │
+│  Modules: Schedule, HTTP, Notion, Email                     │
+│  Operations per run: 3                                      │
+│  Runs: Once per month (automatic)                           │
+│  Cost: ~$0.15 per Claude API call                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+## Make.com Troubleshooting — When Things Break (And They Will)
+
+Real talk — automations break sometimes. Here's how to fix the most common issues without losing your mind.
+
+**Issue 1: "Webhook not receiving data"**
+- **Fix:** Go to your scenario → click the webhook module → click **"Re-determine data structure"** → trigger a test event from Payhip/ManyChat → Make.com will detect the data format
+- **Still broken?** Check that the webhook URL in Payhip/ManyChat matches EXACTLY (no extra spaces, no missing characters)
+
+**Issue 2: "Kit module says 'invalid API key'"**
+- **Fix:** Go to Kit → Settings → Developer → copy API Secret (NOT the API Key — they're different) → paste into Make.com Kit connection
+- **Still broken?** Delete the connection in Make.com and create a new one from scratch
+
+**Issue 3: "Scenario ran but nothing happened"**
+- **Fix:** Click on the scenario → click **"History"** → look at the execution log → click on the failed run → it'll show you EXACTLY which module failed and why
+- **Pro tip:** The execution log is your best friend. Every single data point that flows through your scenario is recorded there.
+
+**Issue 4: "Running out of operations"**
+- **Fix:** Add a **"Filter"** between modules to only process certain events (e.g., only process sales over $20, only process new subscribers). This cuts wasted operations dramatically.
+- **Also:** Check for duplicate webhook triggers — sometimes Payhip sends the same event twice
+
+**Issue 5: "Scenario keeps turning off"**
+- **Fix:** Free plan scenarios turn off after 15 minutes of inactivity (for instant triggers). Upgrade to Core ($9/mo) when you're making money. Until then, set your scenarios to run on a **schedule** (every 15 minutes) instead of "instantly."
+
+**Pro Tips:**
+- **Name your scenarios clearly:** "Payhip Sale → Kit Tag" not "Scenario 1"
+- **Use the "Notes" feature** on each module to document what it does — future you will thank present you
+- **Test with small data first:** Buy your own product for $1 to trigger the workflow before going live
+- **Save versions:** Before editing a working scenario, clone it first so you have a backup
+
+---
+
 # CHAPTER 7: THE EXIT STRATEGY — FROM ACTIVE TO PASSIVE
 
 The goal isn't to build a business you're chained to. It's to build a business that runs without you.
@@ -477,6 +811,65 @@ Not bad for someone whose staff don't exist.
 ---
 
 # CHAPTER 8: YOUR FIRST 30 DAYS
+
+## THE $1,000 CHECKPOINT
+━━━━━━━━━━━━━━━━━━━━
+
+Before we get into the week-by-week — here's your scoreboard. Print this out. Stick it on your wall. Screenshot it. Every box you check is proof you're actually building this thing, not just reading about it. Most people never check the first box. You're going to check all nine.
+
+```
+THE $1,000 CHECKPOINT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+- [ ] Product created (1 weekend)
+        → Use the Weekend Protocol from Chapter 3.
+        → Claude writes it. Canva designs it. You review it.
+        → If it's not perfect, ship it anyway. Done > perfect.
+
+- [ ] Payhip live with affiliate program (1 hour)
+        → Product uploaded, price set, affiliate program ON.
+        → Set affiliates to 40-50% commission. Yes, really.
+        → They sell for you while you sleep. That's the point.
+
+- [ ] 10 pieces of content posted (1 week)
+        → TikTok + IG Reels + YouTube Shorts.
+        → Not 10 perfect pieces. 10 POSTED pieces.
+        → The algorithm rewards consistency, not perfection.
+
+- [ ] ManyChat capturing DMs (1 hour)
+        → Keyword trigger set. Auto-DM flowing.
+        → Test it yourself — comment your keyword on your post.
+        → If the DM doesn't hit, fix it before moving on.
+
+- [ ] Kit email sequence running (2 hours)
+        → At minimum: welcome email + 3-day nurture.
+        → Every subscriber = future buyer. Treat them like gold.
+
+- [ ] First sale confirmed ☑
+        → This is the moment everything changes.
+        → Screenshot it. Frame it. That's your proof of concept.
+
+- [ ] First affiliate signup ☑
+        → Someone else is now selling YOUR product.
+        → You just hired a commission-only sales team.
+
+- [ ] First $100 day ☑
+        → 2-4 sales in 24 hours. The system is WORKING.
+        → When this hits, double down on whatever content
+           drove those sales.
+
+- [ ] First $1,000 total ☑
+        → You built a real business. Not a side hustle.
+        → Not a "passive income dream." An actual revenue machine.
+        → The next $1,000 comes faster. Then the next $5,000.
+        → Then you stop counting and start scaling.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS: FROM ZERO TO CROWNED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
 
 ## Week 1: Foundation
 - [ ] Pick your business model (digital products, service, or agency)
@@ -548,4 +941,4 @@ You now have the complete system: credit fixed, business credit built, business 
 
 *© 2026 GOD MODE CREDIT™ x SoulHustleAI*
 *"My staff don't exist." — Zero, AI CEO*
-*"Financial sovereignty is your birthright. We just hand you the keys."*
+*"Financial freedom is your birthright. We just hand you the keys."*
