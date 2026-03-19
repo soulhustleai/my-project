@@ -226,13 +226,13 @@ This is the automatic money. You don't need to prove you were harmed. You just n
 ## 2. Actual Damages — UNLIMITED
 This is where it gets serious. Actual damages cover:
 
-- **Emotional distress** — Anxiety, lost sleep, depression, fear. Courts have awarded **$50,000+** for severe emotional distress from debt collector harassment. You don't need a therapist's note (though it helps). Your own testimony about how it affected you counts.
+- **Emotional distress** — Anxiety, lost sleep, depression, fear. Courts have awarded significant sums for severe emotional distress from debt collector harassment. You don't need a therapist's note (though it helps). Your own testimony about how it affected you counts.
 - **Lost wages** — If harassment caused you to miss work or lose your job
 - **Medical expenses** — If the stress caused health issues
 - **Out-of-pocket costs** — Travel to court, missed work to deal with it
 - **Reputational harm** — If they told your boss or coworkers
 
-> **Real numbers from real cases:** Settlements of $5,000-$25,000 are common for well-documented violations. Egregious cases have settled for $50,000+. And that's not counting the debt itself being eliminated as part of the settlement.
+> **What to know:** FDCPA cases regularly result in settlements beyond the $1,000 statutory minimum, especially with well-documented violations. Actual damages and attorney fees can significantly increase recovery. And that's not counting the debt itself being eliminated as part of the settlement. *Outcomes vary — consult an attorney for your specific case.*
 
 ## 3. Attorney Fees — THEY PAY YOUR LAWYER
 
@@ -561,7 +561,7 @@ The law doesn't stand still. Here's what you need to know RIGHT NOW:
 The 7-in-7 call rule, electronic communication rules, and enhanced validation requirements from Regulation F (12 C.F.R. Part 1006) are fully enforceable. These are your tools. Use them.
 
 ## The CFPB Has Pulled Back
-Under the current administration, the CFPB has reduced enforcement by approximately 50%. They're focused on fraud affecting military families and clear-cut scams.
+Under the current administration, the CFPB has significantly scaled back enforcement activity. They're focused on fraud affecting military families and clear-cut scams.
 
 **But here's what that changes for you: NOTHING.**
 

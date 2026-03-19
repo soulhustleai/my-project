@@ -95,11 +95,11 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 
 **Best for:** People who want the most hands-off experience possible. You connect your info. Dovly does the rest.
 
-> **The anecdote:** Imagine Marcus. 27 years old, works two jobs, barely has time to eat dinner let alone write dispute letters. His score is 480. He's got 3 collections, 2 late payments, and a charge-off from a credit card he forgot about in college. Marcus signs up for Dovly on a Tuesday night at 11 PM in his boxers eating leftover Chinese food. By Wednesday morning, Dovly has already scanned his report, identified 6 items to dispute, and generated the first batch of letters. Marcus didn't write a word. Three months later, 4 of those 6 items are gone. His score is 580. Marcus is still eating Chinese food — but now he's looking at apartments he actually qualifies for.
+> **The anecdote:** Imagine Marcus. 27 years old, works two jobs, barely has time to eat dinner let alone write dispute letters. He's got collections, late payments, and a charge-off from a credit card he forgot about in college. Marcus signs up for Dovly on a Tuesday night at 11 PM in his boxers eating leftover Chinese food. By Wednesday morning, Dovly has already scanned his report, identified items to dispute, and generated the first batch of letters. Marcus didn't write a word. Over the following months, some of those items came back deleted. Marcus is still eating Chinese food — but now his report looks a lot better than it did before. *This is an illustrative example — individual results vary.*
 
 ## Tool #2: DisputeBee — Your Strategic Dispute Brain
 
-**What it does:** DisputeBee is built specifically for credit disputes. It doesn't just send generic letters — it uses AI to analyze your specific situation and generate customized dispute strategies.
+**What it does:** DisputeBee is built specifically for credit disputes. It doesn't just send generic letters — it analyzes your specific situation and generates customized dispute strategies.
 
 **How it works:**
 1. Import your credit reports (upload or manual entry)
@@ -108,13 +108,13 @@ Think of this like assembling a team. Each tool has a specialty. Together? Unsto
 4. It generates customized letters with the correct legal citations
 5. You print, sign, and mail — or it submits electronically
 
-**Key Feature:** Dispute AI doesn't just pick a random reason to dispute. It analyzes the item type, the age of the account, the reporting pattern, and the furnisher's history to choose the strategy most likely to succeed. That's something most human credit repair agents don't even do.
+**Key Feature:** DisputeBee doesn't just pick a random reason to dispute. It analyzes the item type, the age of the account, the reporting pattern, and the furnisher's history to choose the strategy most likely to succeed. That's something most human credit repair agents don't even do.
 
 **Pricing:** Individual: ~$39/month | Business: $129/month (unlimited clients)
 
 **Best for:** People who want more control over the strategy but still want AI doing the heavy lifting.
 
-> **The anecdote:** Remember Keisha? She tried disputing on her own last year. Sent 8 letters. All came back "verified." She was frustrated. She thought the system was rigged. Then she tried Dispute AI. The difference? Her original letters all said "this isn't mine" — which is the most common (and least effective) reason to dispute. Dispute AI analyzed the same items and chose different angles: "balance reported inaccurately," "dates do not match original creditor records," "account status inconsistent with payment history." Same items. Different strategy. Result? 5 out of 8 items removed in the second round. Keisha didn't suddenly become a credit expert. She just let AI be the expert for her.
+> **The anecdote:** Remember Keisha? She tried disputing on her own last year. Sent a bunch of letters. All came back "verified." She was frustrated. She thought the system was rigged. Then she tried DisputeBee. The difference? Her original letters all said "this isn't mine" — which is the most common (and least effective) reason to dispute. DisputeBee analyzed the same items and chose different angles: "balance reported inaccurately," "dates do not match original creditor records," "account status inconsistent with payment history." Same items. Different strategy. Multiple items came back deleted in the next round. Keisha didn't suddenly become a credit expert. She just let the software pick better strategies. *Illustrative example — results vary by individual.*
 
 ## Tool #3: Dispute Panda — Your Credit Monitoring Copilot
 
@@ -511,7 +511,7 @@ Let's do the math. Because the math is what makes this a no-brainer.
 | Monthly fee (x6 months avg) | $149/mo = $894 |
 | **TOTAL** | **$993** |
 
-Results? Maybe 30-50% of negative items removed. Maybe.
+Results? They send template letters and hope for the best. You're paying premium prices for a generic process.
 
 ## Your AI Stack
 
@@ -574,9 +574,9 @@ Right now your focus is credit repair. Getting that score up. Removing the junk.
 
 But this is just Phase 1 of your financial transformation.
 
-**Phase 1: Clean** — Remove inaccurate negatives. Build positive credit. Get to 650+.
-**Phase 2: Build** — Open real credit lines. Optimize utilization. Push past 700.
-**Phase 3: Business** — Separate your personal and business credit. Build a business credit profile that can access $50K-$250K in funding without your personal SSN on the line.
+**Phase 1: Clean** — Remove inaccurate negatives. Build positive credit. Strengthen your foundation.
+**Phase 2: Build** — Open real credit lines. Optimize utilization. Keep improving.
+**Phase 3: Business** — Separate your personal and business credit. Build a business credit profile that opens doors to funding without your personal SSN on the line.
 **Phase 4: Automate** — Build systems that generate income while you sleep. AI automation, digital products, online businesses that run themselves.
 **Phase 5: Freedom** — You monitor. You collect. You live.
 
