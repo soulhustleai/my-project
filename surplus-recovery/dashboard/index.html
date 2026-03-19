@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDAS — Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="midas-logo-large">
+                <div class="logo-icon">M</div>
+            </div>
+            <h1 class="loading-title">MIDAS</h1>
+            <p class="loading-subtitle">Initializing Command Center...</p>
+            <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <div class="midas-brand">
+                <div class="brand-icon">M</div>
+                <div class="brand-text">
+                    <span class="brand-name">MIDAS</span>
+                    <span class="brand-tagline">Command Center</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="pipeline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                <span>Pipeline</span>
+            </a>
+            <a href="#" class="nav-item" data-page="leads">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Leads</span>
+            </a>
+            <a href="#" class="nav-item" data-page="outreach">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Outreach</span>
+            </a>
+            <a href="#" class="nav-item" data-page="revenue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span>Revenue</span>
+            </a>
+            <a href="#" class="nav-item" data-page="counties">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Counties</span>
+            </a>
+            <a href="#" class="nav-item" data-page="tasks">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                <span>Tasks</span>
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                <span>Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="midas-status">
+                <div class="status-dot pulse"></div>
+                <span>MIDAS Online</span>
+            </div>
+            <div class="sidebar-meta">
+                <span>Typically Not Lifestyle LLC</span>
+                <span>soulhustleai.com</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main id="mainContent" class="main-content">
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button id="sidebarToggle" class="sidebar-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
+                <div class="page-title">
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <span class="page-date" id="currentDate"></span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="topbar-search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" placeholder="Search leads, cases, counties..." id="globalSearch">
+                </div>
+                <button class="topbar-btn notification-btn" id="notifBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <span class="notif-badge" id="notifBadge">3</span>
+                </button>
+                <button class="topbar-btn chat-toggle" id="chatToggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="chat-label">Talk to MIDAS</span>
+                </button>
+                <div class="user-avatar" id="userAvatar">E</div>
+            </div>
+        </header>
+
+        <!-- PAGE: DASHBOARD -->
+        <div id="page-dashboard" class="page active">
+            <!-- LIVE TICKER -->
+            <div class="live-ticker">
+                <div class="ticker-dot pulse"></div>
+                <div class="ticker-content" id="tickerContent">
+                    <span>MIDAS is monitoring 2 counties</span>
+                    <span class="ticker-sep">|</span>
+                    <span>248 leads in pipeline</span>
+                    <span class="ticker-sep">|</span>
+                    <span>27 outreach-ready</span>
+                    <span class="ticker-sep">|</span>
+                    <span>$2.84M total surplus identified</span>
+                    <span class="ticker-sep">|</span>
+                    <span>Next scrape: auto-scheduled</span>
+                </div>
+            </div>
+
+            <!-- KPI CARDS -->
+            <div class="kpi-grid">
+                <div class="kpi-card gold">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Revenue Potential</span>
+                        <div class="kpi-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="kpiRevenue">$852,704</div>
+                    <div class="kpi-detail">
+                        <span class="kpi-trend up">30% contingency fee</span>
+                        <span class="kpi-sub">on $2.84M surplus</span>
+                    </div>
+                    <div class="kpi-sparkline" id="sparkRevenue"></div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Total Leads</span>
+                        <div class="kpi-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="kpiLeads">248</div>
+                    <div class="kpi-detail">
+                        <span class="kpi-trend up">+248 this week</span>
+                        <span class="kpi-sub">2 counties active</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Outreach Ready</span>
+                        <div class="kpi-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="kpiReady">27</div>
+                    <div class="kpi-detail">
+                        <span class="kpi-trend neutral">name + address confirmed</span>
+                        <span class="kpi-sub">$122K fee potential</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">Days to Goal</span>
+                        <div class="kpi-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                    </div>
+                    <div class="kpi-value" id="kpiDays">45</div>
+                    <div class="kpi-detail">
+                        <span class="kpi-trend neutral">target: $5K/mo</span>
+                        <span class="kpi-sub">first signed client</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHARTS ROW -->
+            <div class="charts-row">
+                <div class="chart-card wide">
+                    <div class="chart-header">
+                        <h3>Pipeline Funnel</h3>
+                        <div class="chart-actions">
+                            <button class="chip active">All Time</button>
+                            <button class="chip">This Week</button>
+                            <button class="chip">Today</button>
+                        </div>
+                    </div>
+                    <div class="funnel-container" id="pipelineFunnel">
+                        <div class="funnel-stage" style="--width: 100%; --color: var(--gold);">
+                            <div class="funnel-bar"><span class="funnel-count">248</span></div>
+                            <span class="funnel-label">Scraped</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 85%; --color: var(--gold-dim);">
+                            <div class="funnel-bar"><span class="funnel-count">165</span></div>
+                            <span class="funnel-label">Qualified ($1K+)</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 45%; --color: #3b82f6;">
+                            <div class="funnel-bar"><span class="funnel-count">74</span></div>
+                            <span class="funnel-label">Name Identified</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 22%; --color: #8b5cf6;">
+                            <div class="funnel-bar"><span class="funnel-count">33</span></div>
+                            <span class="funnel-label">Address Found</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 18%; --color: #06b6d4;">
+                            <div class="funnel-bar"><span class="funnel-count">27</span></div>
+                            <span class="funnel-label">Outreach Ready</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 5%; --color: #22c55e;">
+                            <div class="funnel-bar"><span class="funnel-count">0</span></div>
+                            <span class="funnel-label">Contacted</span>
+                        </div>
+                        <div class="funnel-stage" style="--width: 2%; --color: #f59e0b;">
+                            <div class="funnel-bar"><span class="funnel-count">0</span></div>
+                            <span class="funnel-label">Signed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Revenue Trajectory</h3>
+                        <span class="chart-badge">Goal: $5K/mo</span>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Lead Sources</h3>
+                        <span class="chart-badge">By County</span>
+                    </div>
+                    <canvas id="sourceChart"></canvas>
+                </div>
+            </div>
+
+            <!-- BOTTOM ROW -->
+            <div class="bottom-row">
+                <!-- TOP LEADS -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Highest-Value Leads</h3>
+                        <a href="#" class="card-link" data-page="leads">View All</a>
+                    </div>
+                    <div class="lead-list" id="topLeadsList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- MIDAS ACTIVITY FEED -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>MIDAS Activity</h3>
+                        <div class="status-dot pulse" style="margin-left:8px;"></div>
+                    </div>
+                    <div class="activity-feed" id="activityFeed">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- GOAL TRACKER -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>45-Day Sprint</h3>
+                        <span class="chart-badge" id="sprintDay">Day 1 of 45</span>
+                    </div>
+                    <div class="goals-container" id="goalsContainer">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTLENECK ALERTS -->
+            <div class="alerts-section">
+                <div class="card alert-card">
+                    <div class="card-header">
+                        <h3>Bottleneck Detection</h3>
+                        <span class="chart-badge warning">Action Needed</span>
+                    </div>
+                    <div class="bottleneck-list" id="bottleneckList">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: PIPELINE -->
+        <div id="page-pipeline" class="page">
+            <div class="pipeline-board">
+                <div class="pipeline-column" data-status="new">
+                    <div class="column-header">
+                        <h3>New Leads</h3>
+                        <span class="column-count" id="colNew">248</span>
+                    </div>
+                    <div class="column-body" id="colNewBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="enriching">
+                    <div class="column-header">
+                        <h3>Enriching</h3>
+                        <span class="column-count" id="colEnrich">0</span>
+                    </div>
+                    <div class="column-body" id="colEnrichBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="outreach">
+                    <div class="column-header">
+                        <h3>Outreach</h3>
+                        <span class="column-count" id="colOutreach">0</span>
+                    </div>
+                    <div class="column-body" id="colOutreachBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="responded">
+                    <div class="column-header">
+                        <h3>Responded</h3>
+                        <span class="column-count" id="colResponded">0</span>
+                    </div>
+                    <div class="column-body" id="colRespondedBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="signed">
+                    <div class="column-header gold">
+                        <h3>Signed</h3>
+                        <span class="column-count" id="colSigned">0</span>
+                    </div>
+                    <div class="column-body" id="colSignedBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="claimed">
+                    <div class="column-header">
+                        <h3>Claimed</h3>
+                        <span class="column-count" id="colClaimed">0</span>
+                    </div>
+                    <div class="column-body" id="colClaimedBody"></div>
+                </div>
+                <div class="pipeline-column" data-status="paid">
+                    <div class="column-header gold">
+                        <h3>Paid</h3>
+                        <span class="column-count" id="colPaid">0</span>
+                    </div>
+                    <div class="column-body" id="colPaidBody"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: LEADS -->
+        <div id="page-leads" class="page">
+            <div class="leads-toolbar">
+                <div class="leads-filters">
+                    <select id="filterCounty" class="filter-select">
+                        <option value="">All Counties</option>
+                        <option value="Brevard">Brevard</option>
+                        <option value="Sumter">Sumter</option>
+                    </select>
+                    <select id="filterStatus" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="new">New</option>
+                        <option value="enriching">Enriching</option>
+                        <option value="outreach_ready">Outreach Ready</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="signed">Signed</option>
+                    </select>
+                    <select id="filterAmount" class="filter-select">
+                        <option value="">Any Amount</option>
+                        <option value="50000">$50K+</option>
+                        <option value="25000">$25K+</option>
+                        <option value="10000">$10K+</option>
+                        <option value="5000">$5K+</option>
+                    </select>
+                </div>
+                <div class="leads-actions">
+                    <button class="btn btn-gold" id="btnEnrichAll">Enrich Selected</button>
+                    <button class="btn btn-outline" id="btnExport">Export CSV</button>
+                </div>
+            </div>
+            <div class="leads-table-container">
+                <table class="leads-table" id="leadsTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="selectAll"></th>
+                            <th class="sortable" data-sort="owner_name">Name</th>
+                            <th class="sortable" data-sort="surplus_amount">Surplus</th>
+                            <th class="sortable" data-sort="county">County</th>
+                            <th>Type</th>
+                            <th class="sortable" data-sort="sale_date">Sale Date</th>
+                            <th>Status</th>
+                            <th>Score</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leadsTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="leads-pagination" id="leadsPagination"></div>
+        </div>
+
+        <!-- PAGE: OUTREACH -->
+        <div id="page-outreach" class="page">
+            <div class="outreach-header">
+                <div class="outreach-stats">
+                    <div class="ostat">
+                        <span class="ostat-value" id="oLettersSent">0</span>
+                        <span class="ostat-label">Letters Sent</span>
+                    </div>
+                    <div class="ostat">
+                        <span class="ostat-value" id="oSmsSent">0</span>
+                        <span class="ostat-label">SMS Sent</span>
+                    </div>
+                    <div class="ostat">
+                        <span class="ostat-value" id="oEmailsSent">0</span>
+                        <span class="ostat-label">Emails Sent</span>
+                    </div>
+                    <div class="ostat">
+                        <span class="ostat-value" id="oResponseRate">0%</span>
+                        <span class="ostat-label">Response Rate</span>
+                    </div>
+                </div>
+            </div>
+            <div class="outreach-sequence">
+                <h3>7-Touch Outreach Sequence</h3>
+                <div class="sequence-timeline">
+                    <div class="seq-step active">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 1</span>
+                            <span class="seq-type">Direct Mail</span>
+                            <span class="seq-desc">Personalized letter via Lob</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 5</span>
+                            <span class="seq-type">SMS</span>
+                            <span class="seq-desc">Follow-up text via Twilio</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 8</span>
+                            <span class="seq-type">Email</span>
+                            <span class="seq-desc">Detailed email with case info</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 14</span>
+                            <span class="seq-type">Direct Mail #2</span>
+                            <span class="seq-desc">Second letter, different angle</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 18</span>
+                            <span class="seq-type">SMS #2</span>
+                            <span class="seq-desc">Urgency-based follow-up</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 22</span>
+                            <span class="seq-type">Phone Call</span>
+                            <span class="seq-desc">Edwin closes (if $10K+)</span>
+                        </div>
+                    </div>
+                    <div class="seq-step">
+                        <div class="seq-dot"></div>
+                        <div class="seq-info">
+                            <span class="seq-day">Day 30</span>
+                            <span class="seq-type">Final Mail</span>
+                            <span class="seq-desc">Last chance letter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: REVENUE -->
+        <div id="page-revenue" class="page">
+            <div class="revenue-kpis">
+                <div class="rkpi">
+                    <span class="rkpi-label">Projected Monthly</span>
+                    <span class="rkpi-value gold">$0</span>
+                    <span class="rkpi-target">Target: $5,000</span>
+                </div>
+                <div class="rkpi">
+                    <span class="rkpi-label">Total Earned</span>
+                    <span class="rkpi-value">$0</span>
+                    <span class="rkpi-target">Lifetime</span>
+                </div>
+                <div class="rkpi">
+                    <span class="rkpi-label">Avg Fee / Case</span>
+                    <span class="rkpi-value">$0</span>
+                    <span class="rkpi-target">Target: $4,500</span>
+                </div>
+                <div class="rkpi">
+                    <span class="rkpi-label">Pipeline Value</span>
+                    <span class="rkpi-value gold">$852,704</span>
+                    <span class="rkpi-target">30% of $2.84M</span>
+                </div>
+            </div>
+            <div class="chart-card" style="margin-top:24px;">
+                <div class="chart-header">
+                    <h3>Revenue Growth</h3>
+                </div>
+                <canvas id="revenueGrowthChart" height="300"></canvas>
+            </div>
+        </div>
+
+        <!-- PAGE: COUNTIES -->
+        <div id="page-counties" class="page">
+            <div class="counties-grid">
+                <div class="county-card active-county">
+                    <div class="county-header">
+                        <h3>Brevard County, FL</h3>
+                        <span class="county-badge active">Active</span>
+                    </div>
+                    <div class="county-stats">
+                        <div class="cstat"><span class="cstat-val">165</span><span class="cstat-label">Leads</span></div>
+                        <div class="cstat"><span class="cstat-val">$2.14M</span><span class="cstat-label">Surplus</span></div>
+                        <div class="cstat"><span class="cstat-val">Tax Deed</span><span class="cstat-label">Type</span></div>
+                    </div>
+                    <div class="county-source">Source: Clerk Overbid PDF</div>
+                    <div class="county-note">Needs enrichment — no names in source data</div>
+                </div>
+                <div class="county-card active-county">
+                    <div class="county-header">
+                        <h3>Sumter County, FL</h3>
+                        <span class="county-badge active">Active</span>
+                    </div>
+                    <div class="county-stats">
+                        <div class="cstat"><span class="cstat-val">83</span><span class="cstat-label">Leads</span></div>
+                        <div class="cstat"><span class="cstat-val">$705K</span><span class="cstat-label">Surplus</span></div>
+                        <div class="cstat"><span class="cstat-val">Both</span><span class="cstat-label">Type</span></div>
+                    </div>
+                    <div class="county-source">Source: Registry PDF + Google Sheets</div>
+                    <div class="county-note gold-text">33 leads with names + addresses ready</div>
+                </div>
+                <div class="county-card pending-county">
+                    <div class="county-header">
+                        <h3>Polk County, FL</h3>
+                        <span class="county-badge pending">Queued</span>
+                    </div>
+                    <div class="county-stats">
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Leads</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Surplus</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Type</span></div>
+                    </div>
+                    <div class="county-source">Source: polkclerkfl.gov (page returned 404)</div>
+                    <div class="county-note">MIDAS will retry scraping on next cycle</div>
+                </div>
+                <div class="county-card pending-county">
+                    <div class="county-header">
+                        <h3>Lee County, FL</h3>
+                        <span class="county-badge pending">Queued</span>
+                    </div>
+                    <div class="county-stats">
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Leads</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Surplus</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Type</span></div>
+                    </div>
+                    <div class="county-source">Source: leeclerk.org surplus list</div>
+                </div>
+                <div class="county-card pending-county">
+                    <div class="county-header">
+                        <h3>Pasco County, FL</h3>
+                        <span class="county-badge pending">Queued</span>
+                    </div>
+                    <div class="county-stats">
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Leads</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Surplus</span></div>
+                        <div class="cstat"><span class="cstat-val">—</span><span class="cstat-label">Type</span></div>
+                    </div>
+                    <div class="county-source">Source: pascoclerk.com (503 error)</div>
+                    <div class="county-note">MIDAS will retry on next cycle</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: TASKS -->
+        <div id="page-tasks" class="page">
+            <div class="tasks-header">
+                <h2>Action Items</h2>
+                <div class="tasks-filter-row">
+                    <button class="chip active" data-filter="all">All</button>
+                    <button class="chip" data-filter="founder">Founder Actions</button>
+                    <button class="chip" data-filter="midas">MIDAS Auto</button>
+                    <button class="chip" data-filter="done">Completed</button>
+                </div>
+            </div>
+            <div class="tasks-list" id="tasksList">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+
+        <!-- PAGE: SETTINGS -->
+        <div id="page-settings" class="page">
+            <div class="settings-grid">
+                <div class="settings-section">
+                    <h3>Supabase Connection</h3>
+                    <div class="setting-row">
+                        <label>Project URL</label>
+                        <input type="text" id="settSupaUrl" class="setting-input" placeholder="https://xxx.supabase.co">
+                    </div>
+                    <div class="setting-row">
+                        <label>Service Key</label>
+                        <input type="password" id="settSupaKey" class="setting-input" placeholder="sb_secret_...">
+                    </div>
+                    <button class="btn btn-gold" id="btnTestConnection">Test Connection</button>
+                    <div id="connectionStatus" class="connection-status"></div>
+                </div>
+                <div class="settings-section">
+                    <h3>API Keys</h3>
+                    <div class="setting-row">
+                        <label>Anthropic (Claude)</label>
+                        <input type="password" id="settAnthropicKey" class="setting-input" placeholder="sk-ant-...">
+                        <span class="setting-status" id="statusAnthropic">Not set</span>
+                    </div>
+                    <div class="setting-row">
+                        <label>Lob (Direct Mail)</label>
+                        <input type="password" id="settLobKey" class="setting-input" placeholder="live_...">
+                        <span class="setting-status" id="statusLob">Needs billing</span>
+                    </div>
+                    <div class="setting-row">
+                        <label>Twilio SID</label>
+                        <input type="password" id="settTwilioSid" class="setting-input" placeholder="AC...">
+                        <span class="setting-status" id="statusTwilio">Not set</span>
+                    </div>
+                    <button class="btn btn-outline" id="btnSaveKeys">Save Keys</button>
+                </div>
+                <div class="settings-section">
+                    <h3>Business Info</h3>
+                    <div class="setting-row">
+                        <label>Business Name</label>
+                        <input type="text" id="settBizName" class="setting-input" value="Typically Not Lifestyle LLC">
+                    </div>
+                    <div class="setting-row">
+                        <label>Website</label>
+                        <input type="text" id="settBizUrl" class="setting-input" value="https://soulhustleai.com">
+                    </div>
+                    <div class="setting-row">
+                        <label>Fee Percentage</label>
+                        <input type="number" id="settFee" class="setting-input" value="30" min="10" max="40">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CHAT PANEL -->
+    <aside id="chatPanel" class="chat-panel">
+        <div class="chat-header">
+            <div class="chat-brand">
+                <div class="brand-icon small">M</div>
+                <div>
+                    <span class="chat-title">MIDAS</span>
+                    <span class="chat-status">
+                        <span class="status-dot pulse"></span> Online
+                    </span>
+                </div>
+            </div>
+            <button class="chat-close" id="chatClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg midas">
+                <div class="msg-avatar">M</div>
+                <div class="msg-content">
+                    <p>What's good, Edwin. MIDAS here. I've been running the numbers — we've got <strong>248 leads</strong> in the pipeline worth <strong>$2.84M</strong> in surplus funds.</p>
+                    <p>27 of those are ready for outreach right now. Top lead is <strong>Yolanda Vazquez Luna</strong> — $70,797 surplus in Sumter County. That's a $21K fee if we close it.</p>
+                    <p>What do you want to focus on?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <textarea id="chatInput" class="chat-input" placeholder="Ask MIDAS anything..." rows="1"></textarea>
+            <button class="chat-send" id="chatSend">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- NOTIFICATION PANEL -->
+    <div id="notifPanel" class="notif-panel">
+        <div class="notif-header">
+            <h3>Notifications</h3>
+            <button class="btn btn-outline btn-sm" id="markAllRead">Mark all read</button>
+        </div>
+        <div class="notif-list" id="notifList">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
