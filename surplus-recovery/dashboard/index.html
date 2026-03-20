@@ -284,6 +284,83 @@
                 </div>
             </div>
 
+            <!-- LEAD LIFECYCLE TRACKER -->
+            <div class="lifecycle-section">
+                <div class="card lifecycle-card">
+                    <div class="card-header">
+                        <h3>Lead Lifecycle Tracker</h3>
+                        <div class="lifecycle-controls">
+                            <select id="lifecycleFilter" class="filter-select">
+                                <option value="all">All Leads</option>
+                                <option value="high-value">$25K+ Surplus</option>
+                                <option value="outreach-ready">Outreach Ready</option>
+                                <option value="stalled">Stalled Leads</option>
+                            </select>
+                            <span class="chart-badge gold">Live Tracking</span>
+                        </div>
+                    </div>
+                    <!-- Lifecycle Stage Headers -->
+                    <div class="lifecycle-stages-header">
+                        <div class="lc-stage-label">Scraped</div>
+                        <div class="lc-stage-label">Qualified</div>
+                        <div class="lc-stage-label">Enriched</div>
+                        <div class="lc-stage-label">Outreach</div>
+                        <div class="lc-stage-label">Contacted</div>
+                        <div class="lc-stage-label">Responded</div>
+                        <div class="lc-stage-label">Negotiating</div>
+                        <div class="lc-stage-label">Signed</div>
+                        <div class="lc-stage-label">Docs</div>
+                        <div class="lc-stage-label">Filed</div>
+                        <div class="lc-stage-label">Approved</div>
+                        <div class="lc-stage-label">Paid</div>
+                    </div>
+                    <!-- Lead Lifecycle Rows -->
+                    <div class="lifecycle-leads" id="lifecycleLeads">
+                        <!-- Populated by JS — each row shows a lead with dots/progress through stages -->
+                    </div>
+                    <div class="lifecycle-summary">
+                        <div class="lc-summary-stat">
+                            <span class="lc-sum-val" id="lcStalled">0</span>
+                            <span class="lc-sum-label">Stalled 7+ Days</span>
+                        </div>
+                        <div class="lc-summary-stat">
+                            <span class="lc-sum-val" id="lcAvgDays">—</span>
+                            <span class="lc-sum-label">Avg Days in Cycle</span>
+                        </div>
+                        <div class="lc-summary-stat">
+                            <span class="lc-sum-val gold" id="lcConversion">0%</span>
+                            <span class="lc-sum-label">Scrape → Signed</span>
+                        </div>
+                        <div class="lc-summary-stat">
+                            <span class="lc-sum-val" id="lcVelocity">—</span>
+                            <span class="lc-sum-label">Pipeline Velocity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLAIM PROBABILITY SCORER -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Claim Probability Scorer</h3>
+                        <span class="chart-badge gold">AI-Powered</span>
+                    </div>
+                    <div class="probability-list" id="probabilityList">
+                        <!-- Populated by JS — top leads ranked by AI claim probability -->
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>Deal Economics</h3>
+                        <span class="chart-badge">ROI Calculator</span>
+                    </div>
+                    <div class="deal-economics" id="dealEconomics">
+                        <!-- Populated by JS — projected ROI per lead -->
+                    </div>
+                </div>
+            </div>
+
             <!-- BOTTLENECK ALERTS -->
             <div class="alerts-section">
                 <div class="card alert-card">
@@ -293,6 +370,19 @@
                     </div>
                     <div class="bottleneck-list" id="bottleneckList">
                         <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLIANCE ENGINE -->
+            <div class="compliance-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>State Compliance Engine</h3>
+                        <span class="chart-badge">Multi-State</span>
+                    </div>
+                    <div class="compliance-grid" id="complianceGrid">
+                        <!-- Populated by JS — fee caps, registration reqs, deadlines by state -->
                     </div>
                 </div>
             </div>
