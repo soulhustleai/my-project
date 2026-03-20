@@ -6,6 +6,7 @@ Parses downloaded files (PDF, HTML) into structured raw_records.
 Trigger: New raw_downloads entries with status='success'
 """
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -52,9 +53,10 @@ def ingest_download(download_id: str):
 
         logger.info(f"Parsed {len(records)} records from {file_path}")
 
-        # Insert raw records
+        # Batch insert raw records (chunks of 100 to avoid payload limits)
+        batch = []
         for record in records:
-            supabase.table("raw_records").insert({
+            batch.append({
                 "download_id": download_id,
                 "source_id": source["id"],
                 "raw_data": record.raw_data,
@@ -65,12 +67,17 @@ def ingest_download(download_id: str):
                 "sale_date": record.sale_date.isoformat() if record.sale_date else None,
                 "sale_type": record.sale_type,
                 "parse_status": "parsed",
-            }).execute()
+            })
+            if len(batch) >= 100:
+                supabase.table("raw_records").insert(batch).execute()
+                batch = []
+        if batch:
+            supabase.table("raw_records").insert(batch).execute()
 
         # Mark download as processed
         supabase.table("raw_downloads").update({
             "download_status": "processed",
-            "processed_at": "now()",
+            "processed_at": datetime.now(timezone.utc).isoformat(),
         }).eq("id", download_id).execute()
 
         log_audit(supabase, "raw_downloads", download_id, "processed",

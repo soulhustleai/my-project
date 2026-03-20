@@ -7,7 +7,7 @@ See schemas/opportunity-scoring-model.md for full specification.
 Trigger: After normalization completes
 """
 import sys
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -69,9 +69,19 @@ def score_identifiability(owner_name: str | None) -> float:
 
 def score_opportunity(opp: dict) -> float:
     county_key = f"{opp['county']}_{opp['state']}"
+
+    # Parse sale_date string to date object (Supabase returns ISO strings)
+    sale_date_raw = opp.get("sale_date")
+    sale_date = None
+    if sale_date_raw:
+        try:
+            sale_date = date.fromisoformat(str(sale_date_raw)[:10])
+        except (ValueError, TypeError):
+            pass
+
     return (
         score_amount(float(opp.get("surplus_amount", 0)))
-        + score_recency(opp.get("sale_date"))
+        + score_recency(sale_date)
         + score_identifiability(opp.get("owner_name"))
         + COUNTY_FILING_EASE.get(county_key, 5)
         + COUNTY_COMPETITION.get(county_key, 5)
@@ -79,33 +89,53 @@ def score_opportunity(opp: dict) -> float:
 
 
 def score_pending():
-    """Score all opportunities with status='new'."""
+    """Score all opportunities with status='new' (paginated)."""
     supabase = get_supabase()
 
-    result = (supabase.table("opportunities")
-              .select("*")
-              .eq("status", "new")
-              .execute())
+    # Paginate to handle >1000 records
+    page_size = 1000
+    offset = 0
+    total_scored = 0
 
-    opportunities = result.data or []
-    logger.info(f"Scoring {len(opportunities)} opportunities")
+    while True:
+        result = (supabase.table("opportunities")
+                  .select("*")
+                  .eq("status", "new")
+                  .range(offset, offset + page_size - 1)
+                  .execute())
 
-    for opp in opportunities:
-        score = score_opportunity(opp)
-        new_status = "qualified" if score >= config.min_score_to_enrich else "disqualified"
+        opportunities = result.data or []
+        if not opportunities:
+            break
 
-        supabase.table("opportunities").update({
-            "score": score,
-            "status": new_status,
-            "disqualification_reason": "Score below threshold" if new_status == "disqualified" else None,
-        }).eq("id", opp["id"]).execute()
+        logger.info(f"Scoring batch of {len(opportunities)} opportunities (offset {offset})")
 
-        log_audit(supabase, "opportunities", opp["id"],
-                  "status_change", "system:opportunity-engine",
-                  old_value={"status": "new", "score": None},
-                  new_value={"status": new_status, "score": score})
+        for opp in opportunities:
+            try:
+                score = score_opportunity(opp)
+            except Exception as e:
+                logger.warning(f"Scoring failed for {opp.get('id')}: {e}")
+                continue
 
-    logger.info("Scoring complete")
+            new_status = "qualified" if score >= config.min_score_to_enrich else "disqualified"
+
+            supabase.table("opportunities").update({
+                "score": score,
+                "status": new_status,
+                "disqualification_reason": "Score below threshold" if new_status == "disqualified" else None,
+            }).eq("id", opp["id"]).execute()
+
+            log_audit(supabase, "opportunities", opp["id"],
+                      "status_change", "system:opportunity-engine",
+                      old_value={"status": "new", "score": None},
+                      new_value={"status": new_status, "score": score})
+            total_scored += 1
+
+        if len(opportunities) < page_size:
+            break
+        offset += page_size
+
+    logger.info(f"Scoring complete: {total_scored} opportunities scored")
 
 
 if __name__ == "__main__":

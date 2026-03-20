@@ -64,7 +64,7 @@ def enrich_with_pdl(name: str, address: str | None) -> dict | None:
                     "first_name": person.get("first_name"),
                     "last_name": person.get("last_name"),
                     "phone": person.get("mobile_phone") or (person.get("phone_numbers", [None])[0] if person.get("phone_numbers") else None),
-                    "email": person.get("work_email") or person.get("personal_emails", [None])[0] if person.get("personal_emails") else None,
+                    "email": person.get("work_email") or (person.get("personal_emails", [None])[0] if person.get("personal_emails") else None),
                     "address": primary_address,
                     "dob": person.get("birth_date"),
                     "confidence": data.get("likelihood", 0),
@@ -135,6 +135,12 @@ def enrich_opportunity(opp_id: str):
             })
 
         claimant_result = supabase.table("claimants").insert(claimant_data).execute()
+        if not claimant_result.data:
+            logger.error(f"Failed to insert claimant for opportunity {opp_id}")
+            supabase.table("opportunities").update({
+                "status": "enrichment_failed",
+            }).eq("id", opp_id).execute()
+            return
         claimant_id = claimant_result.data[0]["id"]
 
         # Determine contactability
