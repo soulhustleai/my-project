@@ -13,6 +13,8 @@ class Config:
     # Supabase
     supabase_url: str = os.getenv("SUPABASE_URL", "")
     supabase_key: str = os.getenv("SUPABASE_SERVICE_KEY", "")
+    supabase_publishable_key: str = os.getenv("SUPABASE_PUBLISHABLE_KEY", "")
+    supabase_db_url: str = os.getenv("SUPABASE_DB_URL", "")
 
     # Anthropic (Claude API)
     anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
@@ -27,6 +29,9 @@ class Config:
     twilio_account_sid: str = os.getenv("TWILIO_ACCOUNT_SID", "")
     twilio_auth_token: str = os.getenv("TWILIO_AUTH_TOKEN", "")
     twilio_phone_number: str = os.getenv("TWILIO_PHONE_NUMBER", "")
+
+    # RetellAI (Voice)
+    retell_api_key: str = os.getenv("RETELL_API_KEY", "")
 
     # People Data Labs (Enrichment)
     pdl_api_key: str = os.getenv("PDL_API_KEY", "")
