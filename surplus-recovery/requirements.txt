@@ -20,5 +20,8 @@ requests>=2.31.0
 
 # Enrichment (People Data Labs uses requests)
 
+# Database (direct connection for DDL)
+psycopg2-binary>=2.9.0
+
 # Utilities
 sentry-sdk>=1.40.0

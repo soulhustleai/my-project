@@ -15,6 +15,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from packages.config.config import config
 from packages.utils.supabase_client import get_supabase, log_audit
 from packages.utils.logger import get_logger
+from services.outreach_engine.template_loader import render_template, render_mail_html
+from services.outreach_engine.lob_client import send_letter, verify_address
+from services.outreach_engine.twilio_client import send_sms, format_phone
+from services.outreach_engine.email_client import send_email
 
 logger = get_logger("outreach-engine")
 
@@ -166,25 +170,93 @@ def _send_step(opp: dict, claimant: dict, step: dict, supabase):
 
 def _send_mail(opp: dict, claimant: dict, template_id: str) -> str | None:
     """Send a letter via Lob API."""
-    # TODO: Implement Lob API integration
-    # See services/outreach-engine/lob_client.py
-    logger.info(f"[STUB] Would send mail via Lob: {template_id}")
-    return None
+    html_content = render_mail_html(template_id, opp, claimant)
+    if not html_content:
+        logger.error(f"Failed to render mail template: {template_id}")
+        return None
+
+    # Parse business address for Lob from_address
+    addr = config.business_address or ""
+    from_address = {"line1": addr, "city": "", "state": "", "zip": ""}
+
+    to_address = {
+        "line1": claimant.get("current_address_line1", ""),
+        "line2": claimant.get("current_address_line2", ""),
+        "city": claimant.get("current_city", claimant.get("current_address_city", "")),
+        "state": claimant.get("current_state", claimant.get("current_address_state", "")),
+        "zip": claimant.get("current_zip", claimant.get("current_address_zip", "")),
+    }
+
+    # Verify recipient address before sending
+    verified = verify_address(to_address)
+    if verified:
+        to_address = verified
+    else:
+        logger.warning(f"Address verification failed for {claimant.get('full_name')}, sending anyway")
+
+    letter_id = send_letter(
+        to_name=claimant.get("full_name", "Current Resident"),
+        to_address=to_address,
+        from_name=config.business_name or "Surplus Recovery Services",
+        from_address=from_address,
+        html_content=html_content,
+        description=f"MIDAS {template_id} — {opp.get('county')} {opp.get('case_number', '')}",
+    )
+
+    return letter_id
 
 
 def _send_sms(opp: dict, claimant: dict, template_id: str) -> str | None:
     """Send SMS via Twilio."""
-    # TODO: Implement Twilio integration
-    # See services/outreach-engine/twilio_client.py
-    logger.info(f"[STUB] Would send SMS via Twilio: {template_id}")
-    return None
+    body = render_template(template_id, opp, claimant)
+    if not body:
+        logger.error(f"Failed to render SMS template: {template_id}")
+        return None
+
+    phone = claimant.get("phone_primary", "")
+    if not phone:
+        logger.warning(f"No phone number for claimant {claimant.get('id')}")
+        return None
+
+    formatted_phone = format_phone(phone)
+    return send_sms(to_phone=formatted_phone, body=body)
 
 
 def _send_email(opp: dict, claimant: dict, template_id: str) -> str | None:
-    """Send email."""
-    # TODO: Implement email sending
-    logger.info(f"[STUB] Would send email: {template_id}")
-    return None
+    """Send email via SMTP."""
+    content = render_template(template_id, opp, claimant)
+    if not content:
+        logger.error(f"Failed to render email template: {template_id}")
+        return None
+
+    to_email = claimant.get("email", "")
+    if not to_email:
+        logger.warning(f"No email for claimant {claimant.get('id')}")
+        return None
+
+    # Extract subject from template (first line starting with $)
+    subject = f"${float(opp.get('surplus_amount', 0)):,.2f} in surplus funds from {opp.get('property_address', 'your property')}"
+
+    # Convert to simple HTML
+    import re
+    html_lines = []
+    for line in content.split("\n"):
+        line = line.strip()
+        if line.startswith("# ") or line.startswith("## "):
+            continue  # Skip markdown headers
+        line = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", line)
+        if line:
+            html_lines.append(f"<p>{line}</p>")
+        else:
+            html_lines.append("<br>")
+
+    body_html = "\n".join(html_lines)
+
+    return send_email(
+        to_email=to_email,
+        subject=subject,
+        body_html=body_html,
+    )
 
 
 def _create_phone_action(opp: dict, claimant: dict, supabase):

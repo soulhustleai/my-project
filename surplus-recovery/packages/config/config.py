@@ -51,6 +51,12 @@ class Config:
     # Enrichment
     max_enrichments_per_day: int = int(os.getenv("MAX_ENRICHMENTS_PER_DAY", "100"))
 
+    # SMTP (Email Outreach)
+    smtp_host: str = os.getenv("SMTP_HOST", "")
+    smtp_port: int = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user: str = os.getenv("SMTP_USER", "")
+    smtp_pass: str = os.getenv("SMTP_PASS", "")
+
     # Sentry
     sentry_dsn: str = os.getenv("SENTRY_DSN", "")
 
