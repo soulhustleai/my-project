@@ -225,7 +225,21 @@ select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csv
 
 <script>
 // ============ CONFIG ============
-const WEBHOOK_URL = 'https://hook.us2.make.com/lqmweaa4g9vaheqepuk2ahcuf5q9fii0';
+// OPTION 1: Make.com webhook (scenario needed behind it)
+// const SUBMIT_MODE = 'webhook';
+// const WEBHOOK_URL = 'https://hook.us2.make.com/lqmweaa4g9vaheqepuk2ahcuf5q9fii0';
+
+// OPTION 2: Direct Supabase insert (requires RLS policy or service key in Edge Function)
+const SUBMIT_MODE = 'supabase';
+const SUPABASE_URL = 'https://pjkurxtvvtxbpfearqhd.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_o-qvK6EVAQDUfEdF6-sIRg_cVjYJyoa';
+
+// OPTION 3: n8n webhook (set your n8n webhook URL here when running locally)
+// const SUBMIT_MODE = 'webhook';
+// const WEBHOOK_URL = 'http://localhost:5678/webhook/aegis-intake';
+
+// DayDay's phone for SMS alerts (used by backend, not client)
+const DAYDAY_PHONE = '+14075612878';
 
 // ============ STATE ============
 let currentScreen = 1;
@@ -397,12 +411,26 @@ async function submitForm() {
   };
 
   try {
-    const res = await fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (!res.ok && res.status !== 200 && res.status !== 202) throw new Error('Webhook error');
+    let res;
+    if (SUBMIT_MODE === 'supabase') {
+      res = await fetch(SUPABASE_URL + '/rest/v1/aegis_leads', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+    }
+    if (!res.ok && res.status !== 200 && res.status !== 201 && res.status !== 202) throw new Error('Submit error: ' + res.status);
     // Show thank you
     document.getElementById('screen7').classList.remove('active');
     document.getElementById('screenDone').classList.add('active');
