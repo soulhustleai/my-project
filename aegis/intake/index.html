@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Health Coverage Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#C9A033;--gold-light:#F2C95C;--bg:#050505;--card:#111;--card-hover:#1a1a1a;--text:#fff;--text-dim:#999;--border:#222;--radius:12px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.container{max-width:480px;margin:0 auto;padding:20px 16px;min-height:100vh;display:flex;flex-direction:column}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:32px;overflow:hidden;opacity:0;transition:opacity .3s}
+.progress-bar.visible{opacity:1}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;transition:width .4s ease}
+.screen{display:none;flex-direction:column;flex:1;animation:fadeIn .4s ease}
+.screen.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{background:none;border:none;color:var(--text-dim);font-size:14px;cursor:pointer;padding:4px 0;margin-bottom:20px;text-align:left;width:fit-content}
+.back-btn:hover{color:var(--text)}
+h1{font-size:24px;font-weight:600;line-height:1.4;margin-bottom:12px}
+h2{font-size:20px;font-weight:600;line-height:1.4;margin-bottom:8px}
+.subtext{color:var(--text-dim);font-size:15px;line-height:1.6;margin-bottom:8px}
+.spacer{flex:1}
+.btn{display:block;width:100%;padding:16px;border:none;border-radius:var(--radius);font-family:'Inter',sans-serif;font-size:16px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#050505}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,160,51,.3)}
+.btn-gold:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-gold.loading{pointer-events:none;opacity:.7}
+.btn-gold.loading::after{content:'';display:inline-block;width:16px;height:16px;border:2px solid #050505;border-top-color:transparent;border-radius:50%;margin-left:8px;animation:spin .6s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.question{margin-bottom:24px}
+.question label{display:block;font-size:15px;font-weight:500;margin-bottom:10px;color:var(--text-dim)}
+.text-input{width:100%;padding:14px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;outline:none;transition:border-color .2s}
+.text-input:focus{border-color:var(--gold)}
+.text-input::placeholder{color:#555}
+select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23999'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.options{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.option-card{padding:14px 16px;background:var(--card);border:2px solid var(--border);border-radius:var(--radius);cursor:pointer;transition:all .2s;font-size:15px;text-align:left}
+.option-card:hover{background:var(--card-hover);border-color:#444}
+.option-card.selected{border-color:var(--gold);background:rgba(201,160,51,.08)}
+.option-card.selected::before{content:'';display:none}
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.options-grid .option-card{text-align:center;font-size:14px;padding:12px}
+.confirm-text{font-size:18px;line-height:1.6;margin-bottom:16px}
+.confirm-text.highlight{color:var(--gold);font-weight:500}
+.thank-you{text-align:center;padding-top:60px}
+.thank-you .check{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:32px}
+.error-msg{color:#e74c3c;font-size:14px;margin-top:8px;display:none}
+.error-msg.visible{display:block}
+.dynamic-section{display:none}
+.dynamic-section.active{display:block}
+@media(max-width:390px){.container{padding:16px 12px}h1{font-size:21px}h2{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+<!-- SCREEN 1: HOOK -->
+<div class="screen active" id="screen1">
+<div class="spacer"></div>
+<h1>Let's take a quick look at your health coverage situation...</h1>
+<p class="subtext">Most people don't realize where they're exposed until it's too late.</p>
+<p class="subtext" style="margin-bottom:40px">This takes about 60 seconds.</p>
+<button class="btn btn-gold" onclick="goTo(2)">Start My Review</button>
+<div style="height:40px"></div>
+</div>
+
+<!-- SCREEN 2: IDENTITY + ENTRY -->
+<div class="screen" id="screen2">
+<button class="back-btn" onclick="goTo(1)">&larr; Back</button>
+<h2>First, a little about you</h2>
+<div class="question">
+<label>What's your first name?</label>
+<input type="text" class="text-input" id="firstName" placeholder="First name" autocomplete="given-name" oninput="checkScreen2()">
+</div>
+<div class="question">
+<label>What state are you in?</label>
+<select class="text-input" id="state" onchange="checkScreen2()">
+<option value="">Select your state</option>
+<option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option>
+</select>
+</div>
+<div class="question">
+<label>What made you check this today?</label>
+<div class="options" id="reasonOptions">
+<div class="option-card" onclick="selectReason(this,'Lost coverage')">Lost coverage</div>
+<div class="option-card" onclick="selectReason(this,'Too expensive')">Too expensive</div>
+<div class="option-card" onclick="selectReason(this,'Got a medical bill')">Got a medical bill</div>
+<div class="option-card" onclick="selectReason(this,'Self-employed')">Self-employed</div>
+<div class="option-card" onclick="selectReason(this,'Just exploring')">Just exploring</div>
+</div>
+</div>
+<button class="btn btn-gold" id="btn2" disabled onclick="goTo(3)">Continue</button>
+</div>
+
+<!-- SCREEN 3: SMART CONTEXT -->
+<div class="screen" id="screen3">
+<button class="back-btn" onclick="goTo(2)">&larr; Back</button>
+<h2>Tell us a bit more...</h2>
+
+<div class="dynamic-section" id="ctx-lost">
+<div class="question"><label>When did your coverage end?</label>
+<select class="text-input ctx-field" onchange="checkScreen3()"><option value="">Select</option><option>This week</option><option>This month</option><option>1-3 months ago</option><option>3+ months ago</option></select></div>
+<div class="question"><label>Are you uninsured right now?</label>
+<div class="options ctx-opts" data-field="uninsured"><div class="option-card" onclick="selectCtx(this,'Yes')">Yes</div><div class="option-card" onclick="selectCtx(this,'No')">No</div></div></div>
+</div>
+
+<div class="dynamic-section" id="ctx-expensive">
+<div class="question"><label>What are you paying monthly?</label>
+<select class="text-input ctx-field" onchange="checkScreen3()"><option value="">Select</option><option>Under $200</option><option>$200-400</option><option>$400-600</option><option>$600+</option><option>Not sure</option></select></div>
+<div class="question"><label>Does it feel worth it?</label>
+<div class="options ctx-opts" data-field="worth_it"><div class="option-card" onclick="selectCtx(this,'Yes')">Yes</div><div class="option-card" onclick="selectCtx(this,'No')">No</div><div class="option-card" onclick="selectCtx(this,'Not sure')">Not sure</div></div></div>
+</div>
+
+<div class="dynamic-section" id="ctx-medical">
+<div class="question"><label>Roughly how much was the bill?</label>
+<select class="text-input ctx-field" onchange="checkScreen3()"><option value="">Select</option><option>Under $1K</option><option>$1K-5K</option><option>$5K-10K</option><option>$10K+</option><option>Rather not say</option></select></div>
+<div class="question"><label>Did this catch you off guard?</label>
+<div class="options ctx-opts" data-field="surprise"><div class="option-card" onclick="selectCtx(this,'Yes')">Yes</div><div class="option-card" onclick="selectCtx(this,'It\'s been building')">It's been building</div><div class="option-card" onclick="selectCtx(this,'Rather not say')">Rather not say</div></div></div>
+</div>
+
+<div class="dynamic-section" id="ctx-selfemployed">
+<div class="question"><label>Monthly income range?</label>
+<select class="text-input ctx-field" onchange="checkScreen3()"><option value="">Select</option><option>Under $2K</option><option>$2K-4K</option><option>$4K-6K</option><option>$6K+</option><option>Rather not say</option></select></div>
+<div class="question"><label>Have you had a proper plan before?</label>
+<div class="options ctx-opts" data-field="prior_plan"><div class="option-card" onclick="selectCtx(this,'Yes, currently')">Yes, currently</div><div class="option-card" onclick="selectCtx(this,'Yes, in the past')">Yes, in the past</div><div class="option-card" onclick="selectCtx(this,'Never')">Never</div><div class="option-card" onclick="selectCtx(this,'Patching things together')">Patching things together</div></div></div>
+</div>
+
+<div class="dynamic-section" id="ctx-exploring">
+<div class="question"><label>What's your current situation?</label>
+<div class="options ctx-opts" data-field="current_situation"><div class="option-card" onclick="selectCtx(this,'Covered through employer')">Covered through employer</div><div class="option-card" onclick="selectCtx(this,'Covered through marketplace')">Covered through marketplace</div><div class="option-card" onclick="selectCtx(this,'On family member\'s plan')">On family member's plan</div><div class="option-card" onclick="selectCtx(this,'Currently uninsured')">Currently uninsured</div></div></div>
+<div class="question"><label>Any upcoming life changes?</label>
+<div class="options ctx-opts" data-field="life_changes"><div class="option-card" onclick="selectCtx(this,'New job')">New job</div><div class="option-card" onclick="selectCtx(this,'Turning 26')">Turning 26</div><div class="option-card" onclick="selectCtx(this,'Getting married')">Getting married</div><div class="option-card" onclick="selectCtx(this,'Having a baby')">Having a baby</div><div class="option-card" onclick="selectCtx(this,'None')">None</div></div></div>
+</div>
+
+<button class="btn btn-gold" id="btn3" disabled onclick="goTo(4)">Continue</button>
+</div>
+
+<!-- SCREEN 4: PAIN + URGENCY -->
+<div class="screen" id="screen4">
+<button class="back-btn" onclick="goTo(3)">&larr; Back</button>
+<h2>Let's get real for a second...</h2>
+<div class="question"><label>What's been the most frustrating part of this?</label>
+<div class="options" id="painOptions">
+<div class="option-card" onclick="selectSingle(this,'pain','Confusing options')">Confusing options</div>
+<div class="option-card" onclick="selectSingle(this,'pain','Too expensive')">Too expensive</div>
+<div class="option-card" onclick="selectSingle(this,'pain','Fear of unexpected bills')">Fear of unexpected bills</div>
+<div class="option-card" onclick="selectSingle(this,'pain','Not knowing if I\'m covered')">Not knowing if I'm covered</div>
+<div class="option-card" onclick="selectSingle(this,'pain','Just haven\'t gotten around to it')">Just haven't gotten around to it</div>
+</div></div>
+<div class="question"><label>If nothing changes in the next 30-60 days, what happens?</label>
+<div class="options" id="consequenceOptions">
+<div class="option-card" onclick="selectSingle(this,'consequence','Keep overpaying')">Keep overpaying</div>
+<div class="option-card" onclick="selectSingle(this,'consequence','Risk another bill')">Risk another bill</div>
+<div class="option-card" onclick="selectSingle(this,'consequence','Stay uninsured')">Stay uninsured</div>
+<div class="option-card" onclick="selectSingle(this,'consequence','Not sure')">Not sure</div>
+</div></div>
+<button class="btn btn-gold" id="btn4" disabled onclick="goTo(5)">Continue</button>
+</div>
+
+<!-- SCREEN 5: SOFT QUALIFICATION -->
+<div class="screen" id="screen5">
+<button class="back-btn" onclick="goTo(4)">&larr; Back</button>
+<h2>Almost there...</h2>
+<div class="question"><label>What matters most to you right now?</label>
+<div class="options" id="priorityOptions">
+<div class="option-card" onclick="selectSingle(this,'priority','Getting covered fast')">Getting covered fast</div>
+<div class="option-card" onclick="selectSingle(this,'priority','Lowering my monthly cost')">Lowering my monthly cost</div>
+<div class="option-card" onclick="selectSingle(this,'priority','Understanding my options')">Understanding my options</div>
+<div class="option-card" onclick="selectSingle(this,'priority','Avoiding unexpected bills')">Avoiding unexpected bills</div>
+</div></div>
+<div class="question"><label>How soon do you want to get this handled?</label>
+<div class="options" id="urgencyOptions">
+<div class="option-card" onclick="selectSingle(this,'urgency_timeline','ASAP')">ASAP</div>
+<div class="option-card" onclick="selectSingle(this,'urgency_timeline','Within a few days')">Within a few days</div>
+<div class="option-card" onclick="selectSingle(this,'urgency_timeline','Within a week')">Within a week</div>
+<div class="option-card" onclick="selectSingle(this,'urgency_timeline','Just looking')">Just looking</div>
+</div></div>
+<button class="btn btn-gold" id="btn5" disabled onclick="goTo(6)">Continue</button>
+</div>
+
+<!-- SCREEN 6: CONTACT -->
+<div class="screen" id="screen6">
+<button class="back-btn" onclick="goTo(5)">&larr; Back</button>
+<h2>Where should we reach you?</h2>
+<div class="question"><label>Phone number</label>
+<input type="tel" class="text-input" id="phone" placeholder="(555) 123-4567" autocomplete="tel" oninput="formatPhone(this);checkScreen6()"></div>
+<div class="question"><label>Email (optional)</label>
+<input type="email" class="text-input" id="email" placeholder="you@email.com" autocomplete="email"></div>
+<div class="question"><label>Best time to reach you?</label>
+<div class="options-grid" id="timeOptions">
+<div class="option-card" onclick="selectSingle(this,'preferred_time','Morning')">Morning</div>
+<div class="option-card" onclick="selectSingle(this,'preferred_time','Afternoon')">Afternoon</div>
+<div class="option-card" onclick="selectSingle(this,'preferred_time','Evening')">Evening</div>
+</div></div>
+<button class="btn btn-gold" id="btn6" disabled onclick="goTo(7)">Continue</button>
+</div>
+
+<!-- SCREEN 7: CONFIRM -->
+<div class="screen" id="screen7">
+<button class="back-btn" onclick="goTo(6)">&larr; Back</button>
+<div class="spacer"></div>
+<p class="confirm-text" style="font-size:22px;font-weight:600">Got it.</p>
+<p class="confirm-text">Based on what you shared, there's a strong chance we can help you tighten this up and avoid unnecessary costs.</p>
+<p class="confirm-text highlight">DayDay will reach out shortly to go over your options.</p>
+<div style="height:32px"></div>
+<button class="btn btn-gold" id="submitBtn" onclick="submitForm()">Submit & Get My Options</button>
+<p class="error-msg" id="submitError">Something went wrong. Please try again.</p>
+<div style="height:40px"></div>
+</div>
+
+<!-- THANK YOU -->
+<div class="screen" id="screenDone">
+<div class="spacer"></div>
+<div class="thank-you">
+<div class="check">&#10003;</div>
+<h1>Appreciate you.</h1>
+<p class="subtext" style="font-size:17px">DayDay's reviewing your info now.<br>Expect a call soon.</p>
+</div>
+<div class="spacer"></div>
+</div>
+</div>
+
+<script>
+// ============ CONFIG ============
+const WEBHOOK_URL = 'https://hook.us2.make.com/lqmweaa4g9vaheqepuk2ahcuf5q9fii0';
+
+// ============ STATE ============
+let currentScreen = 1;
+const data = {
+  first_name:'',state:'',reason:'',context_answers:{},
+  pain_point:'',consequence:'',priority:'',urgency_timeline:'',
+  phone:'',email:'',preferred_time:''
+};
+
+// ============ NAVIGATION ============
+function goTo(n) {
+  if (n === 3) setupDynamic();
+  document.getElementById('screen' + currentScreen)?.classList.remove('active');
+  document.getElementById('screenDone')?.classList.remove('active');
+  document.getElementById('screen' + n)?.classList.add('active');
+  currentScreen = n;
+  const bar = document.getElementById('progressBar');
+  const fill = document.getElementById('progressFill');
+  if (n <= 1) { bar.classList.remove('visible'); }
+  else { bar.classList.add('visible'); fill.style.width = Math.round(((n-1)/7)*100) + '%'; }
+  window.scrollTo(0,0);
+}
+
+// ============ SCREEN 2 ============
+function selectReason(el, val) {
+  document.querySelectorAll('#reasonOptions .option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  data.reason = val;
+  checkScreen2();
+}
+function checkScreen2() {
+  data.first_name = document.getElementById('firstName').value.trim();
+  data.state = document.getElementById('state').value;
+  document.getElementById('btn2').disabled = !(data.first_name && data.state && data.reason);
+}
+
+// ============ SCREEN 3 DYNAMIC ============
+const reasonMap = {'Lost coverage':'ctx-lost','Too expensive':'ctx-expensive','Got a medical bill':'ctx-medical','Self-employed':'ctx-selfemployed','Just exploring':'ctx-exploring'};
+function setupDynamic() {
+  document.querySelectorAll('.dynamic-section').forEach(s => s.classList.remove('active'));
+  const id = reasonMap[data.reason];
+  if (id) document.getElementById(id).classList.add('active');
+  data.context_answers = {};
+  document.getElementById('btn3').disabled = true;
+}
+function selectCtx(el, val) {
+  const parent = el.closest('.ctx-opts');
+  parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  const field = parent.dataset.field;
+  data.context_answers[field] = val;
+  checkScreen3();
+}
+function checkScreen3() {
+  const active = document.querySelector('.dynamic-section.active');
+  if (!active) { document.getElementById('btn3').disabled = false; return; }
+  const selects = active.querySelectorAll('select.ctx-field');
+  const optGroups = active.querySelectorAll('.ctx-opts');
+  let valid = true;
+  selects.forEach(s => { if (!s.value) valid = false; else data.context_answers[s.previousElementSibling?.textContent?.trim() || 'detail'] = s.value; });
+  optGroups.forEach(g => { if (!g.querySelector('.selected')) valid = false; });
+  document.getElementById('btn3').disabled = !valid;
+}
+
+// ============ GENERIC SINGLE SELECT ============
+function selectSingle(el, field, val) {
+  const parent = el.closest('.options, .options-grid');
+  parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  data[field] = val;
+  if (field === 'pain') checkScreen4();
+  if (field === 'consequence') checkScreen4();
+  if (field === 'priority') checkScreen5();
+  if (field === 'urgency_timeline') checkScreen5();
+  if (field === 'preferred_time') checkScreen6();
+}
+function checkScreen4() { document.getElementById('btn4').disabled = !(data.pain_point || document.querySelector('#painOptions .selected')) && !(data.consequence || document.querySelector('#consequenceOptions .selected'));
+  const hasPain = document.querySelector('#painOptions .selected');
+  const hasCons = document.querySelector('#consequenceOptions .selected');
+  if (hasPain) data.pain_point = hasPain.textContent.trim();
+  if (hasCons) data.consequence = hasCons.textContent.trim();
+  document.getElementById('btn4').disabled = !(hasPain && hasCons);
+}
+function checkScreen5() {
+  const hasPri = document.querySelector('#priorityOptions .selected');
+  const hasUrg = document.querySelector('#urgencyOptions .selected');
+  document.getElementById('btn5').disabled = !(hasPri && hasUrg);
+}
+
+// ============ SCREEN 6 ============
+function formatPhone(el) {
+  let v = el.value.replace(/\D/g,'');
+  if (v.length > 10) v = v.slice(0,10);
+  if (v.length >= 7) el.value = '(' + v.slice(0,3) + ') ' + v.slice(3,6) + '-' + v.slice(6);
+  else if (v.length >= 4) el.value = '(' + v.slice(0,3) + ') ' + v.slice(3);
+  else if (v.length > 0) el.value = '(' + v;
+}
+function checkScreen6() {
+  const ph = document.getElementById('phone').value.replace(/\D/g,'');
+  document.getElementById('btn6').disabled = ph.length < 10;
+}
+
+// ============ SCORING ============
+function calculateScore() {
+  // Urgency (35%)
+  const urgencyMap = {'Lost coverage':95,'Got a medical bill':90,'Too expensive':75,'Self-employed':70,'Just exploring':40};
+  let urg = urgencyMap[data.reason] || 50;
+  if (data.urgency_timeline === 'ASAP') urg = Math.min(100, urg + 10);
+  if (data.urgency_timeline === 'Within a few days') urg = Math.min(100, urg + 5);
+
+  // Contactability (20%)
+  const ph = document.getElementById('phone').value.replace(/\D/g,'');
+  const em = document.getElementById('email').value.trim();
+  let con = 80;
+  if (ph.length >= 10 && em) con = 90;
+  if (ph.length >= 10 && em && data.preferred_time) con = 95;
+
+  // Insurability (25%)
+  let ins = 75;
+  const ua = data.context_answers;
+  if (ua.uninsured === 'Yes' || ua.current_situation === 'Currently uninsured') ins += 10;
+  if (ua.life_changes && ua.life_changes !== 'None') ins += 5;
+  if (ua['prior_plan'] === 'Never' || ua['prior_plan'] === 'Patching things together') ins += 5;
+
+  // Monetization (20%)
+  const monMap = {'Getting covered fast':85,'Lowering my monthly cost':75,'Understanding my options':60,'Avoiding unexpected bills':70};
+  let mon = monMap[data.priority] || 65;
+
+  const total = Math.round(urg * 0.35 + con * 0.20 + ins * 0.25 + mon * 0.20);
+  const tier = total >= 75 ? 'A' : total >= 50 ? 'B' : 'C';
+  return { score: total, tier, urgency_score: urg, contactability_score: con, insurability_score: ins, monetization_score: mon };
+}
+
+// ============ SUBMIT ============
+async function submitForm() {
+  const btn = document.getElementById('submitBtn');
+  const err = document.getElementById('submitError');
+  btn.classList.add('loading');
+  btn.textContent = 'Submitting...';
+  err.classList.remove('visible');
+
+  data.phone = document.getElementById('phone').value;
+  data.email = document.getElementById('email').value.trim();
+
+  const scores = calculateScore();
+  const payload = {
+    first_name: data.first_name,
+    last_name: '',
+    state: data.state,
+    phone: data.phone,
+    email: data.email || null,
+    source: 'intake_form',
+    source_detail: 'aegis-intake-v1',
+    reason: data.reason,
+    context_answers: data.context_answers,
+    pain_point: data.pain_point,
+    consequence: data.consequence,
+    priority: data.priority,
+    urgency_timeline: data.urgency_timeline,
+    preferred_time: data.preferred_time,
+    score: scores.score,
+    tier: scores.tier,
+    urgency_score: scores.urgency_score,
+    contactability_score: scores.contactability_score,
+    insurability_score: scores.insurability_score,
+    monetization_score: scores.monetization_score,
+    status: 'new',
+    assigned_to: 'dayday'
+  };
+
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok && res.status !== 200 && res.status !== 202) throw new Error('Webhook error');
+    // Show thank you
+    document.getElementById('screen7').classList.remove('active');
+    document.getElementById('screenDone').classList.add('active');
+    document.getElementById('progressFill').style.width = '100%';
+  } catch (e) {
+    btn.classList.remove('loading');
+    btn.textContent = 'Submit & Get My Options';
+    err.classList.add('visible');
+  }
+}
+</script>
+</body>
+</html>
