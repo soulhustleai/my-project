@@ -195,6 +195,12 @@ select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csv
 <div class="option-card" onclick="selectSingle(this,'preferred_time','Afternoon')">Afternoon</div>
 <div class="option-card" onclick="selectSingle(this,'preferred_time','Evening')">Evening</div>
 </div></div>
+<div class="question" style="margin-top:16px">
+<label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer" onclick="toggleConsent()">
+<input type="checkbox" id="smsConsent" style="margin-top:3px;accent-color:var(--gold);width:18px;height:18px;flex-shrink:0" onchange="checkScreen6()">
+<span style="font-size:13px;color:var(--text-dim);line-height:1.5">By checking this box, I agree to receive calls and text messages about my health coverage options. Msg &amp; data rates may apply. Reply STOP to opt out at any time. Reply HELP for assistance.</span>
+</label>
+</div>
 <button class="btn btn-gold" id="btn6" disabled onclick="goTo(7)">Continue</button>
 </div>
 
@@ -337,9 +343,15 @@ function formatPhone(el) {
   else if (v.length >= 4) el.value = '(' + v.slice(0,3) + ') ' + v.slice(3);
   else if (v.length > 0) el.value = '(' + v;
 }
+function toggleConsent() {
+  const cb = document.getElementById('smsConsent');
+  cb.checked = !cb.checked;
+  checkScreen6();
+}
 function checkScreen6() {
   const ph = document.getElementById('phone').value.replace(/\D/g,'');
-  document.getElementById('btn6').disabled = ph.length < 10;
+  const consent = document.getElementById('smsConsent').checked;
+  document.getElementById('btn6').disabled = !(ph.length >= 10 && consent);
 }
 
 // ============ SCORING ============
