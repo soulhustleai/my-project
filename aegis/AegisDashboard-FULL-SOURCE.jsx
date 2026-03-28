@@ -13,9 +13,10 @@ import {
 import { createClient } from '@supabase/supabase-js';
 
 // ─── Supabase Client ───
+// SECURITY: Using anon key (safe for client-side). RLS policies control access.
 const supabase = createClient(
   'https://pjkurxtvvtxbpfearqhd.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqa3VyeHR2dnR4YnBmZWFycWhkIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Mzk0ODM1MiwiZXhwIjoyMDg5NTI0MzUyfQ.0GFx9z3oo3oTQ-_0A9ml04wwTwHyCw1P0pyoDxyPizc'
+  'sb_publishable_o-qvK6EVAQDUfEdF6-sIRg_cVjYJyoa'
 );
 
 // ─── Theme ───
@@ -262,11 +263,19 @@ export default function AegisDashboard() {
   const [leadsSubTab, setLeadsSubTab] = useState('all'); // ads | scrapes | all
   const [queueMode, setQueueMode] = useState('my'); // my | lauren
   const [currentUser] = useState('DayDay');
-  const [leads, setLeads] = useState(DEMO_LEADS);
+  const [leads, setLeads] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [noteText, setNoteText] = useState('');
-  const [stats, setStats] = useState(DEMO_STATS);
-  const [isLive, setIsLive] = useState(false);
+  const [stats, setStats] = useState({
+    revenue: 0, closeRate: 0, speedToContact: 0, avgScore: 0,
+    streak: 0, dailyGoal: { current: 0, target: 5 },
+    leaderboard: [
+      { name: 'DayDay', calls: 0, closed: 0, revenue: 0 },
+      { name: 'Lauren', calls: 0, closed: 0, revenue: 0 },
+    ],
+    callbacks: [],
+  });
+  const [isLive, setIsLive] = useState(true);
   const [showComposer, setShowComposer] = useState(false);
   const [composerInput, setComposerInput] = useState('');
   const [composerOutput, setComposerOutput] = useState('');
@@ -316,31 +325,88 @@ export default function AegisDashboard() {
           setLeads(mapped);
           setIsLive(true);
         }
-      } catch (e) { console.log('Using demo data:', e.message); }
+      } catch (e) { console.log('Supabase fetch error:', e.message); }
     }
     async function fetchLiveStats() {
       try {
         const { data: allLeads } = await supabase.from('aegis_leads').select('*');
         const { data: revenue } = await supabase.from('aegis_revenue').select('*');
-        if (allLeads && allLeads.length > 0) {
-          const closed = allLeads.filter(l => l.status === 'closed' || l.status === 'sold').length;
-          const contacted = allLeads.filter(l => ['contacted','quoted','closed','sold'].includes(l.status)).length;
-          const totalRev = (revenue || []).reduce((s, r) => s + (r.amount || 0), 0);
-          setStats(prev => ({
-            ...prev,
-            totalLeads: allLeads.length,
-            closedDeals: closed,
-            closeRate: contacted > 0 ? Math.round((closed / contacted) * 100) : 0,
-            revenue: totalRev || prev.revenue,
-            newToday: allLeads.filter(l => new Date(l.created_at).toDateString() === new Date().toDateString()).length,
-          }));
-        }
-      } catch (e) { console.log('Stats fallback:', e.message); }
+        const { data: adSpend } = await supabase.from('aegis_ad_spend').select('*');
+
+        const totalLeads = allLeads?.length || 0;
+        const closed = (allLeads || []).filter(l => l.status === 'closed' || l.status === 'sold').length;
+        const contacted = (allLeads || []).filter(l => ['contacted','quoted','closed','sold'].includes(l.status)).length;
+        const totalRev = (revenue || []).reduce((s, r) => s + parseFloat(r.amount || 0), 0);
+        const totalAdSpend = (adSpend || []).reduce((s, r) => s + parseFloat(r.amount || 0), 0);
+        const avgScore = totalLeads > 0 ? Math.round((allLeads || []).reduce((s, l) => s + (l.score || 0), 0) / totalLeads) : 0;
+        const tierA = (allLeads || []).filter(l => l.tier === 'A').length;
+        const tierB = (allLeads || []).filter(l => l.tier === 'B').length;
+        const tierC = (allLeads || []).filter(l => l.tier === 'C').length;
+
+        // ROI analytics (matching presentation Slide 9)
+        const costPerLead = totalLeads > 0 ? Math.round(totalAdSpend / totalLeads) : 0;
+        const revenuePerClose = closed > 0 ? Math.round(totalRev / closed) : 0;
+        const roas = totalAdSpend > 0 ? Math.round((totalRev / totalAdSpend) * 100) : 0;
+
+        // DayDay's estimated commission (Premium × 8mo × 17%)
+        // Regular: $816/enrollment, Whale: $1,360/enrollment
+        const estDayDayCommission = closed * 816; // Conservative estimate
+
+        // Speed to contact (avg time from creation to first contact)
+        const contactedLeads = (allLeads || []).filter(l => l.first_contacted_at && l.created_at);
+        const avgSpeedMins = contactedLeads.length > 0
+          ? Math.round(contactedLeads.reduce((s, l) => s + (new Date(l.first_contacted_at) - new Date(l.created_at)) / 60000, 0) / contactedLeads.length)
+          : 0;
+
+        // DayDay vs Lauren split
+        const dayDayLeads = (allLeads || []).filter(l => !l.assigned_to || l.assigned_to === 'DayDay');
+        const laurenLeads = (allLeads || []).filter(l => l.assigned_to === 'Lauren');
+        const dayDayClosed = dayDayLeads.filter(l => l.status === 'sold' || l.status === 'closed').length;
+        const laurenClosed = laurenLeads.filter(l => l.status === 'sold' || l.status === 'closed').length;
+
+        setStats(prev => ({
+          ...prev,
+          totalLeads,
+          closedDeals: closed,
+          closeRate: contacted > 0 ? Math.round((closed / contacted) * 100) : 0,
+          revenue: totalRev,
+          avgScore,
+          tierA, tierB, tierC,
+          costPerLead,
+          revenuePerClose,
+          roas,
+          estDayDayCommission,
+          speedToContact: avgSpeedMins,
+          totalAdSpend,
+          newToday: (allLeads || []).filter(l => new Date(l.created_at).toDateString() === new Date().toDateString()).length,
+          hotQueue: tierA,
+          leaderboard: [
+            { name: 'DayDay', calls: dayDayLeads.filter(l => l.contact_attempts > 0).length, closed: dayDayClosed, revenue: dayDayClosed * 100 },
+            { name: 'Lauren', calls: laurenLeads.filter(l => l.contact_attempts > 0).length, closed: laurenClosed, revenue: laurenClosed * 75 },
+          ],
+        }));
+      } catch (e) { console.log('Stats error:', e.message); }
     }
     fetchLiveLeads();
     fetchLiveStats();
-    const interval = setInterval(() => { fetchLiveLeads(); fetchLiveStats(); }, 30000);
-    return () => clearInterval(interval);
+    // Realtime subscription — instant updates when new leads arrive
+    const channel = supabase.channel('aegis-realtime')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'aegis_leads' }, (payload) => {
+        console.log('New lead received:', payload.new.first_name);
+        setLeads(prev => {
+          const mapped = { ...payload.new, notes: payload.new.notes || [], contact_attempts: payload.new.contact_attempts || 0, dayday_notes: payload.new.dayday_notes || '' };
+          return [mapped, ...prev].sort((a, b) => (b.score || 0) - (a.score || 0));
+        });
+        fetchLiveStats(); // Refresh stats on new lead
+      })
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'aegis_leads' }, (payload) => {
+        setLeads(prev => prev.map(l => l.id === payload.new.id ? { ...l, ...payload.new } : l));
+        fetchLiveStats();
+      })
+      .subscribe();
+    // Fallback polling every 60s (in case realtime disconnects)
+    const interval = setInterval(() => { fetchLiveLeads(); fetchLiveStats(); }, 60000);
+    return () => { clearInterval(interval); supabase.removeChannel(channel); };
   }, []);
 
   // ─── Determine source type ───
@@ -473,11 +539,16 @@ export default function AegisDashboard() {
       }).then(() => console.log('Activity logged'));
       // Log revenue for sold dispositions
       if (['pa_sold', 'sa_sold', 'ha_sold'].includes(disp.key)) {
+        // DayDay's real commission: Premium × 8 months × 17%
+        // Regular: $600×8×17% = $816 | Whale (family): $1000×8×17% = $1,360
+        // Edwin's fee: A-tier $100, B-tier $75
+        const edwinFee = currentLead.tier === 'A' ? 100 : 75;
+        const estCommission = (currentLead.monetization_score || 0) >= 85 ? 1360 : 816;
         supabase.from('aegis_revenue').insert({
           lead_id: currentLead.id,
           type: 'close_fee',
-          amount: currentLead.tier === 'A' ? 100 : 75,
-          description: `${disp.label} — ${currentLead.first_name} ${currentLead.last_name}`,
+          amount: edwinFee,
+          description: `${disp.label} — ${currentLead.first_name} ${currentLead.last_name} (DayDay est. commission: $${estCommission})`,
           paid: false,
         }).then(() => console.log('Revenue logged'));
       }
@@ -534,12 +605,34 @@ export default function AegisDashboard() {
   const handleComposerRewrite = () => {
     if (!composerInput.trim()) return;
     const templates = [
-      `Hi [Name], this is ${currentUser} with Godfident Insurance Solutions. I noticed you were looking into health coverage options. I'd love to help you find the best plan for your situation. When's a good time to chat for 5 minutes?`,
-      `Hey [Name]! ${currentUser} here from Godfident. I saw you're exploring health insurance options. I specialize in finding affordable coverage that actually works. Got 5 minutes today?`,
-      `[Name], ${currentUser} with Godfident Insurance. I help people just like you find affordable health coverage. I'd love to walk you through some options that could save you money. Free to chat today?`,
+      `Hi [Name], this is ${currentUser} with AEGIS Health — SoulHustleAI. I noticed you were looking into health coverage options. I'd love to help you find the best plan for your situation. When's a good time to chat for 5 minutes?`,
+      `Hey [Name]! ${currentUser} here from AEGIS Health — SoulHustleAI. I saw you're exploring health insurance options. I specialize in finding affordable coverage that actually works. Got 5 minutes today?`,
+      `[Name], ${currentUser} with AEGIS Health. I help people just like you find affordable health coverage. I'd love to walk you through some options that could save you money. Free to chat today?`,
     ];
     setComposerOutput(templates[Math.floor(Math.random() * templates.length)].replace('[Name]', currentLead?.first_name || 'there'));
   };
+
+  // ─── Phone Verification ───
+  const verifyPhone = useCallback(async (lead) => {
+    if (!lead || !lead.phone || lead.is_verified) return;
+    // Basic validation: must be 10+ digits, no 555 test numbers
+    const digits = lead.phone.replace(/\D/g, '');
+    const isValid = digits.length >= 10 && !digits.includes('555');
+    if (isValid && lead.id && !lead.id.startsWith('demo')) {
+      await supabase.from('aegis_leads').update({
+        is_verified: true,
+        verified_at: new Date().toISOString(),
+      }).eq('id', lead.id);
+      setLeads(prev => prev.map(l => l.id === lead.id ? { ...l, is_verified: true } : l));
+    }
+  }, []);
+
+  // Auto-verify on lead view
+  useEffect(() => {
+    if (currentLead && !currentLead.is_verified) {
+      verifyPhone(currentLead);
+    }
+  }, [currentLead, verifyPhone]);
 
   // ─── Contact rules ───
   const maxTotalAttempts = 21;
