@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--gold:#C9A033;--gold-light:#F2C95C;--bg:#050505;--card:#111;--card-hover:#1a1a1a;--text:#fff;--text-dim:#999;--border:#222;--radius:12px}
+:root{--gold:#D4AF37;--gold-light:#F2C95C;--bg:#0D1F35;--card:#1E3A5F;--card-hover:#2A4A70;--text:#fff;--text-dim:#8BA4C4;--border:#1E3A5F;--radius:12px}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
 .container{max-width:480px;margin:0 auto;padding:20px 16px;min-height:100vh;display:flex;flex-direction:column}
 .progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:32px;overflow:hidden;opacity:0;transition:opacity .3s}
@@ -60,11 +60,23 @@ select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csv
 <!-- SCREEN 1: HOOK -->
 <div class="screen active" id="screen1">
 <div class="spacer"></div>
+<div style="text-align:center;margin-bottom:24px">
+<div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px">🛡️</div>
+<p style="font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:600">AEGIS Health · Confidential Review</p>
+</div>
 <h1>Let's take a quick look at your health coverage situation...</h1>
 <p class="subtext">Most people don't realize where they're exposed until it's too late.</p>
-<p class="subtext" style="margin-bottom:40px">This takes about 60 seconds.</p>
-<button class="btn btn-gold" onclick="goTo(2)">Start My Review</button>
-<div style="height:40px"></div>
+<p class="subtext" style="margin-bottom:24px">This takes about 60 seconds.</p>
+<div style="display:flex;gap:12px;justify-content:center;margin-bottom:24px">
+<div style="text-align:center"><p style="font-size:18px;font-weight:700;color:var(--gold)">32</p><p style="font-size:9px;color:var(--text-dim)">States Covered</p></div>
+<div style="width:1px;background:var(--border)"></div>
+<div style="text-align:center"><p style="font-size:18px;font-weight:700;color:var(--gold)">500+</p><p style="font-size:9px;color:var(--text-dim)">Families Helped</p></div>
+<div style="width:1px;background:var(--border)"></div>
+<div style="text-align:center"><p style="font-size:18px;font-weight:700;color:var(--gold)">$0</p><p style="font-size:9px;color:var(--text-dim)">Upfront Cost</p></div>
+</div>
+<button class="btn btn-gold" onclick="goTo(2)">Start My Free Review</button>
+<p style="text-align:center;font-size:10px;color:var(--text-dim);margin-top:12px">🔒 Your information is private and never shared without your consent.</p>
+<div style="height:20px"></div>
 </div>
 
 <!-- SCREEN 2: IDENTITY + ENTRY -->
@@ -210,7 +222,7 @@ select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csv
 <div class="spacer"></div>
 <p class="confirm-text" style="font-size:22px;font-weight:600">Got it.</p>
 <p class="confirm-text">Based on what you shared, there's a strong chance we can help you tighten this up and avoid unnecessary costs.</p>
-<p class="confirm-text highlight">DayDay will reach out shortly to go over your options.</p>
+<p class="confirm-text highlight">Adam, your Health Advisor, will reach out shortly to go over your options.</p>
 <div style="height:32px"></div>
 <button class="btn btn-gold" id="submitBtn" onclick="submitForm()">Submit & Get My Options</button>
 <p class="error-msg" id="submitError">Something went wrong. Please try again.</p>
@@ -222,8 +234,12 @@ select.text-input{appearance:none;background-image:url("data:image/svg+xml,%3Csv
 <div class="spacer"></div>
 <div class="thank-you">
 <div class="check">&#10003;</div>
-<h1>Appreciate you.</h1>
-<p class="subtext" style="font-size:17px">DayDay's reviewing your info now.<br>Expect a call soon.</p>
+<h1>You're in good hands.</h1>
+<p class="subtext" style="font-size:17px">Adam (DayDay), your State Health Advisor, is reviewing your information now.</p>
+<p class="subtext" style="font-size:14px;margin-top:12px">Expect a personal call within the next few hours. He'll walk you through your best options — no pressure, no obligation.</p>
+<div style="margin-top:24px;padding:12px;background:rgba(212,175,55,0.1);border-radius:var(--radius);border:1px solid rgba(212,175,55,0.2)">
+<p style="font-size:10px;color:var(--gold);text-align:center">🛡️ Licensed in 32 states · United Healthcare · BlueCross BlueShield · Oscar · Cigna</p>
+</div>
 </div>
 <div class="spacer"></div>
 </div>
