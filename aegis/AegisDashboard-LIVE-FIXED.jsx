@@ -718,10 +718,12 @@ export default function AegisDashboard() {
   const handleDisposition = useCallback((disp) => {
     if (!currentLead) return;
     const newStatus = ['pa_sold','sa_sold','ha_sold'].includes(disp.key) ? 'sold' : disp.key === 'medicaid' ? 'disposed' : disp.key === 'aca_transfer' ? 'transferred' : disp.key === 'never_contacted' ? 'archived' : disp.key === 'no_answer' ? 'no_answer' : 'contacted';
-    setLiveLeads(prev => prev.map(l => l.id === currentLead.id ? { ...l, status: newStatus, contact_attempts: (l.contact_attempts||0)+1, last_contacted_at: new Date().toISOString() } : l));
+    // First-to-disposition owns the lead — whoever dispositions first gets assigned
+    const owner = currentLead.assigned_to || currentUser;
+    setLiveLeads(prev => prev.map(l => l.id === currentLead.id ? { ...l, status: newStatus, assigned_to: owner, contact_attempts: (l.contact_attempts||0)+1, last_contacted_at: new Date().toISOString() } : l));
     if (currentLead.id) {
-      supabaseClient.from('aegis_leads').update({ status: newStatus, contact_attempts: (currentLead.contact_attempts||0)+1, last_contacted_at: new Date().toISOString() }).eq('id', currentLead.id);
-      supabaseClient.from('aegis_activity_log').insert({ lead_id: currentLead.id, action: disp.key, description: `DayDay: ${disp.label} — ${currentLead.first_name} ${currentLead.last_name||''}`, created_by: 'dayday' });
+      supabaseClient.from('aegis_leads').update({ status: newStatus, assigned_to: owner, contact_attempts: (currentLead.contact_attempts||0)+1, last_contacted_at: new Date().toISOString() }).eq('id', currentLead.id);
+      supabaseClient.from('aegis_activity_log').insert({ lead_id: currentLead.id, action: disp.key, description: `${owner}: ${disp.label} — ${currentLead.first_name} ${currentLead.last_name||''}`, created_by: owner.toLowerCase() });
       if (['pa_sold','sa_sold','ha_sold'].includes(disp.key)) {
         supabaseClient.from('aegis_revenue').insert({ lead_id: currentLead.id, type: 'close_fee', amount: currentLead.tier === 'A' ? 100 : 75, description: `${disp.label} — ${currentLead.first_name}`, paid: false });
       }
@@ -801,7 +803,20 @@ export default function AegisDashboard() {
     today: { ...EMPTY_STATE.today, ...(liveData.today || {}) },
     week: { ...EMPTY_STATE.week, ...(liveData.week || {}) },
     month: { ...EMPTY_STATE.month, ...(liveData.month || {}) },
-    hotLeads: liveData.hotLeads || [],
+    hotLeads: (liveLeads || [])
+      .filter(l => l.status === 'new' && l.contact_attempts === 0)
+      .sort((a, b) => (b.score || 0) - (a.score || 0))
+      .slice(0, 5)
+      .map(l => ({
+        id: l.id,
+        name: `${l.first_name} ${l.last_name || ''}`.trim(),
+        score: l.score || 0,
+        tier: l.tier || 'B',
+        reason: l.reason || '',
+        source: l.source_detail || l.source || 'Unknown',
+        phone: l.phone || '',
+        timeInQueue: Math.floor((Date.now() - new Date(l.created_at).getTime()) / 60000),
+      })),
     recentActivity: liveData.recentActivity || [],
     sourceBreakdown: (liveData.sourceBreakdown || []).map((s, i) => ({
       ...s,
