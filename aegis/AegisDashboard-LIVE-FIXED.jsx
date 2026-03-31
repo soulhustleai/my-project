@@ -1273,8 +1273,14 @@ export default function AegisDashboard() {
                 <button onClick={() => setShowDispositions(!showDispositions)} className="flex flex-col items-center gap-0.5 py-2.5 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37]">
                   <CheckCircle2 size={16} /><span className="text-[8px] font-bold">DISPO</span>
                 </button>
-                <button onClick={sendToLauren} className="flex flex-col items-center gap-0.5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white/50">
-                  <UserPlus size={16} /><span className="text-[8px] font-bold">LAUREN</span>
+                <button onClick={() => {
+                  if (!currentLead) return;
+                  const newOwner = queueMode === 'lauren' ? 'DayDay' : 'Lauren';
+                  setLiveLeads(prev => prev.map(l => l.id === currentLead.id ? { ...l, assigned_to: newOwner } : l));
+                  if (currentLead.id) supabaseClient.from('aegis_leads').update({ assigned_to: newOwner }).eq('id', currentLead.id);
+                  goNext();
+                }} className="flex flex-col items-center gap-0.5 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white/50">
+                  <UserPlus size={16} /><span className="text-[8px] font-bold">{queueMode === 'lauren' ? 'DAYDAY' : 'LAUREN'}</span>
                 </button>
               </div>
 
@@ -1366,8 +1372,13 @@ export default function AegisDashboard() {
                       <p className="text-[9px] text-white/50"><strong>Phone:</strong> <a href={`tel:${l.phone}`} className="text-[#D4AF37] underline">{formatPhone(l.phone)}</a></p>
                       <p className="text-[9px] text-white/50"><strong>Email:</strong> {l.email||'N/A'}</p>
                       <p className="text-[9px] text-white/50"><strong>State:</strong> {l.state||'??'} · <strong>Source:</strong> {l.source||'?'}</p>
-                      <p className="text-[9px] text-white/50"><strong>Attempts:</strong> {l.contact_attempts||0}/21 · <strong>Assigned:</strong> {l.assigned_to||'DayDay'}</p>
+                      <p className="text-[9px] text-white/50"><strong>Attempts:</strong> {l.contact_attempts||0}/21 · <strong>Assigned:</strong> {l.assigned_to||'Unassigned'}</p>
                       {l.dayday_notes && <p className="text-[9px] text-white/30 italic">{l.dayday_notes}</p>}
+                      {/* Lead Assignment / Reassignment */}
+                      <div className="flex gap-1.5 mt-2 pt-2 border-t border-white/5">
+                        <button onClick={(e) => { e.stopPropagation(); setLiveLeads(prev => prev.map(x => x.id === l.id ? {...x, assigned_to: 'DayDay'} : x)); supabaseClient.from('aegis_leads').update({assigned_to:'DayDay'}).eq('id',l.id); }} className={`flex-1 py-1.5 rounded text-[8px] font-bold ${l.assigned_to === 'DayDay' || !l.assigned_to ? 'bg-[#1E3A5F] text-[#D4AF37]' : 'bg-white/5 text-white/30'}`}>DayDay</button>
+                        <button onClick={(e) => { e.stopPropagation(); setLiveLeads(prev => prev.map(x => x.id === l.id ? {...x, assigned_to: 'Lauren'} : x)); supabaseClient.from('aegis_leads').update({assigned_to:'Lauren'}).eq('id',l.id); }} className={`flex-1 py-1.5 rounded text-[8px] font-bold ${l.assigned_to === 'Lauren' ? 'bg-[#1E3A5F] text-[#D4AF37]' : 'bg-white/5 text-white/30'}`}>Lauren</button>
+                      </div>
                     </div>
                   </motion.div>
                 )}
