@@ -313,6 +313,38 @@ async function submitForm(){
     document.getElementById('s7').classList.remove('active');
     document.getElementById('sDone').classList.add('active');
     for(let i=1;i<=7;i++)document.getElementById('dot'+i).className='progress-dot done';
+
+    // Send instant personalized welcome email
+    if(data.email) {
+      const tips = {
+        'Just me': 'If you\'re self-employed or between jobs, you may qualify for a Special Enrollment Period — meaning you can get covered right now, even outside open enrollment.',
+        'Me + spouse': 'Couples often save significantly by comparing individual plans vs. employer plans. I\'ll look at both angles for you.',
+        'Me + family': 'Family plans can vary by thousands of dollars between carriers. The right plan depends on your kids\' ages and your doctors — I\'ll map it all out.',
+        'My child(ren)': 'Children\'s coverage has some of the best options available. I\'ll find what fits your budget perfectly.',
+        'Low monthly cost': 'Many people overpay because they don\'t know about subsidies they qualify for. I\'ll check if you\'re eligible — it could cut your premium in half.',
+        'Best overall': 'I\'ll compare every angle — premium, deductible, network, prescriptions — and show you the plan that gives you the most value.'
+      };
+      const tip = tips[data.who] || tips[data.priority] || tips['Best overall'];
+      const contactMethod = data.preferText ? "I'll send you a text" : "I'll give you a call";
+
+      // Send via n8n webhook (n8n handles the actual email send via Resend/Gmail)
+      fetch('https://n8n-production-524ef.up.railway.app/webhook/aegis-welcome-email', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          to: data.email,
+          first_name: data.fname,
+          subject: data.fname + ', your coverage options are being reviewed',
+          contact_method: contactMethod,
+          tip: tip,
+          who: data.who,
+          priority: data.priority,
+          phone: data.phone,
+          zip: data.zip,
+          age: data.age,
+        })
+      }).catch(e => console.log('Welcome email webhook:', e.message));
+    }
   }catch(e){btn.classList.remove('loading');btn.textContent='See My Coverage Options';err.classList.add('visible')}
 }
 </script>
