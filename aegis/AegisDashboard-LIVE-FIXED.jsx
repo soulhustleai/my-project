@@ -57,68 +57,6 @@ const DEMO_DATA = {
   sourceBreakdown: [],
   weeklyTrend: [0, 0, 0, 0, 0, 0, 0],
   leaderboard: { agent: 'DayDay', rank: 1, closeRate: 0, speedToContact: '0m', totalClosed: 0, revenue: 0 },
-}onst DEMO_DATA = {
-  today: {
-    leadsReceived: 12,
-    leadsContacted: 9,
-    quotesGiven: 6,
-    closed: 3,
-    revenue: 1275,
-    avgResponseTime: '2m 14s',
-    closeRate: 0,
-    hotQueue: 3,
-    dailyGoal: 5,
-  },
-  week: {
-    leadsReceived: 67,
-    closed: 14,
-    revenue: 5950,
-    closeRate: 21,
-    costPerLead: 12.40,
-    costPerClose: 59.20,
-  },
-  month: {
-    leadsReceived: 234,
-    closed: 52,
-    revenue: 22100,
-    adSpend: 2800,
-    roi: 689,
-    projectedAnnual: 265200,
-  },
-  hotLeads: [
-  ],
-  recentActivity: [
-    { time: '2 min ago', action: 'Lead closed', name: 'Robert S.', detail: 'BlueCross Silver Plan — $340/mo', amount: '$100', type: 'close' },
-    { time: '18 min ago', action: 'Quote sent', name: 'Lisa M.', detail: 'Aetna Gold + Dental', type: 'quote' },
-    { time: '34 min ago', action: 'Lead contacted', name: 'DeShawn T.', detail: 'First call — scheduling follow-up Thu', type: 'contact' },
-    { time: '1h ago', action: 'Lead closed', name: 'Patricia G.', detail: 'United Healthcare Bronze — $180/mo', amount: '$75', type: 'close' },
-    { time: '1.5h ago', action: 'New lead', name: 'Andre B.', detail: 'Score: 91 — Job loss, needs coverage ASAP', type: 'new' },
-  ],
-  sourceBreakdown: [
-    { name: 'Facebook Ads', leads: 98, closes: 22, rate: 22, cost: 1400, color: AEGIS.cyan },
-    { name: 'Google Ads', leads: 62, closes: 16, rate: 26, cost: 900, color: AEGIS.green },
-    { name: 'Referrals', leads: 34, closes: 8, rate: 24, cost: 0, color: AEGIS.gold },
-    { name: 'Organic/Content', leads: 24, closes: 4, rate: 17, cost: 200, color: AEGIS.amber },
-    { name: 'Partnerships', leads: 16, closes: 2, rate: 13, cost: 300, color: AEGIS.navy },
-  ],
-  weeklyTrend: [
-    { day: 'Mon', leads: 11, closes: 2 },
-    { day: 'Tue', leads: 14, closes: 3 },
-    { day: 'Wed', leads: 9, closes: 2 },
-    { day: 'Thu', leads: 12, closes: 4 },
-    { day: 'Fri', leads: 8, closes: 1 },
-    { day: 'Sat', leads: 7, closes: 1 },
-    { day: 'Sun', leads: 6, closes: 1 },
-  ],
-  streak: { count: 3, agent: 'DayDay' },
-  leaderboard: {
-    agent: 'DayDay',
-    rank: 1,
-    closeRate: 0,
-    speedToContact: '2m 14s',
-    revenue: 1275,
-    qualityScore: 92,
-  },
 };
 
 // ─── Disposition Types (DayDay's exact categories) ───
