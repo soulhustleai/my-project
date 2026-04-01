@@ -1492,42 +1492,63 @@ function AegisChatPanel({ isOpen, onClose }) {
     setTyping(true);
 
     try {
-      // Load AEGIS brain from Supabase
-      const { data: brainData } = await supabaseClient.from('ceo_brains').select('system_prompt').eq('id', 'aegis').single();
-      const { data: memData } = await supabaseClient.from('ceo_memories').select('title,content').eq('ceo_id', 'aegis').order('importance', { ascending: false }).limit(10);
-      const { data: leadStats } = await supabaseClient.from('aegis_dashboard_stats').select('*');
+      // Load AEGIS brain + memories + pipeline stats from Supabase
+      const [brainRes, memRes, statsRes, keyRes] = await Promise.all([
+        supabaseClient.from('ceo_brains').select('system_prompt').eq('id', 'aegis').single(),
+        supabaseClient.from('ceo_memories').select('title,content').eq('ceo_id', 'aegis').order('importance', { ascending: false }).limit(10),
+        supabaseClient.from('aegis_dashboard_stats').select('*'),
+        supabaseClient.from('ceo_memories').select('content').eq('ceo_id', 'aegis').eq('title', 'AEGIS Anthropic API Key (Client-Specific)').single(),
+      ]);
 
-      const systemPrompt = (brainData?.system_prompt || '') +
+      const apiKey = keyRes.data?.content || '';
+      if (!apiKey || !apiKey.startsWith('sk-ant')) {
+        const response = getAegisResponse(userMsg);
+        setMessages(prev => [...prev, { from: 'aegis', text: response, time: new Date() }]);
+        setTyping(false);
+        return;
+      }
+
+      const stats = statsRes.data?.[0];
+      const systemPrompt = (brainRes.data?.system_prompt || '') +
         '\n\n--- LIVE MEMORIES ---\n' +
-        (memData || []).map(m => `${m.title}: ${m.content}`).join('\n\n') +
+        (memRes.data || []).map(m => m.title.includes('API Key') ? '' : `${m.title}: ${m.content}`).filter(Boolean).join('\n\n') +
         '\n\n--- LIVE PIPELINE ---\n' +
-        (leadStats?.[0] ? `Total leads: ${leadStats[0].total_leads}, A-tier: ${leadStats[0].tier_a_count}, New: ${leadStats[0].new_leads}, Contacted: ${leadStats[0].contacted}, Closed: ${leadStats[0].closed}, Revenue: $${leadStats[0].total_revenue}` : 'No stats available');
+        (stats ? `Total leads: ${stats.total_leads}, A-tier: ${stats.tier_a_count}, B-tier: ${stats.tier_b_count}, New: ${stats.new_leads}, Contacted: ${stats.contacted}, Closed: ${stats.closed}, Revenue: $${stats.total_revenue}, Avg Score: ${stats.avg_score}` : 'No stats available') +
+        '\n\nIMPORTANT: You are talking to DayDay (Adam Andrade) right now. Respond as AEGIS — his AI business partner. Be direct, use basketball analogies, keep it real. Reference his actual pipeline data above.';
 
-      // Build conversation history
       const history = messages.slice(-10).map(m => ({
         role: m.from === 'user' ? 'user' : 'assistant',
         content: m.text
       }));
       history.push({ role: 'user', content: userMsg });
 
-      // Call Claude API via proxy (n8n webhook handles the API call server-side)
-      const res = await fetch('https://n8n-production-524ef.up.railway.app/webhook/aegis-chat', {
+      // Call Claude API directly
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ system: systemPrompt, messages: history })
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1024,
+          system: systemPrompt,
+          messages: history
+        })
       });
 
       if (res.ok) {
         const data = await res.json();
-        const reply = data.reply || data.content || data.text || 'AEGIS is processing...';
+        const reply = data.content?.[0]?.text || 'AEGIS is processing...';
         setMessages(prev => [...prev, { from: 'aegis', text: reply, time: new Date() }]);
       } else {
-        // Fallback to local responses if API fails
         const response = getAegisResponse(userMsg);
         setMessages(prev => [...prev, { from: 'aegis', text: response, time: new Date() }]);
       }
     } catch (e) {
-      // Fallback to local responses
+      console.log('AEGIS chat error:', e.message);
       const response = getAegisResponse(userMsg);
       setMessages(prev => [...prev, { from: 'aegis', text: response, time: new Date() }]);
     }
