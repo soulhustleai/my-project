@@ -1484,20 +1484,54 @@ function AegisChatPanel({ isOpen, onClose }) {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 300);
   }, [isOpen]);
 
-  const send = () => {
+  const send = async () => {
     if (!input.trim()) return;
     const userMsg = input.trim();
     setMessages(prev => [...prev, { from: 'user', text: userMsg, time: new Date() }]);
     setInput('');
     setTyping(true);
 
-    // Simulate AEGIS thinking (would connect to Claude API in production)
-    const delay = 800 + Math.random() * 1200;
-    setTimeout(() => {
+    try {
+      // Load AEGIS brain from Supabase
+      const { data: brainData } = await supabaseClient.from('ceo_brains').select('system_prompt').eq('id', 'aegis').single();
+      const { data: memData } = await supabaseClient.from('ceo_memories').select('title,content').eq('ceo_id', 'aegis').order('importance', { ascending: false }).limit(10);
+      const { data: leadStats } = await supabaseClient.from('aegis_dashboard_stats').select('*');
+
+      const systemPrompt = (brainData?.system_prompt || '') +
+        '\n\n--- LIVE MEMORIES ---\n' +
+        (memData || []).map(m => `${m.title}: ${m.content}`).join('\n\n') +
+        '\n\n--- LIVE PIPELINE ---\n' +
+        (leadStats?.[0] ? `Total leads: ${leadStats[0].total_leads}, A-tier: ${leadStats[0].tier_a_count}, New: ${leadStats[0].new_leads}, Contacted: ${leadStats[0].contacted}, Closed: ${leadStats[0].closed}, Revenue: $${leadStats[0].total_revenue}` : 'No stats available');
+
+      // Build conversation history
+      const history = messages.slice(-10).map(m => ({
+        role: m.from === 'user' ? 'user' : 'assistant',
+        content: m.text
+      }));
+      history.push({ role: 'user', content: userMsg });
+
+      // Call Claude API via proxy (n8n webhook handles the API call server-side)
+      const res = await fetch('https://n8n-production-524ef.up.railway.app/webhook/aegis-chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ system: systemPrompt, messages: history })
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        const reply = data.reply || data.content || data.text || 'AEGIS is processing...';
+        setMessages(prev => [...prev, { from: 'aegis', text: reply, time: new Date() }]);
+      } else {
+        // Fallback to local responses if API fails
+        const response = getAegisResponse(userMsg);
+        setMessages(prev => [...prev, { from: 'aegis', text: response, time: new Date() }]);
+      }
+    } catch (e) {
+      // Fallback to local responses
       const response = getAegisResponse(userMsg);
       setMessages(prev => [...prev, { from: 'aegis', text: response, time: new Date() }]);
-      setTyping(false);
-    }, delay);
+    }
+    setTyping(false);
   };
 
   return (
