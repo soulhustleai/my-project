@@ -626,8 +626,8 @@ export default function AegisDashboard() {
     let pool = liveLeads.filter(l => !['sold','disposed','transferred','archived'].includes(l.status));
     if (leadsSubTab === 'ads') pool = pool.filter(l => (l.source||'').match(/facebook|google|paid|tiktok/));
     if (leadsSubTab === 'scrapes') pool = pool.filter(l => (l.source||'').includes('scrape'));
-    if (queueMode === 'my') pool = pool.filter(l => !l.assigned_to || l.assigned_to === 'DayDay');
-    else pool = pool.filter(l => l.assigned_to === 'Lauren');
+    if (queueMode === 'my') pool = pool.filter(l => !l.assigned_to || l.assigned_to.toLowerCase() === 'dayday');
+    else pool = pool.filter(l => l.assigned_to && l.assigned_to.toLowerCase() === 'lauren');
     pool.sort((a, b) => {
       const aS = getCallingStatus(getLeadTz(a)) === 'green' ? 0 : 1;
       const bS = getCallingStatus(getLeadTz(b)) === 'green' ? 0 : 1;
@@ -900,27 +900,25 @@ export default function AegisDashboard() {
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: i * 0.1 }}
-              className="rounded-xl bg-gradient-to-r from-[#1E3A5F]/30 to-[#0D1F35] border border-[#1E3A5F]/30 p-3 relative overflow-hidden"
+              className="rounded-xl bg-gradient-to-r from-[#1E3A5F]/30 to-[#0D1F35] border border-[#1E3A5F]/30 relative overflow-hidden cursor-pointer"
+              onClick={() => setExpandedRow(expandedRow === lead.id ? null : lead.id)}
             >
               {/* Urgency pulse bar */}
               <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#EF4444] to-[#F59E0B]" />
-              <div className="pl-2">
+              <div className="pl-2 p-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    {/* Lead Score Ring instead of plain circle */}
                     <LeadScoreRing score={lead.score} size={32} />
                     <div>
                       <p className="text-sm font-semibold text-white">{lead.name}</p>
                       <div className="flex items-center gap-2">
                         <span className="text-[9px] text-white/50">{lead.source}</span>
-                        {/* Live Speed-to-Contact Timer */}
                         <SpeedTimer initialMinutes={lead.timeInQueue} />
                       </div>
                     </div>
                   </div>
-                  <a href={`tel:${lead.phone.replace(/\D/g,'')}`} className="w-9 h-9 rounded-full bg-[#10B981] flex items-center justify-center shadow-lg shadow-[#10B981]/20 relative">
+                  <a href={`tel:${lead.phone.replace(/\D/g,'')}`} onClick={(e) => e.stopPropagation()} className="w-9 h-9 rounded-full bg-[#10B981] flex items-center justify-center shadow-lg shadow-[#10B981]/20 relative">
                     <Phone size={16} className="text-white" />
-                    {/* Pulse ring on urgent leads */}
                     {lead.timeInQueue > 5 && (
                       <div className="absolute inset-0 rounded-full border-2 border-[#10B981]" style={{ animation: 'aegis-pulse-ring 1.5s ease-out infinite' }} />
                     )}
@@ -928,6 +926,46 @@ export default function AegisDashboard() {
                 </div>
                 <p className="text-[10px] text-[#D4AF37] mt-1.5 font-medium">{lead.reason}</p>
               </div>
+              {/* Expanded: Call + Notes when tapped */}
+              {expandedRow === lead.id && (
+                <div className="px-3 pb-3 border-t border-white/5 pt-2 space-y-2" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex gap-1.5">
+                    <a href={`tel:${lead.phone.replace(/\D/g,'')}`} className="flex-1 py-2 rounded-lg bg-[#10B981]/20 border border-[#10B981]/30 text-[#10B981] text-center text-[10px] font-bold flex items-center justify-center gap-1">
+                      <PhoneCall size={12} /> Call {lead.phone}
+                    </a>
+                    <button onClick={() => { setMainView('leads'); setLeadIndex(d.hotLeads.indexOf(lead) || 0); }} className="flex-1 py-2 rounded-lg bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-center text-[10px] font-bold">
+                      Open Flash Card
+                    </button>
+                  </div>
+                  <div className="flex gap-1.5">
+                    <input
+                      value={noteText}
+                      onChange={(e) => setNoteText(e.target.value)}
+                      onKeyDown={(e) => { if (e.key === 'Enter' && noteText.trim()) {
+                        const matchedLead = liveLeads.find(l => l.id === lead.id);
+                        if (matchedLead) {
+                          const updated = (matchedLead.dayday_notes ? matchedLead.dayday_notes + '\n' : '') + noteText.trim();
+                          setLiveLeads(prev => prev.map(l => l.id === lead.id ? {...l, dayday_notes: updated} : l));
+                          supabaseClient.from('aegis_leads').update({dayday_notes: updated}).eq('id', lead.id);
+                          setNoteText('');
+                        }
+                      }}}
+                      placeholder="Add note about this lead..."
+                      className="flex-1 bg-[#050A12] border border-[#1E3A5F]/30 rounded-lg px-3 py-2 text-[10px] text-white placeholder-white/20 outline-none focus:border-[#D4AF37]/50"
+                    />
+                    <button onClick={() => {
+                      if (!noteText.trim()) return;
+                      const matchedLead = liveLeads.find(l => l.id === lead.id);
+                      if (matchedLead) {
+                        const updated = (matchedLead.dayday_notes ? matchedLead.dayday_notes + '\n' : '') + noteText.trim();
+                        setLiveLeads(prev => prev.map(l => l.id === lead.id ? {...l, dayday_notes: updated} : l));
+                        supabaseClient.from('aegis_leads').update({dayday_notes: updated}).eq('id', lead.id);
+                        setNoteText('');
+                      }
+                    }} className="px-3 py-2 bg-[#1E3A5F] rounded-lg text-[#D4AF37] text-[10px] font-bold">+</button>
+                  </div>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>
