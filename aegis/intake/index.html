@@ -48,7 +48,8 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .trust{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;margin-top:12px;opacity:0.5;font-size:9px;color:var(--text-dim);letter-spacing:0.5px}
 .trust img{height:16px;opacity:0.6}
 .advisor{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:var(--radius);margin-bottom:16px}
-.advisor-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy-card);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--gold);border:2px solid var(--gold)}
+.advisor-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);overflow:hidden;flex-shrink:0}
+.advisor-avatar img{width:100%;height:100%;object-fit:cover}
 .advisor-info{flex:1}
 .advisor-name{font-size:13px;font-weight:600;color:var(--text)}
 .advisor-title{font-size:10px;color:var(--gold);letter-spacing:0.5px}
@@ -84,10 +85,10 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div class="screen active" id="s1">
 <div class="spacer"></div>
 <div class="advisor">
-<div class="advisor-avatar">AA</div>
+<div class="advisor-avatar"><img src="https://pjkurxtvvtxbpfearqhd.supabase.co/storage/v1/object/public/avatars/adam-andrade.jpg" alt="Adam Andrade" onerror="this.parentElement.innerHTML='AA';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.style.fontSize='18px';this.parentElement.style.fontWeight='700';this.parentElement.style.color='var(--gold)';this.parentElement.style.background='var(--navy-card)'"></div>
 <div class="advisor-info">
 <div class="advisor-name">Adam Andrade</div>
-<div class="advisor-title">State Health Advisor · All Carriers · 32 States</div>
+<div class="advisor-title">State Health Advisor · All Carriers · 33 States</div>
 </div>
 </div>
 <h1>Check what health coverage you qualify for</h1>
@@ -97,7 +98,14 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <input type="text" class="input" id="zip" placeholder="Enter ZIP code" maxlength="5" inputmode="numeric" oninput="this.value=this.value.replace(/\D/g,'');checkS1()">
 </div>
 <button class="btn btn-green" id="btn1" disabled onclick="goTo(2)">See My Coverage Options</button>
-<div class="carrier-logos">UnitedHealthcare · BlueCross BlueShield · Aetna · Cigna · Oscar · Humana · Molina · Ambetter</div>
+<div class="carrier-logos" style="display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 0;margin-top:8px;opacity:0.7">
+<img src="https://logo.clearbit.com/uhc.com" alt="UnitedHealthcare" style="height:20px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+<img src="https://logo.clearbit.com/bcbs.com" alt="BlueCross BlueShield" style="height:20px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+<img src="https://logo.clearbit.com/aetna.com" alt="Aetna" style="height:18px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+<img src="https://logo.clearbit.com/cigna.com" alt="Cigna" style="height:18px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+<img src="https://logo.clearbit.com/hioscar.com" alt="Oscar" style="height:18px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+<img src="https://logo.clearbit.com/humana.com" alt="Humana" style="height:18px;filter:brightness(0) invert(1)" onerror="this.style.display='none'">
+</div>
 <p class="secure">🔒 Your information stays with Adam. We never sell your data.</p>
 <div style="height:20px"></div>
 </div>
@@ -202,7 +210,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 <div class="confirm-title">We've matched you with an agent!</div>
 <div class="confirm-sub">Adam Andrade has your new quote ready now. Expect a <span id="contactMethod">text</span> from <strong>(407) 561-2878</strong> within the next few hours to review your options.</div>
 <div class="advisor" style="justify-content:center">
-<div class="advisor-avatar">AA</div>
+<div class="advisor-avatar"><img src="https://pjkurxtvvtxbpfearqhd.supabase.co/storage/v1/object/public/avatars/adam-andrade.jpg" alt="Adam" onerror="this.parentElement.innerHTML='AA';this.parentElement.style.cssText='width:48px;height:48px;border-radius:50%;background:var(--navy-card);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--gold);border:2px solid var(--gold)'"></div>
 <div class="advisor-info">
 <div class="advisor-name">Adam Andrade</div>
 <div class="advisor-title">State Health Advisor · Andrade Health Services</div>
