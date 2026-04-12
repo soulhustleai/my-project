@@ -1,13 +1,14 @@
 -- =============================================================================
 -- APEX — Consolidated Supabase Sync
 -- =============================================================================
--- Idempotent single-file sync for everything Apex touches in the soulhustleai
--- Supabase project (pjkurxtvvtxbpfearqhd). Safe to re-run.
+-- Idempotent single-file sync for everything Apex + Zero voice-locked touches
+-- in the soulhustleai Supabase project (pjkurxtvvtxbpfearqhd). Safe to re-run.
 --
 --   1. DDL: ceo_brains.avatar_url column (if missing)
---   2. ceo_brains: set APEX voice_id + avatar_url + business
---   3. sovereign_vault: upsert apex_avatar_url + variants as config keys
---   4. products: sync cover_url for all 11 GMC products
+--   2. ceo_brains: set APEX voice_id (Miles) + avatar_url + business
+--   3. ceo_brains: set ZERO voice_id (Tyrese Tate) + business
+--   4. sovereign_vault: upsert apex_avatar_url + variants as config keys
+--   5. products: sync cover_url for all 11 GMC products
 --
 -- To run:
 --   mcp__supabase__execute_sql  project_id=pjkurxtvvtxbpfearqhd
@@ -29,18 +30,34 @@ COMMENT ON COLUMN public.ceo_brains.avatar_url IS
   'Canonical character portrait URL for the CEO persona. Used as PFP, email avatar, system UI avatar, and Vapi assistant image.';
 
 -- -------------------------------------------------------------------------
--- 2. ceo_brains: lock APEX voice + avatar + business
+-- 2. ceo_brains: lock APEX voice (Miles) + avatar + business
 -- -------------------------------------------------------------------------
+-- Edwin picked 'Miles' (pQh9V7vKVWKF3pBFDSc5) after the 2026-04 A/B run
+-- over Antoni, Erik, DJ Marathon, Donovan, Orlando, Jamal, Jamahal, Young
+-- Jamal, Darryl, Tyrese Tate, Carter, Jon Paul. See apex/voice-samples/.
 UPDATE public.ceo_brains
 SET
-  voice_id   = 'ErXwobaYiN019PkySvjV',  -- ElevenLabs Antoni (from sovereign_vault.elevenlabs_api_key)
+  voice_id   = 'pQh9V7vKVWKF3pBFDSc5',  -- ElevenLabs Miles (young, American, calm)
   business   = COALESCE(NULLIF(business, ''), 'GOD MODE CREDIT'),
   avatar_url = 'https://raw.githubusercontent.com/soulhustleai/my-project/claude/setup-apex-2pYgf/god-mode-credit/apex/avatar.png',
   updated_at = NOW()
 WHERE UPPER(name) = 'APEX';
 
 -- -------------------------------------------------------------------------
--- 3. sovereign_vault: upsert apex avatar variants as config keys
+-- 3. ceo_brains: lock ZERO voice (Tyrese Tate)
+-- -------------------------------------------------------------------------
+-- Edwin picked 'Tyrese Tate' (rWyjfFeMZ6PxkHqD3wGC) for ZERO — urban
+-- American male with sultry smooth finish. Matches Zero's NY street-level
+-- AI CEO positioning from CONTEXT.md better than the prior Charlie voice.
+UPDATE public.ceo_brains
+SET
+  voice_id   = 'rWyjfFeMZ6PxkHqD3wGC',  -- ElevenLabs Tyrese Tate (urban, smooth)
+  business   = COALESCE(NULLIF(business, ''), 'SoulHustleAI'),
+  updated_at = NOW()
+WHERE UPPER(name) = 'ZERO';
+
+-- -------------------------------------------------------------------------
+-- 4. sovereign_vault: upsert apex avatar variants as config keys
 -- -------------------------------------------------------------------------
 -- Uses INSERT .. ON CONFLICT (key_name) DO UPDATE so reruns just refresh.
 -- NOTE: if sovereign_vault does not have a unique constraint on key_name,
@@ -97,7 +114,7 @@ SET key_value = 'https://raw.githubusercontent.com/soulhustleai/my-project/claud
 WHERE key_name = 'apex_avatar_web_url';
 
 -- -------------------------------------------------------------------------
--- 4. products: sync cover_url for all 11 GMC products
+-- 5. products: sync cover_url for all 11 GMC products
 -- -------------------------------------------------------------------------
 WITH cover_map(slug, cover_file) AS (VALUES
   ('5-federal-laws',            '01-5-federal-laws.png'),
@@ -121,8 +138,8 @@ WHERE  p.slug = cm.slug;
 COMMIT;
 
 -- -------------------------------------------------------------------------
--- 5. Verification (read-only, safe to paste into a new session)
+-- 6. Verification (read-only, safe to paste into a new session)
 -- -------------------------------------------------------------------------
--- SELECT name, voice_id, avatar_url FROM ceo_brains WHERE UPPER(name)='APEX';
+-- SELECT name, voice_id, avatar_url FROM ceo_brains WHERE UPPER(name) IN ('APEX','ZERO');
 -- SELECT key_name, key_value FROM sovereign_vault WHERE key_name LIKE 'apex_avatar%';
 -- SELECT slug, cover_url FROM products WHERE cover_url LIKE '%apex%' ORDER BY slug;

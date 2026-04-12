@@ -190,7 +190,7 @@ See `product-integration.md` for the per-product playbook.
 │  Colors:      Black #050505 / Gold #C9A033 #D4922A #F2C95C    │
 │  Banned:      Red, blue, purple, green, silver, teal, cyan    │
 │  Fonts:       Cinzel (display) + Cormorant Garamond (body)    │
-│  Voice:       ElevenLabs — see voice-config.md                │
+│  Voice:       ElevenLabs Miles (pQh9V7vKVWKF3pBFDSc5)         │
 │  Never:       Promises scores / repairs credit for you /      │
 │                uses profanity / begs engagement / cusses /    │
 │                says "Sovereign"                                │

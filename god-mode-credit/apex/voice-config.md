@@ -7,36 +7,42 @@
 
 ## ELEVENLABS VOICE — LOCKED
 
-**Apex voice is already provisioned in Edwin's ElevenLabs account and tracked in Supabase (`sovereign_vault.elevenlabs_api_key`).**
+**Apex voice picked 2026-04 after a 13-sample A/B run. See `apex/voice-samples/` for the full listening test.**
 
 | Field | Value |
 |---|---|
-| Voice name | **Antoni** |
-| Voice ID | `ErXwobaYiN019PkySvjV` |
+| Voice name | **Miles** |
+| Voice ID | `pQh9V7vKVWKF3pBFDSc5` |
+| Voice character | Young American male, calm, Miles Davis-adjacent naming |
 | ElevenLabs plan | Creator (172K chars/month) |
 | Vapi credential ID | `5027c05c-3368-4a32-91b5-53064c1df1cc` |
 | Vapi assistant | `vapi_apex_assistant` (see `sovereign_vault`) |
 | Vapi phone number | `vapi_apex_number_id` (see `sovereign_vault`) |
 
-**Apex is one of 5 CEO voices in the empire.** For context only — do not cross-wire these:
+**CEO voice mapping across the empire** (post-A/B run). Do not cross-wire.
 
-| CEO | Voice | Voice ID |
-|---|---|---|
-| SOVEREIGN | George | `JBFqnCBsd6RMkjVDRZzb` |
-| ZERO (SoulHustleAI) | Charlie | `IKne3meq5aSn9XLyUdCD` |
-| MIDAS (Surplus Recovery) | Liam | `TX3LPaxmHKxFdv7VOQHJ` |
-| AEGIS | Bill | `pqHfZKP75CvOlQylNhV4` |
-| **APEX (GOD MODE CREDIT)** | **Antoni** | **`ErXwobaYiN019PkySvjV`** |
+| CEO | Voice | Voice ID | Notes |
+|---|---|---|---|
+| SOVEREIGN | George | `JBFqnCBsd6RMkjVDRZzb` | |
+| **ZERO (SoulHustleAI)** | **Tyrese Tate** | **`rWyjfFeMZ6PxkHqD3wGC`** | Urban American, sultry smooth finish — matches Zero's NY street-level AI CEO positioning |
+| MIDAS (Surplus Recovery) | Liam | `TX3LPaxmHKxFdv7VOQHJ` | |
+| AEGIS | Bill | `pqHfZKP75CvOlQylNhV4` | |
+| **APEX (GOD MODE CREDIT)** | **Miles** | **`pQh9V7vKVWKF3pBFDSc5`** | Young American, calm — shifted Apex from Morpheus oracle energy to a more approachable Gen Z teacher |
 
 **Runtime access:**
 ```python
 import os, requests
 # Fetch from sovereign_vault (preferred) or env:
-voice_id = "ErXwobaYiN019PkySvjV"
+voice_id = "pQh9V7vKVWKF3pBFDSc5"  # Miles
 # api_key pulled from sovereign_vault.elevenlabs_api_key at runtime
 ```
 
-Store the voice ID in your runtime env as `ELEVENLABS_APEX_VOICE_ID=ErXwobaYiN019PkySvjV` if you prefer env-first config. Reference it in all Make.com scenarios, n8n workflows, and Vapi assistants.
+Store the voice ID in your runtime env as `ELEVENLABS_APEX_VOICE_ID=pQh9V7vKVWKF3pBFDSc5` if you prefer env-first config. Reference it in all Make.com scenarios, n8n workflows, and Vapi assistants.
+
+### Retired voices (do not use for these CEOs)
+- ~~Antoni `ErXwobaYiN019PkySvjV`~~ — was Apex. Retired 2026-04 (too Italian-American, not NY Black Gen Z).
+- ~~Charlie `IKne3meq5aSn9XLyUdCD`~~ — was Zero. Retired 2026-04 (Australian accent, didn't match Zero's NY hype-man brief).
+- ~~Jerry B `QzTKubutNn9TjrB7Xb2Q`~~ — mentioned in early CONTEXT.md as Zero. That's actually the "Jerry B — New York Italian Mobster" character voice in the ElevenLabs library; it was the wrong pick and is now replaced by Tyrese Tate.
 
 ---
 
@@ -53,11 +59,12 @@ Store the voice ID in your runtime env as `ELEVENLABS_APEX_VOICE_ID=ErXwobaYiN01
 | **Optimize streaming latency** | `0` (default) | Quality > speed. He's not real-time. |
 
 ### Contrast vs. Zero
-| | Zero (Jerry B) | Apex |
+| | Zero (Tyrese Tate) | Apex (Miles) |
 |---|---|---|
-| Stability | 40% | 55% |
-| Clarity | 75% | 85% |
-| Style exaggeration | 30% | 20% |
+| Stability | 50% | 55% |
+| Clarity | 80% | 85% |
+| Style exaggeration | 40% | 20% |
+| Energy | Urban, smooth, hype | Young, calm, teacher |
 | Energy | High, performative | Low, ceremonial |
 
 ---

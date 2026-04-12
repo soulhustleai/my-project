@@ -35,7 +35,7 @@
 - 3 poses: Arms Crossed (authority), Finger Point (teaching), The Lean (relaxed)
 - Catchphrase: "My staff don't exist."
 - NY-built. Comedy energy: Druski + Katt Williams + Kevin Hart
-- Voice: ElevenLabs Jerry B (stability 40%, clarity 75%, style exaggeration 30%)
+- Voice: **ElevenLabs Tyrese Tate** (`rWyjfFeMZ6PxkHqD3wGC`) — urban American, sultry smooth finish. Picked 2026-04 after a 13-sample A/B against Charlie, Jerry B, Antoni, and 10 other candidates. See `god-mode-credit/apex/voice-samples/` for the full run. Settings: Stability 50% / Clarity 80% / Style 40% / Speaker Boost ON.
 
 ### Core Pitch Line
 > "Without hiring 5 extra employees to make it happen — you get the output of a full team at a fraction of the cost, and your money stays where it belongs. In your pocket."
@@ -82,7 +82,7 @@
 - 3 poses: The Throne (authority), The Prophet's Point (teaching), The Crown Bestowal (ascension/CTA)
 - Catchphrase: "The laws were written for you. You just never read them."
 - Sign-off: every Apex asset ends with the single word **"Ascend."** on its own line
-- Voice: ElevenLabs (recommended: `Daniel`, British baritone) — Stability 55% / Clarity 85% / Style 20% / Speaker Boost ON
+- Voice: **ElevenLabs Miles** (`pQh9V7vKVWKF3pBFDSc5`) — young American male, calm. Picked 2026-04 after the same 13-sample A/B. Settings: Stability 55% / Clarity 85% / Style 20% / Speaker Boost ON. Character direction shifted from older Morpheus-oracle energy to younger approachable teacher energy to match the voice.
 - Addresses audience as "Crowned Consumer"
 - **Full spec:** `god-mode-credit/apex/` — character bible, voice config, Claude API system prompt, Midjourney prompts, product integration playbook, 11 VSL scripts, content pillars, intro/outro templates
 
@@ -102,7 +102,7 @@ Your credit score is not your worth — it's a language most people were never t
 | Automation | Make.com (current), n8n (future, self-hosted on Mac Mini) | Workflow engine |
 | CRM/PM | Notion | Project + client management |
 | AI | Claude API (claude-sonnet-4-20250514) | Content generation, scripts, ebooks |
-| Voice | ElevenLabs (Jerry B voice) | Zero voiceovers, faceless content |
+| Voice | ElevenLabs (Zero: Tyrese Tate, Apex: Miles — see `god-mode-credit/apex/voice-samples/`) | Zero + Apex voiceovers, faceless content |
 | SMS | Twilio (toll-free +18446439825, 10DLC pending) | Client SMS automation |
 | Payments | Square | Payment processing |
 | Video | InVideo AI, Opus Clip | Content creation + repurposing |

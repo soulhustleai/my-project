@@ -35,7 +35,8 @@ Regenerating any of them: rerun `apex/scripts/generate_covers.py --canonical` (t
 | File | Purpose |
 |---|---|
 | [`APEX.md`](APEX.md) | **Character bible** — backstory, look, voice, poses, catchphrases, contrast with Zero |
-| [`voice-config.md`](voice-config.md) | **ElevenLabs voice spec** — Antoni (`ErXwobaYiN019PkySvjV`), settings, SSML rules |
+| [`voice-config.md`](voice-config.md) | **ElevenLabs voice spec** — Miles (`pQh9V7vKVWKF3pBFDSc5`), settings, SSML rules |
+| [`voice-samples/`](voice-samples/) | **13 A/B voice samples** (same test script) — the listening test that picked Miles over 12 others |
 | [`voice-options.md`](voice-options.md) | **Free/cheap/self-hosted voice alternatives** — Coqui XTTS-v2, Polly, Azure, Piper + tiered routing strategy |
 | [`system-prompt.md`](system-prompt.md) | **Claude API system prompt** (production) — load this to generate content in Apex's voice |
 | [`covers.md`](covers.md) | **PDF covers playbook** — Nano Banana Pro pipeline, all 11 covers, conversion psychology |
@@ -124,7 +125,7 @@ Apex is the oracle of the credit game. A regal, baritone, deliberate figure who 
 | Asset | Status |
 |---|---|
 | Character bible | ✅ Done (`APEX.md`) |
-| Voice config | ✅ Done — Antoni `ErXwobaYiN019PkySvjV` (locked) |
+| Voice config | ✅ **Miles `pQh9V7vKVWKF3pBFDSc5`** (young American, calm — picked 2026-04 after 13-sample A/B) |
 | System prompt | ✅ Done v1.0 (`system-prompt.md`) |
 | Midjourney prompts | ✅ Done (`midjourney-prompts.md`) — alternate path |
 | **PDF covers (all 11 products)** | ✅ **Done — Nano Banana Pro, face-locked, see `covers.md`** |
