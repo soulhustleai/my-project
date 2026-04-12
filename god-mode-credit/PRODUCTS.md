@@ -1,5 +1,10 @@
 # GOD MODE CREDIT — Product Suite
 
+> **Narrated, signed, and sealed by APEX — The Crowned** (GMC mascot / AI high priest). Every product in this suite is a door in Apex's covenant. Character bible, voice, prompts, VSL scripts, and product integration playbook live in [`apex/`](apex/README.md).
+>
+> *"The laws were written for you. You just never read them."*
+
+
 ## FREE PRODUCTS (Email Capture + Referral Income)
 
 ### 1. "5 Federal Laws Banks Hope You Never Read" — Lead Magnet

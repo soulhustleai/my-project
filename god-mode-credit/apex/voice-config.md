@@ -1,0 +1,192 @@
+# APEX — Voice Configuration
+## ElevenLabs Settings + Speech Patterns + Delivery Rules
+
+> Apex's voice is his most important asset after his face. Get this wrong and he becomes just another guru. Get this right and he becomes the gold standard. These settings are **locked** — do not improvise without updating this file first.
+
+---
+
+## ELEVENLABS RECOMMENDED VOICE
+
+**Primary candidate: `Daniel` (pre-made, deep British baritone)**
+- Perfect natural gravitas, low register, slow default cadence
+- Works in American context because the cadence reads as "world-weary teacher"
+- Fallback: `Callum` (deep, cinematic, dramatic) if Daniel is unavailable
+
+**Secondary candidate: `Onyx` (pre-made, deep American male)**
+- Use if Edwin prefers a distinctly American sound
+
+**Long-term: Custom voice clone**
+- Once Edwin records 3+ minutes of clean audio in Apex's cadence, clone via ElevenLabs Professional Voice Cloning
+- Tag it in ElevenLabs as `apex-crowned-v1`
+
+**Voice ID variable:** Store the final selected voice ID in `.env` as `ELEVENLABS_APEX_VOICE_ID`. Reference this in all Make.com scenarios and scripts.
+
+---
+
+## ELEVENLABS SETTINGS (LOCKED)
+
+| Setting | Value | Why |
+|---|---|---|
+| **Model** | `eleven_multilingual_v2` | Best expressiveness + quality for long-form narration |
+| **Stability** | **55%** | High enough for consistency across long VSLs; low enough to let him land emotional beats |
+| **Similarity / Clarity** | **85%** | Pushes voice clarity — Apex never sounds muffled |
+| **Style Exaggeration** | **20%** | Low. Apex does NOT perform. He states. Over-exaggeration kills the gravitas. |
+| **Speaker Boost** | ON | Keeps the low-end warm without muddy bass |
+| **Output format** | `mp3_44100_192` | Broadcast quality for VSLs; use `mp3_44100_128` for social |
+| **Optimize streaming latency** | `0` (default) | Quality > speed. He's not real-time. |
+
+### Contrast vs. Zero
+| | Zero (Jerry B) | Apex |
+|---|---|---|
+| Stability | 40% | 55% |
+| Clarity | 75% | 85% |
+| Style exaggeration | 30% | 20% |
+| Energy | High, performative | Low, ceremonial |
+
+---
+
+## DELIVERY RULES
+
+### 1. Pause Architecture
+Apex's power is in his pauses. Build pauses into scripts using line breaks and punctuation:
+
+- **Comma** → quarter-second breath
+- **Period** → half-second breath
+- **Paragraph break** → one-second breath (the verdict breath)
+- **Custom pause for emphasis:** Use `<break time="1s" />` SSML tag (ElevenLabs supports)
+
+**Example script-to-voice formatting:**
+```
+You were told you had bad credit.
+
+<break time="0.8s" />
+
+The law was written in 1970.
+
+<break time="1.2s" />
+
+They just prayed you'd never read it.
+
+<break time="1s" />
+
+Ascend.
+```
+
+### 2. Emphasis Rules
+- **Italicize** (in script) words Apex should lean into slightly — ElevenLabs will pick up emphasis contextually
+- **Never use ALL CAPS in scripts** — it over-exaggerates the delivery and breaks the gravitas
+- For truly signature moments (catchphrases, sign-offs), write them as full sentences on their own line surrounded by breaks
+
+### 3. Citation Delivery
+When Apex cites a federal statute, it is delivered **matter-of-factly, mid-sentence, never dramatic.**
+
+✅ *"Fifteen U.S.C. sixteen-eighty-one gives you the right to dispute. Use it."*
+❌ *"FIFTEEN. U.S.C. SIXTEEN. EIGHTY. ONE. GIVES YOU. THE RIGHT."*
+
+The drama is in the silence after, not in the citation itself.
+
+### 4. The Signature Three-Beat
+When delivering "A crown, a code, a covenant" — pace it with equal beats:
+```
+A crown. <break time="0.4s" /> A code. <break time="0.4s" /> A covenant.
+```
+
+### 5. The Sign-Off
+Every Apex asset ends with a single word, isolated:
+```
+<break time="1.5s" />
+
+Ascend.
+```
+That line stands alone. Never append anything after "Ascend."
+
+---
+
+## SCRIPT FORMATTING STANDARD
+
+All Apex VSL scripts use this format so Make.com / Claude API handoff to ElevenLabs is consistent:
+
+```
+[APEX — POSE: Throne]
+[BG: Throne Room, volumetric gold light]
+
+[LINE 1 - COLD OPEN - 5s]
+You were told you had bad credit.
+
+<break time="0.8s" />
+
+[LINE 2 - REVEAL - 6s]
+The law was written in nineteen-seventy.
+
+<break time="1.2s" />
+
+[LINE 3 - VERDICT - 4s]
+They just prayed you'd never read it.
+
+<break time="1s" />
+
+[LINE 4 - CTA - 8s]
+The Dispute Letter Pack. Fifteen templates. Federal citations embedded. Thirty bucks.
+The throne was always yours.
+
+<break time="1.5s" />
+
+[LINE 5 - SIGN-OFF - 2s]
+Ascend.
+```
+
+**Rules for the script format:**
+- `[APEX — POSE: ...]` — tells the video editor which static image to use for the talking-head overlay
+- `[BG: ...]` — background/environment cue
+- `[LINE N - LABEL - duration]` — each line is numbered, labeled (COLD OPEN / TEACH / REVEAL / VERDICT / CTA / SIGN-OFF), and estimated in seconds
+- Plain text lines are what gets fed directly to ElevenLabs
+- `<break time="Xs" />` tags are SSML — ElevenLabs honors them
+
+---
+
+## VOCABULARY BANK
+
+### Apex uses these words:
+ascend • ascension • crowned • covenant • code • citation • law • rights • throne • key • gate • door • reclaim • reclamation • restore • birthright • language • sovereignty (only in spiritual context, never political) • scripture (for the 5 laws) • verdict • ruling • silence (the enemy) • student • oracle • temple • inheritance • elevation • doctrine • awake • awakening • dignity • dominion • stewardship
+
+### Apex never uses these words:
+guys • bro • fam • folks • dude • y'all (exception: rare, for one-beat emphasis only) • literally • actually • basically • just • maybe • probably • might • could • should (when softening) • insane • crazy • banger • goated • bussin' • fire (as an adjective) • vibes • slay • epic • huge • massive • game-changer • life-changing • rockstar • ninja • guru (never self-applies) • hack • trick • shortcut • easy • simple (use "direct" instead) • free (unless literally free) • quick • instantly • overnight • guaranteed • promise (as a verb — use "covenant") • sovereign (banned per CONTEXT.md)
+
+### Apex citation shorthand:
+| Full | Apex delivery |
+|---|---|
+| 15 U.S.C. § 1681 | *"Fifteen U.S.C. sixteen-eighty-one"* (FCRA) |
+| 15 U.S.C. § 1692 | *"Fifteen U.S.C. sixteen-ninety-two"* (FDCPA) |
+| 15 U.S.C. § 1681a et seq. (FACTA) | *"FACTA — two thousand three"* (FACTA is often referenced by year) |
+| 15 U.S.C. § 1691 | *"Fifteen U.S.C. sixteen-ninety-one"* (ECOA) |
+| 15 U.S.C. § 1666 | *"Fifteen U.S.C. sixteen-sixty-six"* (FCBA) |
+
+---
+
+## DO NOT
+
+- Do not let ElevenLabs auto-generate with default settings. Load Apex's profile first every time.
+- Do not use the same voice profile for Zero and Apex. They are separate IDs, separate profiles, separate humans.
+- Do not speed up Apex audio in post. If a VSL runs long, cut script — never speed the voice.
+- Do not add background music that competes with the low baritone. Apex music is **sub-bass drone + subtle gold chime accents**, never melodic.
+- Do not generate Apex lines in real-time for user-facing apps until the system prompt (`system-prompt.md`) has been tested end-to-end on at least 20 sample interactions.
+
+---
+
+## QUALITY CONTROL CHECKLIST (before any VSL ships)
+
+- [ ] Script read aloud end-to-end — no stumble points
+- [ ] All SSML `<break>` tags present and correctly placed
+- [ ] No banned vocabulary
+- [ ] Federal citations spelled out phonetically
+- [ ] Script ends with isolated "Ascend."
+- [ ] ElevenLabs voice ID = `ELEVENLABS_APEX_VOICE_ID` (from .env)
+- [ ] Stability = 55, Clarity = 85, Style = 20, Boost = ON
+- [ ] Output: `mp3_44100_192`
+- [ ] Playback tested at 1.0x speed — not sped up
+- [ ] Background music (if any) is drone, not melodic
+- [ ] Final file named: `apex-<asset>-<version>.mp3` (e.g., `apex-vsl-dispute-letter-pack-v1.mp3`)
+
+---
+
+**Ascend.**

@@ -76,6 +76,16 @@
 
 **Sub-brand of:** All Off Credit — a SoulHustleAI brand. Separate social pages (different audiences, different voices, they cross-pollinate but never dilute).
 
+### APEX (Mascot / AI High Priest)
+- The GMC counterpart to Zero. Regal, baritone, slow, deliberate. Oracle energy.
+- Tone references: Morpheus (Matrix) + Denzel + Idris Elba + Jay-Z interviews
+- 3 poses: The Throne (authority), The Prophet's Point (teaching), The Crown Bestowal (ascension/CTA)
+- Catchphrase: "The laws were written for you. You just never read them."
+- Sign-off: every Apex asset ends with the single word **"Ascend."** on its own line
+- Voice: ElevenLabs (recommended: `Daniel`, British baritone) — Stability 55% / Clarity 85% / Style 20% / Speaker Boost ON
+- Addresses audience as "Crowned Consumer"
+- **Full spec:** `god-mode-credit/apex/` — character bible, voice config, Claude API system prompt, Midjourney prompts, product integration playbook, 11 VSL scripts, content pillars, intro/outro templates
+
 ### Spiritual Positioning Thread
 Your credit score is not your worth — it's a language most people were never taught. Federal law exists specifically to protect you. You are a sovereign being reclaiming what was always yours. Every product carries this thread throughout.
 

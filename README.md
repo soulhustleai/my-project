@@ -20,6 +20,7 @@ my-project/
 ├── god-mode-credit/
 │   ├── PRODUCTS.md                 # Full product suite (11 products, pricing, status)
 │   ├── products/                   # Product files (PDFs, templates)
+│   ├── apex/                       # APEX — The Crowned (GMC mascot: character, voice, VSLs, prompts)
 │   ├── assets/                     # Covers, design files
 │   ├── content/                    # TikTok scripts, email sequences, VSL scripts
 │   └── automations/                # Payhip → ConvertKit → Make.com workflows
@@ -40,9 +41,17 @@ my-project/
 
 - [Full Context Transfer](CONTEXT.md) — paste into any Claude session for instant pickup
 - [Product Suite](god-mode-credit/PRODUCTS.md) — all 11 products with pricing
+- [APEX — The Crowned](god-mode-credit/apex/README.md) — GMC mascot / AI high priest (character, voice, VSLs, prompts)
 - [Client Tracker](soulhustleai/CLIENTS.md) — active clients and pipeline
 - [Automation Stack](docs/AUTOMATION-STACK.md) — every tool, every pipeline
 - [30-Day Action Plan](docs/ACTION-PLAN.md) — launch checklist with revenue targets
+
+## Mascots
+
+| Brand | Mascot | Role | Bible |
+|---|---|---|---|
+| SoulHustleAI | **Zero** | Jester-King / AI CEO | See `CONTEXT.md` → Brand 1 |
+| GOD MODE CREDIT | **Apex — The Crowned** | High Priest / Oracle | [`god-mode-credit/apex/`](god-mode-credit/apex/README.md) |
 
 ## Current Status (March 18, 2026)
 
