@@ -1,9 +1,32 @@
 # APEX — The Crowned
 ## GOD MODE CREDIT™ Mascot / AI High Priest
 
+![APEX — The Crowned](avatar.png)
+
 > **"The laws were written for you. You just never read them."**
 >
 > This directory is Apex's single source of truth. Everything here — character, voice, prompts, visuals, product integration, content, scripts — stays in sync with the brand. Edits flow from here outward.
+
+---
+
+## HIS FACE IS LOCKED
+
+The canonical portrait above (`avatar.png`) is Apex's face. Every cover, every email avatar, every Vapi assistant image, every social PFP, every system UI pulls from this one image. It's registered in:
+
+- **`ceo_brains.avatar_url`** (Supabase — the CEO persona record)
+- **`sovereign_vault.apex_avatar_url`** (Supabase — config keys for multi-surface pulls)
+- **`god-mode-credit/apex/avatar.png`** (repo — source of truth)
+
+Available variants for different surfaces:
+
+| File | Dimensions | Use |
+|---|---|---|
+| `avatar.png` | 848 × 1264 | Full canonical throne portrait (raw) |
+| `avatar-square.png` | 848 × 848 | Square PFP for TikTok / IG / YouTube / Discord / Twitter |
+| `avatar-web.png` | 680 × 1014 | Web-optimized hero (landing pages, Stan Store, email headers) |
+| `avatar-face-512.png` | 512 × 512 | Tight face crop for small UI avatars (ManyChat / ConvertKit / dashboards) |
+
+Regenerating any of them: rerun `apex/scripts/generate_covers.py --canonical` (this re-rolls the character — only do it when you want a new face).
 
 ---
 
@@ -13,6 +36,7 @@
 |---|---|
 | [`APEX.md`](APEX.md) | **Character bible** — backstory, look, voice, poses, catchphrases, contrast with Zero |
 | [`voice-config.md`](voice-config.md) | **ElevenLabs voice spec** — Antoni (`ErXwobaYiN019PkySvjV`), settings, SSML rules |
+| [`voice-options.md`](voice-options.md) | **Free/cheap/self-hosted voice alternatives** — Coqui XTTS-v2, Polly, Azure, Piper + tiered routing strategy |
 | [`system-prompt.md`](system-prompt.md) | **Claude API system prompt** (production) — load this to generate content in Apex's voice |
 | [`covers.md`](covers.md) | **PDF covers playbook** — Nano Banana Pro pipeline, all 11 covers, conversion psychology |
 | [`midjourney-prompts.md`](midjourney-prompts.md) | **Midjourney art prompts** — alternate path for 3 poses + hero + PFP + iconic moments |

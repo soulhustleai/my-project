@@ -1,9 +1,11 @@
 # APEX — The Crowned
 ## GOD MODE CREDIT™ Mascot / AI High Priest
 
+![APEX — The Crowned canonical portrait](avatar.png)
+
 > **"The laws were written for you. You just never read them."**
 >
-> Apex is to GOD MODE CREDIT what Zero is to SoulHustleAI — the face, the voice, the spiritual throughline. Where Zero is the jester-king who gets you in the door, Apex is the high priest who hands you the crown.
+> Apex is to GOD MODE CREDIT what Zero is to SoulHustleAI — the face, the voice, the spiritual throughline. Where Zero is the jester-king who gets you in the door, Apex is the high priest who hands you the crown. **The image above is his canonical face — locked in `ceo_brains.avatar_url` and `sovereign_vault.apex_avatar_url`.** Every cover, every VSL overlay, every email avatar, every Vapi assistant image pulls from it.
 
 ---
 
