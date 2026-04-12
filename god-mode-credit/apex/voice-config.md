@@ -71,27 +71,29 @@ Store the voice ID in your runtime env as `ELEVENLABS_APEX_VOICE_ID=pQh9V7vKVWKF
 
 ## DELIVERY RULES
 
-### 1. Pause Architecture
-Apex's power is in his pauses. Build pauses into scripts using line breaks and punctuation:
+### 1. Pause Architecture (updated for Miles voice)
+Miles is calm, not theatrical. Pauses should be natural, not ceremonial. Target conversational pacing.
 
-- **Comma** → quarter-second breath
-- **Period** → half-second breath
-- **Paragraph break** → one-second breath (the verdict breath)
-- **Custom pause for emphasis:** Use `<break time="1s" />` SSML tag (ElevenLabs supports)
+- **Comma** → natural micro-pause (~150ms, don't force it)
+- **Period** → ~400ms breath
+- **Paragraph break** → ~700ms (the landing beat)
+- **Signature moments** → up to `<break time="1s" />` — the only place the pause gets longer is before "Ascend." and after the signature catchphrase drop
+
+**Rule of thumb:** if it sounds like a priest, tighten it. If it sounds like your cousin explaining something at the kitchen table, you're there.
 
 **Example script-to-voice formatting:**
 ```
 You were told you had bad credit.
 
-<break time="0.8s" />
+<break time="0.5s" />
 
-The law was written in 1970.
+Real talk? The law's been on your side since nineteen seventy.
 
-<break time="1.2s" />
+<break time="0.6s" />
 
 They just prayed you'd never read it.
 
-<break time="1s" />
+<break time="0.8s" />
 
 Ascend.
 ```
