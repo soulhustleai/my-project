@@ -5,21 +5,38 @@
 
 ---
 
-## ELEVENLABS RECOMMENDED VOICE
+## ELEVENLABS VOICE — LOCKED
 
-**Primary candidate: `Daniel` (pre-made, deep British baritone)**
-- Perfect natural gravitas, low register, slow default cadence
-- Works in American context because the cadence reads as "world-weary teacher"
-- Fallback: `Callum` (deep, cinematic, dramatic) if Daniel is unavailable
+**Apex voice is already provisioned in Edwin's ElevenLabs account and tracked in Supabase (`sovereign_vault.elevenlabs_api_key`).**
 
-**Secondary candidate: `Onyx` (pre-made, deep American male)**
-- Use if Edwin prefers a distinctly American sound
+| Field | Value |
+|---|---|
+| Voice name | **Antoni** |
+| Voice ID | `ErXwobaYiN019PkySvjV` |
+| ElevenLabs plan | Creator (172K chars/month) |
+| Vapi credential ID | `5027c05c-3368-4a32-91b5-53064c1df1cc` |
+| Vapi assistant | `vapi_apex_assistant` (see `sovereign_vault`) |
+| Vapi phone number | `vapi_apex_number_id` (see `sovereign_vault`) |
 
-**Long-term: Custom voice clone**
-- Once Edwin records 3+ minutes of clean audio in Apex's cadence, clone via ElevenLabs Professional Voice Cloning
-- Tag it in ElevenLabs as `apex-crowned-v1`
+**Apex is one of 5 CEO voices in the empire.** For context only — do not cross-wire these:
 
-**Voice ID variable:** Store the final selected voice ID in `.env` as `ELEVENLABS_APEX_VOICE_ID`. Reference this in all Make.com scenarios and scripts.
+| CEO | Voice | Voice ID |
+|---|---|---|
+| SOVEREIGN | George | `JBFqnCBsd6RMkjVDRZzb` |
+| ZERO (SoulHustleAI) | Charlie | `IKne3meq5aSn9XLyUdCD` |
+| MIDAS (Surplus Recovery) | Liam | `TX3LPaxmHKxFdv7VOQHJ` |
+| AEGIS | Bill | `pqHfZKP75CvOlQylNhV4` |
+| **APEX (GOD MODE CREDIT)** | **Antoni** | **`ErXwobaYiN019PkySvjV`** |
+
+**Runtime access:**
+```python
+import os, requests
+# Fetch from sovereign_vault (preferred) or env:
+voice_id = "ErXwobaYiN019PkySvjV"
+# api_key pulled from sovereign_vault.elevenlabs_api_key at runtime
+```
+
+Store the voice ID in your runtime env as `ELEVENLABS_APEX_VOICE_ID=ErXwobaYiN019PkySvjV` if you prefer env-first config. Reference it in all Make.com scenarios, n8n workflows, and Vapi assistants.
 
 ---
 

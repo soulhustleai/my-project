@@ -12,13 +12,16 @@
 | File | Purpose |
 |---|---|
 | [`APEX.md`](APEX.md) | **Character bible** — backstory, look, voice, poses, catchphrases, contrast with Zero |
-| [`voice-config.md`](voice-config.md) | **ElevenLabs voice spec** — voice ID, settings, speech patterns, SSML rules |
+| [`voice-config.md`](voice-config.md) | **ElevenLabs voice spec** — Antoni (`ErXwobaYiN019PkySvjV`), settings, SSML rules |
 | [`system-prompt.md`](system-prompt.md) | **Claude API system prompt** (production) — load this to generate content in Apex's voice |
-| [`midjourney-prompts.md`](midjourney-prompts.md) | **Character art prompts** — 3 poses, hero shot, PFP, banner, iconic moments |
+| [`covers.md`](covers.md) | **PDF covers playbook** — Nano Banana Pro pipeline, all 11 covers, conversion psychology |
+| [`midjourney-prompts.md`](midjourney-prompts.md) | **Midjourney art prompts** — alternate path for 3 poses + hero + PFP + iconic moments |
 | [`product-integration.md`](product-integration.md) | **Product playbook** — how Apex shows up in each of the 11 GMC products |
 | [`content-pillars.md`](content-pillars.md) | **Content engine** — 5 pillars, weekly grid, 50-hook bank, 14-day email sequence |
 | [`vsl-scripts/`](vsl-scripts/) | **11 VSL scripts** (one per product) — ready for ElevenLabs handoff |
 | [`product-inserts/`](product-inserts/) | **Drop-in intro + outro templates** for every product PDF |
+| [`scripts/`](scripts/) | **Production pipeline** — `generate_covers.py` (Nano Banana Pro) + `update_product_covers.sql` |
+| `../assets/apex/covers/` | **The 11 generated cover PNGs** + the canonical Apex reference image |
 
 ---
 
@@ -97,18 +100,20 @@ Apex is the oracle of the credit game. A regal, baritone, deliberate figure who 
 | Asset | Status |
 |---|---|
 | Character bible | ✅ Done (`APEX.md`) |
-| Voice config | ✅ Done (`voice-config.md`) |
+| Voice config | ✅ Done — Antoni `ErXwobaYiN019PkySvjV` (locked) |
 | System prompt | ✅ Done v1.0 (`system-prompt.md`) |
-| Midjourney prompts | ✅ Done (`midjourney-prompts.md`) |
+| Midjourney prompts | ✅ Done (`midjourney-prompts.md`) — alternate path |
+| **PDF covers (all 11 products)** | ✅ **Done — Nano Banana Pro, face-locked, see `covers.md`** |
+| **Canonical Apex reference image** | ✅ **Done — `assets/apex/covers/00-apex-canonical-throne.png`** |
 | Product integration playbook | ✅ Done (`product-integration.md`) |
 | Content pillars + engine | ✅ Done (`content-pillars.md`) |
 | VSL scripts (11 products) | ✅ Done (`vsl-scripts/`) |
 | Product intro/outro templates | ✅ Done (`product-inserts/`) |
-| Character art (rendered) | ⏳ Pending MJ generation (prompts ready) |
-| ElevenLabs voice ID selected | ⏳ Pending Edwin decision (recommended: `Daniel`) |
+| Vapi assistant + phone | ✅ Already provisioned (see `sovereign_vault.vapi_apex_*`) |
+| `products.cover_url` synced in Supabase | ⏳ Run `scripts/update_product_covers.sql` after push |
 | System prompt A/B tested | ⏳ Pending 20-prompt validation run |
 | VSLs voiced + cut | ⏳ Pending ElevenLabs + editor |
-| Payhip storefront live | ⏳ Pending |
+| Payhip storefront live (with new covers) | ⏳ Pending Edwin upload |
 | ConvertKit 14-day sequence written | ⏳ Pending (outline in `content-pillars.md`) |
 | ManyChat bot connected to Apex prompt | ⏳ Pending |
 
@@ -118,13 +123,14 @@ Apex is the oracle of the credit game. A regal, baritone, deliberate figure who 
 
 Pulled out of the docs so nothing gets buried:
 
-1. **Pick the ElevenLabs voice.** Daniel (recommended, British baritone) vs. Onyx (American) vs. custom clone. See `voice-config.md` → ElevenLabs Recommended Voice.
-2. **Generate the 10 Midjourney character images** from `midjourney-prompts.md` — upscale + save to `../assets/apex/`. Priority order: Pose 1 (Throne) → Pose 2 (Prophet's Point) → Pose 3 (Crown Bestowal) → the rest.
+1. **Upload the new covers to Payhip** — all 11 live in `../assets/apex/covers/`. Replace the existing product cover on each SKU.
+2. **Run the cover_url sync** against Supabase after the branch is pushed: `apex/scripts/update_product_covers.sql`. (I attempted it during this session; the MCP connection was timing out intermittently — the SQL file is ready to re-fire.)
 3. **Confirm `apex@godmodecredit.com`** as the sender address for ConvertKit (or pick an alternative).
 4. **Validate `system-prompt.md` v1.0** by running the 8 test prompts in its Testing Checklist section. Report back anything that breaks character.
 5. **Decide:** does Apex narrate existing flagship PDF in place, or do we release a "Narrated Edition" as an upsell?
+6. **Optional: regenerate cover #7** (`collect-what-they-owe-you.png`) — the statute-number background leaned slightly more abstract than designed. It still works and is face-locked, but if you want a bolder crown+gavel focus, run `python3 apex/scripts/generate_covers.py --product collect-what-they-owe-you`.
 
-Everything else is automated once those 5 decisions land.
+Everything else is automated once those land.
 
 ---
 
