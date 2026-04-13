@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SoulHustleAI — My Staff Don't Exist</title>
+<meta name="description" content="Custom AI automation for service businesses doing $100K–$2M/yr. Your voice, your brand, your rules — answering calls, booking jobs, closing deals 24/7." />
+<meta property="og:title" content="SoulHustleAI — My Staff Don't Exist" />
+<meta property="og:description" content="Zero the AI CEO runs your front desk. You get the output of a full team at a fraction of the cost." />
+<meta property="og:image" content="https://soulhustleai.com/og.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#050505;--bg-1:#0b0b0b;--bg-2:#111113;--line:rgba(201,160,51,.14);
+    --gold:#C9A033;--gold-hi:#F2C95C;--gold-lo:#D4922A;--text:#F5F2E8;--muted:#8a8577;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Barlow',system-ui,sans-serif;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  a{color:var(--gold-hi);text-decoration:none}
+  img{max-width:100%;display:block}
+  h1,h2,h3{font-family:'Cinzel',serif;font-weight:600;letter-spacing:2px;line-height:1.15}
+  h1{font-size:clamp(36px,6vw,72px);color:var(--gold-hi)}
+  h2{font-size:clamp(26px,4vw,44px);color:var(--gold-hi);margin-bottom:24px}
+  h3{font-size:20px;color:var(--gold-hi);margin-bottom:10px;letter-spacing:1.5px}
+  p{color:var(--text);font-size:16px;line-height:1.7;margin-bottom:14px}
+  .container{max-width:1200px;margin:0 auto;padding:0 28px}
+  .btn{display:inline-block;padding:14px 28px;border-radius:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:13px;border:1px solid transparent;transition:.2s;cursor:pointer}
+  .btn.primary{background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#050505;box-shadow:0 0 32px rgba(242,201,92,.25)}
+  .btn.primary:hover{filter:brightness(1.12);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--gold-hi);border-color:var(--gold)}
+  .btn.ghost:hover{background:rgba(201,160,51,.08)}
+
+  /* NAV */
+  nav.top{position:sticky;top:0;z-index:50;background:rgba(5,5,5,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  nav.top .row{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  nav.top .logo{display:flex;align-items:center;gap:12px;font-family:'Cinzel';font-size:16px;letter-spacing:3px;color:var(--gold-hi)}
+  nav.top .logo .dot{width:34px;height:34px;border-radius:10px;background:radial-gradient(circle at 30% 30%,var(--gold-hi),var(--gold) 60%,var(--gold-lo));display:flex;align-items:center;justify-content:center;color:#050505;font-weight:800;box-shadow:0 0 22px rgba(201,160,51,.4)}
+  nav.top .links{display:flex;gap:28px;font-size:12px;letter-spacing:2px;text-transform:uppercase}
+  nav.top .links a{color:var(--text)}
+  nav.top .links a:hover{color:var(--gold-hi)}
+  @media(max-width:780px){nav.top .links{display:none}}
+
+  /* HERO */
+  .hero{padding:80px 0 120px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(201,160,51,.08),transparent 60%);pointer-events:none}
+  .hero .kicker{font-family:'Cinzel';font-size:12px;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:24px}
+  .hero .tag{font-family:'Cormorant Garamond';font-style:italic;font-size:24px;color:var(--muted);margin:28px 0 36px;max-width:680px;line-height:1.5}
+  .hero .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .phone{margin-top:40px;font-family:'Cinzel';color:var(--muted);letter-spacing:2px;font-size:13px}
+  .hero .phone a{font-size:22px;color:var(--gold-hi);font-family:'Barlow';font-weight:700;letter-spacing:1px}
+
+  /* SECTIONS */
+  section{padding:90px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:'Cinzel';font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:14px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  @media(max-width:900px){.grid-3,.grid-4{grid-template-columns:1fr}}
+
+  .card{background:var(--bg-1);border:1px solid var(--line);padding:32px;border-radius:14px;transition:.25s}
+  .card:hover{transform:translateY(-3px);border-color:rgba(201,160,51,.4);box-shadow:0 12px 48px rgba(201,160,51,.08)}
+
+  /* PACKAGES */
+  .pkg{background:var(--bg-1);border:1px solid var(--line);padding:36px 32px;border-radius:16px;position:relative;display:flex;flex-direction:column}
+  .pkg.featured{border-color:var(--gold);box-shadow:0 0 56px rgba(201,160,51,.12)}
+  .pkg .badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#050505;font-size:10px;padding:5px 16px;border-radius:20px;font-weight:800;letter-spacing:2px}
+  .pkg .name{font-family:'Cinzel';letter-spacing:2px;color:var(--gold-hi);font-size:15px;margin-bottom:14px}
+  .pkg .price{font-family:'Cinzel';font-size:48px;color:var(--text);font-weight:700}
+  .pkg .price small{font-size:14px;color:var(--muted);font-family:'Barlow';font-weight:400;letter-spacing:1px}
+  .pkg .blurb{color:var(--muted);font-size:13px;margin:10px 0 22px;line-height:1.5;font-style:italic}
+  .pkg ul{list-style:none;margin:0 0 26px;padding:0;flex:1}
+  .pkg ul li{padding:9px 0;font-size:13px;color:var(--text);border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:10px}
+  .pkg ul li::before{content:'✦';color:var(--gold);flex-shrink:0}
+  .pkg .btn{width:100%;text-align:center}
+
+  /* BOSS MOVES */
+  .bossmoves{background:linear-gradient(180deg,transparent,rgba(201,160,51,.03))}
+  .boss-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .boss-card{background:var(--bg-1);border:1px solid var(--line);padding:28px 22px;border-radius:12px;text-align:center}
+  .boss-card .num{font-family:'Cinzel';font-size:38px;color:var(--gold);margin-bottom:10px;font-weight:700}
+  .boss-card h4{font-family:'Cinzel';font-size:13px;letter-spacing:2px;color:var(--gold-hi);margin-bottom:10px;text-transform:uppercase}
+  .boss-card p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+  @media(max-width:780px){.boss-grid{grid-template-columns:1fr 1fr}}
+
+  /* ZERO STRIP */
+  .zero{background:linear-gradient(180deg,#0a0a0a,#060606);padding:70px 0;text-align:center}
+  .zero .dial{display:inline-block;padding:24px 42px;border:1px solid var(--line);border-radius:80px;margin-top:20px}
+  .zero .dial a{font-family:'Cinzel';font-size:28px;color:var(--gold-hi);letter-spacing:3px}
+  .zero small{display:block;color:var(--muted);font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+
+  /* FOOTER */
+  footer{padding:60px 0 40px;border-top:1px solid var(--line);background:#030303}
+  footer .row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+  footer h5{font-family:'Cinzel';font-size:12px;letter-spacing:2px;color:var(--gold-hi);margin-bottom:14px;text-transform:uppercase}
+  footer a{display:block;font-size:13px;color:var(--muted);padding:5px 0}
+  footer a:hover{color:var(--gold-hi)}
+  footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:11px;text-align:center;letter-spacing:1px}
+  @media(max-width:780px){footer .row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="container row">
+    <div class="logo"><div class="dot">S</div>SOULHUSTLEAI</div>
+    <div class="links">
+      <a href="#framework">Framework</a>
+      <a href="#packages">Packages</a>
+      <a href="#zero">Meet Zero</a>
+      <a href="/apply.html">Apply</a>
+    </div>
+    <a href="/apply.html" class="btn primary">Apply Now</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <div class="kicker">B2B AI Automation — Fully Custom, No Templates</div>
+    <h1>My Staff<br/>Don't Exist.</h1>
+    <p class="tag">Zero runs your front desk, your follow-up, your booking, and your close — 24/7.
+    You get the output of a full team at a fraction of the cost, and your money stays where it belongs. In your pocket.</p>
+    <div class="cta-row">
+      <a href="/apply.html" class="btn primary">Apply to Work With Us</a>
+      <a href="https://cal.com/soulhustleai/strategy" class="btn ghost" target="_blank">Book Strategy Call</a>
+    </div>
+    <div class="phone">OR CALL ZERO RIGHT NOW &mdash; <a href="tel:+19292361567">(929) 236-1567</a></div>
+  </div>
+</section>
+
+<section id="framework" class="bossmoves">
+  <div class="container">
+    <div class="eyebrow">The BOSSMoves Framework</div>
+    <h2>Four Pillars. One Machine.</h2>
+    <p style="color:var(--muted);max-width:680px;margin-bottom:40px">Every system we build attacks one or more of these four pillars. We audit your business, find the leak, plug it with automation, then scale the pattern.</p>
+    <div class="boss-grid">
+      <div class="boss-card"><div class="num">I</div><h4>Lead Generation</h4><p>AI voice cold outreach, SEO scrapers, review farming, referral engines — fills the pipe while you sleep.</p></div>
+      <div class="boss-card"><div class="num">II</div><h4>Lead Conversion</h4><p>Instant SMS/email reply, AI qualification, auto-booking, contract send — no lead goes cold.</p></div>
+      <div class="boss-card"><div class="num">III</div><h4>Client Fulfillment</h4><p>Quoting, dispatch, invoice, payment, review request — run by AI, reviewed by you.</p></div>
+      <div class="boss-card"><div class="num">IV</div><h4>Client Ascension</h4><p>Upsell sequences, win-back, LTV maximizing — turn a $200 job into a $2,400 relationship.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="container">
+    <div class="eyebrow">Three Tiers &mdash; Built For Your Stage</div>
+    <h2>Pick Your Weapon.</h2>
+    <p style="color:var(--muted);max-width:680px;margin-bottom:50px">One-time build fee locks in your system. Monthly retainer keeps Zero running, maintained, and improving. No lock-in, no BS.</p>
+
+    <div class="grid-4">
+      <div class="pkg">
+        <div class="name">CATALYST</div>
+        <div class="price">$297<small>/mo</small></div>
+        <div class="blurb">Entry tier — Speed to Lead automation. Solo &amp; small teams under $300K/yr. Built in 48hrs. 6–12x ROI.</div>
+        <ul>
+          <li>Speed to Lead (missed-call autotext + instant reply)</li>
+          <li>Zero AI receptionist (VAPI, shared voice)</li>
+          <li>Cal.com booking integration</li>
+          <li>48hr build turnaround</li>
+          <li>$2,000–$4,000/mo recovered</li>
+          <li>+$297 one-time deposit</li>
+        </ul>
+        <a href="https://buy.stripe.com/14A9AT3eV8TAait2kn73G00" target="_blank" class="btn ghost">Buy Catalyst</a>
+      </div>
+
+      <div class="pkg">
+        <div class="name">SYSTEM</div>
+        <div class="price">$697<small>/mo</small></div>
+        <div class="blurb">Mid tier — 3 automations. Teams of 3–10, $300K–$1M/yr. Built in 7 days. 7–20x ROI.</div>
+        <ul>
+          <li>Speed to Lead (automation 1)</li>
+          <li>Follow-up Sequences (automation 2)</li>
+          <li>Database Reactivation (automation 3)</li>
+          <li>7-day build</li>
+          <li>$5,000–$15,000/mo recovered</li>
+          <li>+$697 one-time deposit</li>
+        </ul>
+        <a href="https://buy.stripe.com/8x2eVd5n3edU0HT9MP73G01" target="_blank" class="btn ghost">Buy System</a>
+      </div>
+
+      <div class="pkg featured">
+        <div class="badge">MOST POPULAR</div>
+        <div class="name">EMPIRE</div>
+        <div class="price">$1,497<small>/mo</small></div>
+        <div class="blurb">High tier — ALL 5 automations. 10+ employees, $1M+/yr. Built in 14 days. 10–30x ROI. KEEPER oversight.</div>
+        <ul>
+          <li>Speed to Lead + Doc Processing</li>
+          <li>Follow-up Sequences + DB Reactivation</li>
+          <li>Internal Reporting (all 5 automations)</li>
+          <li>14-day build</li>
+          <li>Monthly strategy call with Edwin</li>
+          <li>$15,000–$50,000/mo recovered</li>
+          <li>+$1,497 one-time deposit</li>
+        </ul>
+        <a href="https://buy.stripe.com/aFa8wP16N7Pw76h3or73G02" target="_blank" class="btn primary">Buy Empire</a>
+      </div>
+
+      <div class="pkg">
+        <div class="name">SOVEREIGN</div>
+        <div class="price">Custom<small></small></div>
+        <div class="blurb">Enterprise — multi-location, law firms, insurance, accounting, franchises. Custom quote. 21–60 day build. 15–50x ROI.</div>
+        <ul>
+          <li>Unlimited automations + custom builds</li>
+          <li>Multi-location routing</li>
+          <li>Full API integrations</li>
+          <li>SOVEREIGN oversight layer</li>
+          <li>Biweekly strategy calls w/ Edwin</li>
+          <li>Dedicated Slack channel</li>
+          <li>$3K–$10K+/mo retainer range</li>
+        </ul>
+        <a href="/apply.html?pkg=sovereign" class="btn ghost">Apply for Sovereign</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;color:var(--gold-hi);font-family:Cinzel;font-size:14px;letter-spacing:2px;margin-top:40px;font-style:italic">
+      ✦ THE BIG PROMISE: $10,000+ back in your pocket in 30 days — or we keep building for free until we do. ✦
+    </p>
+  </div>
+</section>
+
+<section id="zero" class="zero">
+  <div class="container">
+    <div class="eyebrow">Meet Zero — AI CEO</div>
+    <h2>"Call Me. I'll Convince You Myself."</h2>
+    <p style="color:var(--muted);max-width:620px;margin:0 auto 20px">Zero is our flagship AI voice. Trained on every BOSSMoves audit we've ever run. He'll qualify you, book you, and roast you if your systems are soft. Seriously &mdash; pick up the phone.</p>
+    <div class="dial">
+      <small>LIVE AI LINE</small>
+      <a href="tel:+19292361567">(929) 236-1567</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="text-align:center">
+    <div class="eyebrow">Ready to Move?</div>
+    <h2>Three Ways In.</h2>
+    <div class="grid-3" style="margin-top:40px">
+      <div class="card">
+        <h3>1. The Gate</h3>
+        <p>Fill out the 6-question intake. We score you, respond within 4 hours, and send you a tailored proposal if you qualify.</p>
+        <a href="/apply.html" class="btn ghost">Apply Now</a>
+      </div>
+      <div class="card">
+        <h3>2. The ROI Check</h3>
+        <p>Run our 2-minute calculator to see exactly how much money your current systems are leaking. Free, no email required.</p>
+        <a href="/roi-calculator.html" class="btn ghost">Run The Numbers</a>
+      </div>
+      <div class="card">
+        <h3>3. The Call</h3>
+        <p>Dial Zero directly. 24/7. He'll qualify you, book you into Edwin's calendar if you're a fit, and text you the recap.</p>
+        <a href="tel:+19292361567" class="btn ghost">Call Zero</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="logo" style="display:flex;align-items:center;gap:12px;margin-bottom:16px"><div style="width:34px;height:34px;border-radius:10px;background:radial-gradient(circle at 30% 30%,var(--gold-hi),var(--gold));display:flex;align-items:center;justify-content:center;color:#050505;font-weight:800;font-family:Cinzel">S</div><span style="font-family:Cinzel;letter-spacing:3px;color:var(--gold-hi)">SOULHUSTLEAI</span></div>
+        <p style="color:var(--muted);font-size:12px;max-width:320px">Custom AI automation for service businesses. A Typically Not Lifestyle LLC brand.</p>
+      </div>
+      <div>
+        <h5>Work</h5>
+        <a href="/apply.html">Apply</a>
+        <a href="#packages">Packages</a>
+        <a href="/roi-calculator.html">ROI Calculator</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="/zero-hq.html">Zero HQ</a>
+        <a href="https://cal.com/soulhustleai/strategy">Book Call</a>
+        <a href="mailto:hello@soulhustleai.com">hello@soulhustleai.com</a>
+      </div>
+      <div>
+        <h5>Call Zero</h5>
+        <a href="tel:+19292361567">(929) 236-1567</a>
+        <a>24/7 &mdash; AI answers</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Typically Not Lifestyle LLC. Financial sovereignty is your birthright.</div>
+  </div>
+</footer>
+
+</body>
+</html>

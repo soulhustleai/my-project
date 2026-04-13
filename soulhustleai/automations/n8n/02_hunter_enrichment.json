@@ -1,0 +1,154 @@
+{
+  "name": "SHAI — 02 HUNTER Enrichment",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {"interval": [{"field": "cronExpression", "expression": "*/30 * * * *"}]}
+      },
+      "id": "cron-1",
+      "name": "Every 30min",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/enrichment_jobs",
+        "method": "GET",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {"name": "select", "value": "id,contact_id,status,enriched_contacts(input_name,input_phone,input_email,enrichment_data)"},
+            {"name": "status", "value": "eq.pending"},
+            {"name": "order", "value": "created_at.asc"},
+            {"name": "limit", "value": "10"}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_KEY }}"},
+            {"name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"}
+          ]
+        }
+      },
+      "id": "fetch-2",
+      "name": "Fetch Pending Jobs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      },
+      "id": "split-3",
+      "name": "Split Into Jobs",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Sequential enrichment: holehe → maigret → sherlock → apollo → hunter.io → numverify\n// Each source has its own HTTP call. For Railway n8n without the binaries, use the API sources.\nconst job = $input.first().json;\nconst contact = job.enriched_contacts || {};\nconst name = contact.input_name;\nconst phone = contact.input_phone;\nconst email = contact.input_email;\nconst results = { sources_attempted: [], sources_succeeded: [], enrichment_data: {} };\n\n// The actual HTTP calls happen in downstream nodes — this just sets up the job context\nreturn [{ json: { job_id: job.id, contact_id: job.contact_id, name, phone, email, results } }];"
+      },
+      "id": "prep-4",
+      "name": "Prep Enrichment",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [910, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apollo.io/v1/organizations/enrich?q_organization_domains={{ $json.name }}.com",
+        "method": "GET",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "X-Api-Key", "value": "={{ $env.APOLLO_API_KEY }}"}
+          ]
+        }
+      },
+      "id": "apollo-5",
+      "name": "Apollo Company",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1130, 200],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=https://api.hunter.io/v2/domain-search?domain={{ $json.name }}.com&api_key={{ $env.HUNTER_IO_API_KEY }}",
+        "method": "GET"
+      },
+      "id": "hunter-6",
+      "name": "Hunter.io",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1130, 300],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "url": "=http://apilayer.net/api/validate?access_key={{ $env.NUMVERIFY_API_KEY }}&number={{ $json.phone }}",
+        "method": "GET"
+      },
+      "id": "numverify-7",
+      "name": "Numverify Phone",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1130, 400],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "functionCode": "// Merge all enrichment results and write back to Supabase\nconst items = $input.all();\nconst apollo = items[0]?.json || {};\nconst hunter = items[1]?.json || {};\nconst numverify = items[2]?.json || {};\n\nconst merged = {\n  apollo: apollo.organization || null,\n  hunter: hunter.data || null,\n  numverify: numverify || null\n};\n\n// Extract email if found\nconst email = hunter.data?.emails?.[0]?.value || null;\n\nreturn [{ json: { enrichment_data: merged, email_discovered: email } }];"
+      },
+      "id": "merge-8",
+      "name": "Merge Results",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1350, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/enrichment_jobs?id=eq.{{ $json.job_id }}",
+        "method": "PATCH",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_KEY }}"},
+            {"name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "status", "value": "completed"},
+            {"name": "completed_at", "value": "={{ $now.toISOString() }}"}
+          ]
+        }
+      },
+      "id": "update-9",
+      "name": "Mark Complete",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1570, 300]
+    }
+  ],
+  "connections": {
+    "Every 30min": {"main": [[{"node": "Fetch Pending Jobs", "type": "main", "index": 0}]]},
+    "Fetch Pending Jobs": {"main": [[{"node": "Split Into Jobs", "type": "main", "index": 0}]]},
+    "Split Into Jobs": {"main": [[{"node": "Prep Enrichment", "type": "main", "index": 0}]]},
+    "Prep Enrichment": {"main": [[{"node": "Apollo Company", "type": "main", "index": 0}, {"node": "Hunter.io", "type": "main", "index": 0}, {"node": "Numverify Phone", "type": "main", "index": 0}]]},
+    "Apollo Company": {"main": [[{"node": "Merge Results", "type": "main", "index": 0}]]},
+    "Hunter.io": {"main": [[{"node": "Merge Results", "type": "main", "index": 0}]]},
+    "Numverify Phone": {"main": [[{"node": "Merge Results", "type": "main", "index": 0}]]},
+    "Merge Results": {"main": [[{"node": "Mark Complete", "type": "main", "index": 0}]]}
+  },
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "tags": [{"name": "soulhustleai"}, {"name": "enrichment"}]
+}

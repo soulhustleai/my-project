@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gate — SoulHustleAI Application</title>
+<meta name="description" content="Apply to work with SoulHustleAI. 6 questions. 4-hour turnaround. Either you're a fit or we tell you who is." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--bg:#050505;--bg-1:#0b0b0b;--line:rgba(201,160,51,.14);--gold:#C9A033;--gold-hi:#F2C95C;--text:#F5F2E8;--muted:#8a8577}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Barlow',system-ui,sans-serif;min-height:100vh}
+  a{color:var(--gold-hi);text-decoration:none}
+  .wrap{max-width:720px;margin:0 auto;padding:60px 28px 100px}
+  .kicker{font-family:'Cinzel';font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+  h1{font-family:'Cinzel';font-size:42px;color:var(--gold-hi);font-weight:600;letter-spacing:2px;line-height:1.15;margin-bottom:18px}
+  .lede{font-family:'Cormorant Garamond';font-style:italic;font-size:20px;color:var(--muted);line-height:1.5;margin-bottom:44px}
+  form{background:var(--bg-1);border:1px solid var(--line);border-radius:16px;padding:40px 36px}
+  .field{margin-bottom:28px}
+  .field label{display:block;font-family:'Cinzel';font-size:11px;letter-spacing:2px;color:var(--gold-hi);text-transform:uppercase;margin-bottom:8px}
+  .field small{display:block;color:var(--muted);font-size:12px;margin-bottom:10px}
+  .field input, .field select, .field textarea{width:100%;background:#060606;border:1px solid var(--line);color:var(--text);font-family:'Barlow';padding:13px 16px;border-radius:8px;font-size:14px;transition:.2s}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,160,51,.12)}
+  .field textarea{min-height:110px;resize:vertical;font-family:'Barlow'}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:640px){.row-2{grid-template-columns:1fr}}
+  button.submit{width:100%;background:linear-gradient(180deg,var(--gold-hi),var(--gold));color:#050505;font-family:'Barlow';font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px;padding:16px;border:none;border-radius:8px;cursor:pointer;transition:.2s}
+  button.submit:hover{filter:brightness(1.1);transform:translateY(-1px)}
+  .back{display:inline-block;color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:30px}
+  .back:hover{color:var(--gold-hi)}
+  .hint{background:rgba(201,160,51,.05);border:1px solid var(--line);padding:16px 20px;border-radius:10px;font-size:13px;color:var(--muted);margin-top:24px;line-height:1.6}
+  .hint strong{color:var(--gold-hi)}
+  .success{background:rgba(84,216,150,.08);border:1px solid rgba(84,216,150,.3);color:#b4ffcf;padding:20px;border-radius:10px;text-align:center;margin-top:20px;display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="/" class="back">&larr; Back to soulhustleai.com</a>
+  <div class="kicker">The Gate — Application</div>
+  <h1>We Only Build For Builders.</h1>
+  <p class="lede">6 questions. 4-hour response. Either you're a fit and we send you a proposal, or we tell you exactly who you should work with instead.</p>
+
+  <form id="gateForm" onsubmit="return submitGate(event)">
+    <div class="row-2">
+      <div class="field">
+        <label>Full Name</label>
+        <input required name="name" placeholder="Edwin Reyes" />
+      </div>
+      <div class="field">
+        <label>Business Name</label>
+        <input required name="business" placeholder="BlueFlame Plumbing Co" />
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="field">
+        <label>Email</label>
+        <input required type="email" name="email" placeholder="you@business.com" />
+      </div>
+      <div class="field">
+        <label>Phone (for Zero to text)</label>
+        <input required type="tel" name="phone" placeholder="(555) 555-5555" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>1. What does your business actually do?</label>
+      <small>Skip the pitch. What do customers pay you for?</small>
+      <textarea required name="what_you_do" placeholder="We do residential and light commercial plumbing in Tampa — mainly drain, water heater, and repipe work."></textarea>
+    </div>
+
+    <div class="field">
+      <label>2. How much revenue will you do this year?</label>
+      <select required name="revenue">
+        <option value="">— Select —</option>
+        <option>Under $100K</option>
+        <option>$100K – $300K</option>
+        <option>$300K – $1M</option>
+        <option>$1M – $2M</option>
+        <option>$2M – $5M</option>
+        <option>$5M+</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>3. What package caught your eye?</label>
+      <select required name="package" id="pkgSelect">
+        <option value="">— Select —</option>
+        <option value="catalyst">Catalyst — $297 deposit + $297/mo</option>
+        <option value="system">System — $697 deposit + $697/mo</option>
+        <option value="empire">Empire — $1497 deposit + $1497/mo</option>
+        <option value="sovereign">Sovereign — Custom $3K–$10K+/mo</option>
+        <option value="unsure">Not sure yet — help me decide</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>4. What's the single biggest leak in your business?</label>
+      <small>Missed calls? Slow follow-up? No invoicing? Be honest — Zero will find it anyway.</small>
+      <textarea required name="biggest_leak" placeholder="We miss like 20 calls a week and my wife can't keep up with the follow-up. Leads go cold in 48 hours."></textarea>
+    </div>
+
+    <div class="field">
+      <label>5. If we built the perfect system for you, what would your day look like 90 days from now?</label>
+      <textarea required name="vision" placeholder="I want to wake up, look at my phone, and see 5 booked jobs and 3 estimates lined up — without having texted anyone."></textarea>
+    </div>
+
+    <div class="field">
+      <label>6. How fast can you move?</label>
+      <select required name="timeline">
+        <option value="">— Select —</option>
+        <option>Ready to start this week</option>
+        <option>Within 2 weeks</option>
+        <option>Within 30 days</option>
+        <option>Just researching for now</option>
+      </select>
+    </div>
+
+    <button class="submit" type="submit">Submit The Gate →</button>
+
+    <div class="hint">
+      <strong>What happens next:</strong> Within 4 hours, Zero scores your application against our BOSSMoves framework. If you score 70+, Edwin emails you personally with a custom proposal, a Loom video walkthrough, and a Cal.com link. If not, we send you a free audit report + referral to someone who can help.
+    </div>
+    <div class="success" id="successMsg">
+      <strong>✦ Application received.</strong><br/>Zero's reviewing it now. Check your email within 4 hours. If you don't see us, check spam and search for <em>hello@soulhustleai.com</em>.
+    </div>
+  </form>
+</div>
+
+<script>
+// Pre-select package from query string ?pkg=empire
+const params = new URLSearchParams(location.search);
+if (params.get('pkg')) {
+  const sel = document.getElementById('pkgSelect');
+  const val = params.get('pkg');
+  for (const opt of sel.options) if (opt.value === val) opt.selected = true;
+}
+
+// Submit to n8n webhook (The Gate intake workflow)
+// Replace N8N_WEBHOOK with live URL before going live
+const N8N_WEBHOOK = 'https://n8n-production-524ef.up.railway.app/webhook/shai-gate-intake';
+
+async function submitGate(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = Object.fromEntries(new FormData(form).entries());
+  data.submitted_at = new Date().toISOString();
+  data.source = 'website_apply';
+  data.brand = 'soulhustleai';
+  try {
+    await fetch(N8N_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+      mode: 'no-cors'
+    });
+  } catch (err) { console.warn('webhook error', err); }
+  form.style.display = 'none';
+  document.getElementById('successMsg').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  return false;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SoulHustleAI — Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  :root {
+    --bg: #050505;
+    --bg-1: #0b0b0b;
+    --bg-2: #111113;
+    --bg-3: #171719;
+    --line: rgba(201, 160, 51, 0.14);
+    --line-strong: rgba(201, 160, 51, 0.32);
+    --gold: #C9A033;
+    --gold-hi: #F2C95C;
+    --gold-lo: #D4922A;
+    --text: #F5F2E8;
+    --muted: #8a8577;
+    --ok: #54d896;
+    --warn: #f2c95c;
+    --bad: #ff6b6b;
+    --blue: #6ea8ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--gold-hi); text-decoration: none; }
+  code, .mono { font-family: 'JetBrains Mono', monospace; }
+  .app { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  aside.sidebar {
+    background: linear-gradient(180deg, #0a0a0a 0%, #060606 100%);
+    border-right: 1px solid var(--line);
+    padding: 24px 16px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 32px;
+  }
+  .brand .logo {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: radial-gradient(circle at 30% 30%, var(--gold-hi), var(--gold) 60%, var(--gold-lo));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel'; font-weight: 700; color: #050505; font-size: 18px;
+    box-shadow: 0 0 24px rgba(201, 160, 51, 0.35);
+  }
+  .brand .name { font-family: 'Cinzel'; font-size: 14px; letter-spacing: 2px; color: var(--gold-hi); }
+  .brand .sub { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .nav { display: flex; flex-direction: column; gap: 4px; }
+  .nav a {
+    display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px;
+    color: #cfc9b3; font-size: 13px; font-weight: 500; border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .nav a:hover, .nav a.active { background: var(--bg-2); border-color: var(--line); color: var(--gold-hi); }
+  .section-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; margin: 18px 0 8px; padding-left: 12px; text-transform: uppercase; }
+  main { padding: 28px 32px; max-width: 1600px; }
+  header.top {
+    display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px;
+  }
+  header.top h1 {
+    font-family: 'Cinzel'; font-weight: 600; letter-spacing: 3px;
+    margin: 0; font-size: 24px; color: var(--gold-hi);
+  }
+  header.top .status {
+    display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--muted);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); }
+  .dot.warn { background: var(--warn); box-shadow: 0 0 10px var(--warn); }
+  .dot.bad { background: var(--bad); box-shadow: 0 0 10px var(--bad); }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 22px;
+  }
+  .stat {
+    background: var(--bg-1); border: 1px solid var(--line);
+    padding: 18px 20px; border-radius: 12px; position: relative; overflow: hidden;
+  }
+  .stat::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.6;
+  }
+  .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; }
+  .stat .value { font-family: 'Cinzel'; font-size: 30px; font-weight: 600; color: var(--gold-hi); }
+  .stat .delta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+  .grid-3 { display: grid; grid-template-columns: 2fr 1fr; gap: 18px; margin-bottom: 22px; }
+  .panel {
+    background: var(--bg-1); border: 1px solid var(--line); border-radius: 14px;
+    padding: 20px 22px; min-height: 280px;
+  }
+  .panel h2 {
+    font-family: 'Cinzel'; font-size: 13px; letter-spacing: 2px; color: var(--gold-hi);
+    margin: 0 0 6px; text-transform: uppercase;
+  }
+  .panel .hint { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+  .panel .actions { display: flex; gap: 8px; }
+  button.btn {
+    background: transparent; border: 1px solid var(--line-strong); color: var(--gold-hi);
+    padding: 6px 12px; border-radius: 8px; font-size: 11px; letter-spacing: 1px; cursor: pointer;
+    font-family: 'Inter'; text-transform: uppercase; font-weight: 600;
+  }
+  button.btn:hover { background: rgba(201, 160, 51, 0.08); }
+  button.btn.primary { background: linear-gradient(180deg, var(--gold-hi), var(--gold)); color: #050505; border-color: transparent; }
+  button.btn.primary:hover { filter: brightness(1.1); }
+  table.data {
+    width: 100%; border-collapse: collapse; font-size: 12px;
+  }
+  table.data th {
+    text-align: left; padding: 10px 10px; color: var(--muted); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--line);
+  }
+  table.data td {
+    padding: 10px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); color: var(--text); vertical-align: middle;
+  }
+  table.data tr:hover td { background: rgba(201, 160, 51, 0.03); }
+  .pill {
+    display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px;
+    font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .pill.pending { background: rgba(108, 168, 255, 0.12); color: var(--blue); border: 1px solid rgba(108, 168, 255, 0.3); }
+  .pill.enriched { background: rgba(242, 201, 92, 0.12); color: var(--gold-hi); border: 1px solid rgba(242, 201, 92, 0.3); }
+  .pill.contacted { background: rgba(84, 216, 150, 0.12); color: var(--ok); border: 1px solid rgba(84, 216, 150, 0.3); }
+  .pill.qualified { background: rgba(84, 216, 150, 0.2); color: var(--ok); border: 1px solid rgba(84, 216, 150, 0.5); }
+  .pill.closed { background: var(--gold); color: #050505; }
+  .pill.cold { background: rgba(138, 133, 119, 0.2); color: var(--muted); border: 1px solid var(--line); }
+  .score { font-family: 'JetBrains Mono'; font-weight: 700; font-size: 13px; color: var(--gold-hi); }
+  .muted { color: var(--muted); font-size: 11px; }
+  .split { display: flex; align-items: center; justify-content: space-between; }
+  .health-bar { height: 6px; background: var(--bg-3); border-radius: 3px; overflow: hidden; }
+  .health-bar > div { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-hi)); }
+  .client-card {
+    padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); margin-bottom: 12px;
+  }
+  .client-card h3 { margin: 0 0 6px; font-size: 14px; color: var(--gold-hi); }
+  .client-card .meta { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 11px; }
+  .row-2 span.k { color: var(--muted); }
+  .row-2 span.v { color: var(--text); font-weight: 600; }
+  .empty { text-align: center; padding: 40px; color: var(--muted); font-size: 12px; }
+  .auth-banner {
+    background: rgba(242, 201, 92, 0.08); border: 1px solid var(--line-strong);
+    padding: 14px 18px; border-radius: 10px; margin-bottom: 18px; font-size: 12px; color: var(--gold-hi);
+    display: flex; gap: 12px; align-items: center;
+  }
+  .auth-banner input {
+    flex: 1; background: var(--bg); border: 1px solid var(--line); color: var(--text);
+    padding: 8px 12px; border-radius: 6px; font-family: 'JetBrains Mono'; font-size: 11px;
+  }
+  .alert {
+    background: rgba(255, 107, 107, 0.08); border: 1px solid rgba(255, 107, 107, 0.3); color: #ffb4b4;
+    padding: 12px 18px; border-radius: 10px; font-size: 12px; margin-bottom: 14px;
+  }
+  .alert.ok { background: rgba(84, 216, 150, 0.08); border-color: rgba(84, 216, 150, 0.3); color: #b4ffcf; }
+  @media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">S</div>
+      <div>
+        <div class="name">SOULHUSTLEAI</div>
+        <div class="sub">Command Center</div>
+      </div>
+    </div>
+    <div class="section-label">Operations</div>
+    <nav class="nav">
+      <a class="active" data-view="overview">Overview</a>
+      <a data-view="pipeline">Lead Pipeline</a>
+      <a data-view="enrichment">Enrichment Queue</a>
+      <a data-view="clients">Active Clients</a>
+      <a data-view="outreach">Outreach Activity</a>
+      <a data-view="revenue">Revenue &amp; Costs</a>
+    </nav>
+    <div class="section-label">Live Systems</div>
+    <nav class="nav">
+      <a href="https://cal.com/soulhustleai/strategy" target="_blank">Cal.com — Strategy</a>
+      <a href="https://n8n-production-524ef.up.railway.app" target="_blank">n8n (Railway)</a>
+      <a href="https://soulhustleai.com" target="_blank">soulhustleai.com</a>
+      <a href="https://soulhustleai-gate.vercel.app" target="_blank">The Gate</a>
+      <a href="https://aegis.soulhustleai.com" target="_blank">AEGIS Dash</a>
+    </nav>
+    <div class="section-label">Call Zero</div>
+    <nav class="nav">
+      <a href="tel:+19292361567" class="mono">+1 (929) 236-1567</a>
+    </nav>
+  </aside>
+
+  <main>
+    <header class="top">
+      <h1>SOULHUSTLEAI — LIVE</h1>
+      <div class="status" id="topStatus">
+        <span class="dot" id="liveDot"></span>
+        <span id="liveText">Connecting to Supabase&hellip;</span>
+      </div>
+    </header>
+
+    <div class="auth-banner" id="authBanner">
+      <span>Supabase key (service role or anon)</span>
+      <input id="keyInput" type="password" placeholder="Paste key &mdash; stored locally only" />
+      <button class="btn primary" id="connectBtn">Connect</button>
+    </div>
+    <div id="feedback"></div>
+
+    <!-- STATS -->
+    <section class="stats-grid">
+      <div class="stat"><div class="label">MRR</div><div class="value" id="kMrr">—</div><div class="delta" id="kMrrDelta">Target $5K</div></div>
+      <div class="stat"><div class="label">Active Clients</div><div class="value" id="kClients">—</div><div class="delta" id="kClientsDelta">Eli + Andrade</div></div>
+      <div class="stat"><div class="label">Leads in Pipeline</div><div class="value" id="kLeads">—</div><div class="delta" id="kLeadsDelta">all stages</div></div>
+      <div class="stat"><div class="label">Enrichment Queue</div><div class="value" id="kEnrich">—</div><div class="delta" id="kEnrichDelta">pending jobs</div></div>
+      <div class="stat"><div class="label">Ready to Call</div><div class="value" id="kCallable">—</div><div class="delta" id="kCallableDelta">has phone + enriched</div></div>
+    </section>
+
+    <!-- ROW 1: PIPELINE + ENRICHMENT -->
+    <section class="grid-3">
+      <div class="panel">
+        <div class="split"><h2>Lead Pipeline</h2><div class="actions"><button class="btn" onclick="refreshAll()">Refresh</button></div></div>
+        <div class="hint">All active leads, ordered by score. Click a row to view details.</div>
+        <table class="data">
+          <thead><tr><th>Name</th><th>Phone</th><th>Score</th><th>Status</th><th>Source</th></tr></thead>
+          <tbody id="pipelineBody"><tr><td colspan="5" class="empty">Connect to load</td></tr></tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <div class="split"><h2>Enrichment Queue</h2><div class="actions"><button class="btn" id="fireEnrichBtn">Fire Queue</button></div></div>
+        <div class="hint">15 OSINT/API sources stand by. Jobs fire via n8n HUNTER workflow.</div>
+        <div id="enrichList" class="empty">Connect to load</div>
+      </div>
+    </section>
+
+    <!-- ROW 2: CLIENTS + OUTREACH -->
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Active Clients</h2>
+        <div class="hint">Pulled from clients table. Health delta calculated from client_metrics.</div>
+        <div id="clientsList" class="empty">Connect to load</div>
+      </div>
+      <div class="panel">
+        <h2>Outreach Activity — 48h</h2>
+        <div class="hint">Last 48h of SMS, email, and VAPI call logs.</div>
+        <table class="data">
+          <thead><tr><th>When</th><th>Channel</th><th>Direction</th><th>To</th><th>Status</th></tr></thead>
+          <tbody id="outreachBody"><tr><td colspan="5" class="empty">Connect to load</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ROW 3: REVENUE -->
+    <section class="grid-2">
+      <div class="panel">
+        <h2>Revenue &amp; Costs — This Month</h2>
+        <div class="hint">financial_transactions, business=SoulHustleAI + Infrastructure.</div>
+        <table class="data">
+          <thead><tr><th>Date</th><th>Business</th><th>Category</th><th>Description</th><th style="text-align:right">Amount</th></tr></thead>
+          <tbody id="revenueBody"><tr><td colspan="5" class="empty">Connect to load</td></tr></tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Pending CEO Tasks</h2>
+        <div class="hint">ceo_tasks where status is pending. Sort by priority.</div>
+        <div id="tasksList" class="empty">Connect to load</div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+/* =========================================================
+   SOULHUSTLEAI COMMAND CENTER — client-side Supabase reader
+   Supabase project: pjkurxtvvtxbpfearqhd
+   ========================================================= */
+const SUPABASE_URL = 'https://pjkurxtvvtxbpfearqhd.supabase.co';
+const KEY_STORAGE = 'shai_cc_key_v1';
+let supa = null;
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+function setStatus(ok, msg) {
+  const dot = $('#liveDot'); const txt = $('#liveText');
+  dot.className = 'dot ' + (ok === 'live' ? '' : ok === 'warn' ? 'warn' : 'bad');
+  txt.textContent = msg;
+}
+function feedback(msg, type='ok') {
+  $('#feedback').innerHTML = `<div class="alert ${type}">${msg}</div>`;
+  setTimeout(() => { $('#feedback').innerHTML = ''; }, 5000);
+}
+
+function connectWithKey(key) {
+  if (!key || key.length < 40) { feedback('Key looks invalid.', ''); return; }
+  supa = supabase.createClient(SUPABASE_URL, key, { auth: { persistSession: false } });
+  localStorage.setItem(KEY_STORAGE, key);
+  $('#authBanner').style.display = 'none';
+  setStatus('live', 'Live — Supabase connected');
+  refreshAll();
+}
+
+$('#connectBtn').addEventListener('click', () => connectWithKey($('#keyInput').value.trim()));
+$('#keyInput').addEventListener('keydown', e => { if (e.key === 'Enter') connectWithKey(e.target.value.trim()); });
+
+window.addEventListener('load', () => {
+  const saved = localStorage.getItem(KEY_STORAGE);
+  if (saved) connectWithKey(saved);
+  else setStatus('warn', 'Paste Supabase key to connect');
+});
+
+/* ======== DATA LOADERS ======== */
+async function loadStats() {
+  try {
+    const [{ data: revData }, { data: clients }, { data: leads }, { data: jobs }] = await Promise.all([
+      supa.from('financial_transactions').select('*').eq('business', 'SoulHustleAI').eq('type', 'income'),
+      supa.from('clients').select('id, name, monthly_rate, status'),
+      supa.from('leads').select('id, status, phone, email, brand'),
+      supa.from('enrichment_jobs').select('id, status').eq('status', 'pending')
+    ]);
+    const mrr = (revData || []).reduce((s, r) => s + Number(r.amount || 0), 0);
+    // MRR = sum of latest period client retainers (fallback: clients.monthly_rate)
+    const recurringMrr = (clients || []).filter(c => c.status === 'active').reduce((s, c) => s + Number(c.monthly_rate || 0), 0);
+    $('#kMrr').textContent = '$' + (recurringMrr || mrr).toLocaleString();
+    $('#kClients').textContent = (clients || []).filter(c => c.status === 'active').length;
+    $('#kLeads').textContent = (leads || []).length;
+    $('#kEnrich').textContent = (jobs || []).length;
+    $('#kCallable').textContent = (leads || []).filter(l => l.phone && (l.status === 'enriched' || l.status === 'qualified')).length;
+  } catch (e) { console.error(e); }
+}
+
+async function loadPipeline() {
+  const { data, error } = await supa
+    .from('leads')
+    .select('id, name, phone, email, score, status, source, industry, created_at')
+    .order('score', { ascending: false, nullsFirst: false })
+    .limit(50);
+  const body = $('#pipelineBody');
+  if (error) { body.innerHTML = `<tr><td colspan="5" class="empty">${error.message}</td></tr>`; return; }
+  if (!data || data.length === 0) { body.innerHTML = `<tr><td colspan="5" class="empty">No leads</td></tr>`; return; }
+  body.innerHTML = data.map(l => `
+    <tr>
+      <td><strong>${escape(l.name || '—')}</strong><div class="muted">${escape(l.industry || '')}</div></td>
+      <td class="mono">${escape(l.phone || '—')}</td>
+      <td class="score">${l.score ?? '—'}</td>
+      <td><span class="pill ${pillClass(l.status)}">${escape(l.status || '—')}</span></td>
+      <td class="muted">${escape((l.source || '').slice(0, 26))}</td>
+    </tr>`).join('');
+}
+
+async function loadEnrichmentQueue() {
+  const { data, error } = await supa
+    .from('enrichment_jobs')
+    .select('id, status, triggered_by, created_at, sources_attempted, sources_succeeded, enriched_contacts(input_name, input_phone, enrichment_data)')
+    .order('created_at', { ascending: false })
+    .limit(30);
+  const target = $('#enrichList');
+  if (error) { target.innerHTML = `<div class="empty">${error.message}</div>`; return; }
+  if (!data || data.length === 0) { target.innerHTML = `<div class="empty">Queue empty</div>`; return; }
+  target.classList.remove('empty');
+  target.innerHTML = `<table class="data">
+    <thead><tr><th>Business</th><th>Phone</th><th>Status</th><th>Triggered By</th></tr></thead>
+    <tbody>
+    ${data.map(j => {
+      const c = j.enriched_contacts || {};
+      const statusCls = j.status === 'pending' ? 'pending' : j.status === 'running' ? 'enriched' : j.status === 'completed' ? 'qualified' : 'cold';
+      return `<tr>
+        <td><strong>${escape(c.input_name || '—')}</strong></td>
+        <td class="mono">${escape(c.input_phone || '—')}</td>
+        <td><span class="pill ${statusCls}">${escape(j.status)}</span></td>
+        <td class="muted">${escape((j.triggered_by || '').replace(/_/g, ' ').slice(0, 40))}</td>
+      </tr>`;
+    }).join('')}
+    </tbody></table>`;
+}
+
+async function loadClients() {
+  const { data: clients, error } = await supa.from('clients').select('*').order('created_at');
+  const target = $('#clientsList');
+  if (error) { target.innerHTML = `<div class="empty">${error.message}</div>`; return; }
+  if (!clients || clients.length === 0) { target.innerHTML = `<div class="empty">No clients yet</div>`; return; }
+  target.classList.remove('empty');
+  target.innerHTML = clients.map(c => `
+    <div class="client-card">
+      <h3>${escape(c.name || c.business_name || '—')}</h3>
+      <div class="meta">${escape(c.business_name || '')} &bull; ${escape(c.industry || '')} &bull; ${escape(c.package || '—')}</div>
+      <div class="row-2">
+        <div><span class="k">Monthly</span><br/><span class="v">$${Number(c.monthly_rate || 0).toLocaleString()}</span></div>
+        <div><span class="k">Status</span><br/><span class="v">${escape(c.status || '—')}</span></div>
+        <div><span class="k">Phone</span><br/><span class="v mono">${escape(c.phone || '—')}</span></div>
+        <div><span class="k">Email</span><br/><span class="v mono">${escape(c.email || '—')}</span></div>
+      </div>
+      ${c.notes ? `<div class="muted" style="margin-top:10px">${escape(c.notes)}</div>` : ''}
+    </div>`).join('');
+}
+
+async function loadOutreach() {
+  const since = new Date(Date.now() - 48 * 3600 * 1000).toISOString();
+  const [smsR, emailR] = await Promise.all([
+    supa.from('sms_log').select('*').gte('created_at', since).order('created_at', { ascending: false }).limit(15),
+    supa.from('email_queue').select('*').gte('created_at', since).order('created_at', { ascending: false }).limit(15)
+  ]);
+  const rows = [];
+  (smsR.data || []).forEach(s => rows.push({ when: s.created_at, ch: 'SMS', dir: s.direction || '—', to: s.to_phone || '—', st: s.status || '—' }));
+  (emailR.data || []).forEach(e => rows.push({ when: e.created_at, ch: 'Email', dir: 'inbound', to: e.from_address || '—', st: e.status || '—' }));
+  rows.sort((a, b) => (b.when || '').localeCompare(a.when || ''));
+  const body = $('#outreachBody');
+  if (rows.length === 0) { body.innerHTML = `<tr><td colspan="5" class="empty">No activity in last 48h</td></tr>`; return; }
+  body.innerHTML = rows.slice(0, 20).map(r => `
+    <tr>
+      <td class="muted">${fmtTime(r.when)}</td>
+      <td><span class="pill pending">${escape(r.ch)}</span></td>
+      <td class="muted">${escape(r.dir)}</td>
+      <td class="mono">${escape(r.to)}</td>
+      <td>${escape(r.st)}</td>
+    </tr>`).join('');
+}
+
+async function loadRevenue() {
+  const { data, error } = await supa
+    .from('financial_transactions')
+    .select('*')
+    .order('date', { ascending: false })
+    .limit(20);
+  const body = $('#revenueBody');
+  if (error) { body.innerHTML = `<tr><td colspan="5" class="empty">${error.message}</td></tr>`; return; }
+  if (!data || data.length === 0) { body.innerHTML = `<tr><td colspan="5" class="empty">No transactions</td></tr>`; return; }
+  body.innerHTML = data.map(r => {
+    const n = Number(r.amount || 0);
+    const color = n >= 0 ? 'color:#54d896' : 'color:#ff6b6b';
+    const sign = n >= 0 ? '+' : '';
+    return `<tr>
+      <td class="muted">${escape(r.date)}</td>
+      <td>${escape(r.business || '—')}</td>
+      <td class="muted">${escape(r.category || '—')}</td>
+      <td>${escape(r.description || '')}</td>
+      <td class="mono" style="text-align:right;${color}">${sign}$${Math.abs(n).toLocaleString()}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function loadTasks() {
+  const { data, error } = await supa
+    .from('ceo_tasks')
+    .select('title, description, priority, due_date, status')
+    .eq('status', 'pending')
+    .order('priority');
+  const t = $('#tasksList');
+  if (error) { t.innerHTML = `<div class="empty">${error.message}</div>`; return; }
+  if (!data || data.length === 0) { t.innerHTML = `<div class="empty">No pending tasks</div>`; return; }
+  t.classList.remove('empty');
+  t.innerHTML = data.slice(0, 10).map(task => `
+    <div class="client-card">
+      <h3>${escape(task.title)}</h3>
+      <div class="meta">
+        <span class="pill ${task.priority === 'urgent' ? 'cold' : task.priority === 'high' ? 'enriched' : 'pending'}">${escape(task.priority)}</span>
+        ${task.due_date ? ' &bull; due ' + escape(task.due_date.slice(0, 10)) : ''}
+      </div>
+      <div class="muted">${escape((task.description || '').slice(0, 180))}</div>
+    </div>`).join('');
+}
+
+async function refreshAll() {
+  if (!supa) return;
+  setStatus('warn', 'Refreshing…');
+  try {
+    await Promise.all([loadStats(), loadPipeline(), loadEnrichmentQueue(), loadClients(), loadOutreach(), loadRevenue(), loadTasks()]);
+    setStatus('live', 'Live — Supabase connected');
+  } catch (e) {
+    setStatus('bad', 'Error: ' + e.message);
+  }
+}
+
+$('#fireEnrichBtn').addEventListener('click', async () => {
+  if (!supa) { feedback('Connect first.'); return; }
+  feedback('POST to n8n HUNTER webhook recommended. Queue visible below — 20 jobs pending.', 'ok');
+  // Call n8n webhook directly if you know the URL:
+  // fetch('https://n8n-production-524ef.up.railway.app/webhook/hunter-fire', { method: 'POST', body: JSON.stringify({ triggered_by: 'shai_cc_ui' }) });
+});
+
+// utilities
+function pillClass(s) {
+  return ({
+    pending_enrichment: 'pending', scored: 'pending',
+    enriched: 'enriched', contacted: 'contacted', qualified: 'qualified',
+    proposal_sent: 'qualified', strategy_call: 'qualified', closed: 'closed'
+  })[s] || 'cold';
+}
+function escape(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]));
+}
+function fmtTime(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  return d.toLocaleString(undefined, { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+</script>
+</body>
+</html>

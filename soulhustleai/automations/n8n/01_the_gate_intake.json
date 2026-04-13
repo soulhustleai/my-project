@@ -1,0 +1,115 @@
+{
+  "name": "SHAI — 01 The Gate Intake",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "shai-gate-intake",
+        "responseMode": "lastNode",
+        "responseData": "firstEntryJson"
+      },
+      "id": "webhook-1",
+      "name": "The Gate Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "shai-gate-intake"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Score the incoming application against BOSSMoves criteria\nconst data = $input.first().json;\nlet score = 0;\nconst notes = [];\n\n// Revenue tier (max 35)\nconst rev = (data.revenue || '').toLowerCase();\nif (rev.includes('5m')) { score += 35; notes.push('revenue_5m+'); }\nelse if (rev.includes('2m')) { score += 30; notes.push('revenue_2m_5m'); }\nelse if (rev.includes('1m')) { score += 25; notes.push('revenue_1m_2m'); }\nelse if (rev.includes('300k')) { score += 20; notes.push('revenue_300k_1m'); }\nelse if (rev.includes('100k')) { score += 12; notes.push('revenue_100k_300k'); }\nelse { score += 3; notes.push('revenue_under_100k'); }\n\n// Timeline urgency (max 25)\nconst tl = (data.timeline || '').toLowerCase();\nif (tl.includes('week')) { score += 25; notes.push('timeline_urgent'); }\nelse if (tl.includes('2 weeks')) { score += 20; notes.push('timeline_fast'); }\nelse if (tl.includes('30 days')) { score += 12; notes.push('timeline_normal'); }\nelse { score += 3; notes.push('timeline_cold'); }\n\n// Package selected (max 20)\nif (data.package === 'dominion') { score += 20; notes.push('pkg_dominion'); }\nelse if (data.package === 'empire') { score += 15; notes.push('pkg_empire'); }\nelse if (data.package === 'system') { score += 10; notes.push('pkg_system'); }\nelse { score += 5; notes.push('pkg_unsure'); }\n\n// Has biggest leak detail (max 20)\nif ((data.biggest_leak || '').length > 80) { score += 20; notes.push('leak_detailed'); }\nelse if ((data.biggest_leak || '').length > 20) { score += 10; notes.push('leak_brief'); }\n\nreturn [{ json: { ...data, gate_score: score, gate_notes: notes, assigned_temperature: score >= 70 ? 'hot' : score >= 50 ? 'warm' : 'cold' } }];"
+      },
+      "id": "score-2",
+      "name": "BOSSMoves Score",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [470, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/leads",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "apikey", "value": "={{ $env.SUPABASE_SERVICE_KEY }}"},
+            {"name": "Authorization", "value": "=Bearer {{ $env.SUPABASE_SERVICE_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"},
+            {"name": "Prefer", "value": "return=representation"}
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "name", "value": "={{ $json.business }}"},
+            {"name": "contact_name", "value": "={{ $json.name }}"},
+            {"name": "email", "value": "={{ $json.email }}"},
+            {"name": "phone", "value": "={{ $json.phone }}"},
+            {"name": "source", "value": "website_apply"},
+            {"name": "brand", "value": "soulhustleai"},
+            {"name": "score", "value": "={{ $json.gate_score }}"},
+            {"name": "status", "value": "qualified"},
+            {"name": "temperature", "value": "={{ $json.assigned_temperature }}"},
+            {"name": "notes", "value": "={{ 'THE GATE: ' + $json.what_you_do + ' | LEAK: ' + $json.biggest_leak + ' | VISION: ' + $json.vision }}"},
+            {"name": "industry", "value": "service_business"}
+          ]
+        }
+      },
+      "id": "supabase-3",
+      "name": "Insert Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [690, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://api.resend.com/emails",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {"name": "Authorization", "value": "=Bearer {{ $env.RESEND_API_KEY }}"},
+            {"name": "Content-Type", "value": "application/json"}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"from\": \"Edwin @ SoulHustleAI <edwin@soulhustleai.com>\",\n  \"to\": [\"{{ $json.email }}\"],\n  \"subject\": \"The Gate — application received\",\n  \"html\": \"<p>{{ $json.name }},</p><p>Got your application. Running it through Zero now.</p><p>You'll hear back within 4 hours either way.</p><p>— Edwin<br/>SoulHustleAI</p>\"\n}"
+      },
+      "id": "email-4",
+      "name": "Send Confirmation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [910, 200]
+    },
+    {
+      "parameters": {
+        "url": "https://api.twilio.com/2010-04-01/Accounts/{{ $env.TWILIO_ACCOUNT_SID }}/Messages.json",
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {"name": "From", "value": "={{ $env.TWILIO_FROM_NUMBER }}"},
+            {"name": "To", "value": "+12679410524"},
+            {"name": "Body", "value": "=🎯 NEW GATE APPLICATION — score {{ $json.gate_score }}\\n{{ $json.name }} @ {{ $json.business }}\\nPackage: {{ $json.package }}\\n{{ $json.email }} / {{ $json.phone }}"}
+          ]
+        }
+      },
+      "id": "twilio-5",
+      "name": "Alert Edwin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [910, 400]
+    }
+  ],
+  "connections": {
+    "The Gate Webhook": {"main": [[{"node": "BOSSMoves Score", "type": "main", "index": 0}]]},
+    "BOSSMoves Score": {"main": [[{"node": "Insert Lead", "type": "main", "index": 0}]]},
+    "Insert Lead": {"main": [[{"node": "Send Confirmation", "type": "main", "index": 0}, {"node": "Alert Edwin", "type": "main", "index": 0}]]}
+  },
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "tags": [{"name": "soulhustleai"}, {"name": "intake"}]
+}
