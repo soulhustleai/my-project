@@ -1,0 +1,47 @@
+# VoxCPM2 — Godfident Empire TTS
+# docker-compose.yml
+#
+# One-command deploy on the VPS. Requires nvidia-container-toolkit.
+#
+# Start:
+#   docker compose -f services/voxcpm/docker-compose.yml up -d
+#
+# Tail logs:
+#   docker compose -f services/voxcpm/docker-compose.yml logs -f
+#
+# Stop:
+#   docker compose -f services/voxcpm/docker-compose.yml down
+
+services:
+  voxcpm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: voxcpm-empire:latest
+    container_name: voxcpm-empire
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      VOXCPM_MODEL_ID: ${VOXCPM_MODEL_ID:-openbmb/VoxCPM2}
+      VOXCPM_REF_DIR: /app/references
+      VOXCPM_DENOISER: ${VOXCPM_DENOISER:-0}
+      VOXCPM_API_KEY: ${VOXCPM_API_KEY:-}
+      # HuggingFace token for gated/private models (optional)
+      HUGGING_FACE_HUB_TOKEN: ${HUGGING_FACE_HUB_TOKEN:-}
+    volumes:
+      - /opt/voxcpm/references:/app/references
+      - /opt/voxcpm/cache:/root/.cache
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 3

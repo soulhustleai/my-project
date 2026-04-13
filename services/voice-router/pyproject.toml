@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "voice-router"
+version = "1.0.0"
+description = "Godfident Empire TTS backend abstraction. Routes CEO voice requests to ElevenLabs, VoxCPM2, or Vapi based on ceo_brains config in Supabase."
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "ruff>=0.5",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

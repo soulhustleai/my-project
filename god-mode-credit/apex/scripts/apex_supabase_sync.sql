@@ -21,13 +21,22 @@
 BEGIN;
 
 -- -------------------------------------------------------------------------
--- 1. Schema: add avatar_url to ceo_brains if missing
+-- 1. Schema: add avatar_url + voice routing columns to ceo_brains
 -- -------------------------------------------------------------------------
 ALTER TABLE public.ceo_brains
-  ADD COLUMN IF NOT EXISTS avatar_url TEXT;
+  ADD COLUMN IF NOT EXISTS avatar_url TEXT,
+  ADD COLUMN IF NOT EXISTS voice_backend TEXT DEFAULT 'elevenlabs',
+  ADD COLUMN IF NOT EXISTS voice_reference_url TEXT,
+  ADD COLUMN IF NOT EXISTS voice_status TEXT DEFAULT 'pending';
 
 COMMENT ON COLUMN public.ceo_brains.avatar_url IS
   'Canonical character portrait URL for the CEO persona. Used as PFP, email avatar, system UI avatar, and Vapi assistant image.';
+COMMENT ON COLUMN public.ceo_brains.voice_backend IS
+  'TTS backend: elevenlabs | voxcpm | vapi_tts. Controls which engine the voice router dispatches to.';
+COMMENT ON COLUMN public.ceo_brains.voice_reference_url IS
+  'URL of a 3-10 second reference audio clip used for voice cloning via VoxCPM. Should be clean single-speaker audio in the target character voice.';
+COMMENT ON COLUMN public.ceo_brains.voice_status IS
+  'Voice production status: pending | reference_needed | reference_ready | cloned | validated | live';
 
 -- -------------------------------------------------------------------------
 -- 2. ceo_brains: lock APEX voice (Miles) + avatar + business
