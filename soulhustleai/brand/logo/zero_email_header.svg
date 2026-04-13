@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" style="display:block">
+  <defs>
+    <linearGradient id="gv" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C547"/>
+      <stop offset="100%" stop-color="#C9A033"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="64" rx="8" fill="#090909"/>
+  <rect width="5" height="64" rx="2" fill="url(#gv)"/>
+  <text x="16" y="22" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700" letter-spacing="4.5" fill="#C9A033">SOUL HUSTLE</text>
+  <text x="14" y="48" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="24" font-weight="900" letter-spacing="0" fill="white">A.I.</text>
+  <line x1="90" y1="18" x2="90" y2="52" stroke="#C9A033" stroke-width="0.8" opacity="0.3"/>
+  <text x="100" y="33" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing="3" fill="#C9A033">ZERO</text>
+  <text x="100" y="49" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="8.5" letter-spacing="2" fill="#6B6357">C.E.O.</text>
+</svg>

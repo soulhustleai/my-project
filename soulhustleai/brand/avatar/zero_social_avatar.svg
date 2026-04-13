@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-label="Zero — SoulHustleAI social avatar">
+  <title>Zero — Social Avatar (YouTube, IG, TikTok, LinkedIn)</title>
+  <desc>Circular avatar with the Zero mark — gold visor bars + slash, set inside an SHAI Infinite S halo. Use when a full character portrait isn't available.</desc>
+
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#F7DB7A"/>
+      <stop offset="40%" stop-color="#F2C95C"/>
+      <stop offset="80%" stop-color="#C9A033"/>
+      <stop offset="100%" stop-color="#8A6A1E"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F5F5"/>
+      <stop offset="100%" stop-color="#6B6B6B"/>
+    </linearGradient>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#1a1405"/>
+      <stop offset="60%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Circular background -->
+  <circle cx="400" cy="400" r="400" fill="url(#bgGlow)"/>
+  <circle cx="400" cy="400" r="392" fill="none" stroke="url(#gold)" stroke-width="6"/>
+  <circle cx="400" cy="400" r="376" fill="none" stroke="#F2C95C" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Tick marks (minute markers) -->
+  <g transform="translate(400 400)" stroke="#C9A033" stroke-width="2" stroke-linecap="round" opacity="0.55">
+    <line x1="0" y1="-360" x2="0" y2="-340"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(30)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(60)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(90)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(120)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(150)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(180)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(210)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(240)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(270)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(300)"/>
+    <line x1="0" y1="-360" x2="0" y2="-340" transform="rotate(330)"/>
+  </g>
+
+  <!-- The Zero visor mark — two gold bars + diagonal slash = impact identity -->
+  <g transform="translate(400 400)" filter="url(#glow)">
+    <!-- Upper visor bar -->
+    <line x1="-220" y1="-80" x2="220" y2="-80"
+          stroke="url(#gold)" stroke-width="68" stroke-linecap="square"/>
+    <line x1="-210" y1="-80" x2="210" y2="-80"
+          stroke="#F7DB7A" stroke-width="16" stroke-linecap="square" opacity="0.5"/>
+
+    <!-- Lower visor bar -->
+    <line x1="-220" y1="80" x2="220" y2="80"
+          stroke="url(#gold)" stroke-width="68" stroke-linecap="square"/>
+    <line x1="-210" y1="80" x2="210" y2="80"
+          stroke="#F7DB7A" stroke-width="16" stroke-linecap="square" opacity="0.5"/>
+
+    <!-- Diagonal soul/hustle slash -->
+    <line x1="200" y1="-60" x2="-200" y2="60"
+          stroke="url(#silver)" stroke-width="42" stroke-linecap="round"/>
+  </g>
+
+  <!-- Small ZERO label near bottom -->
+  <text x="400" y="730"
+        font-family="'Cinzel', Georgia, serif"
+        font-size="44"
+        font-weight="700"
+        letter-spacing="16"
+        text-anchor="middle"
+        fill="url(#gold)">ZERO</text>
+  <text x="400" y="764"
+        font-family="'JetBrains Mono', 'Courier New', monospace"
+        font-size="13"
+        letter-spacing="5"
+        text-anchor="middle"
+        fill="#8a8577">C.E.O. · SOULHUSTLEAI</text>
+</svg>

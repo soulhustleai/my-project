@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="SoulHustleAI icon">
+  <title>SoulHustleAI — Icon</title>
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#F7DB7A"/>
+      <stop offset="40%" stop-color="#F2C95C"/>
+      <stop offset="75%" stop-color="#C9A033"/>
+      <stop offset="100%" stop-color="#8A6A1E"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#F5F5F5"/>
+      <stop offset="50%" stop-color="#BDBDBD"/>
+      <stop offset="100%" stop-color="#5A5A5A"/>
+    </linearGradient>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#F7DB7A"/>
+      <stop offset="45%" stop-color="#C9A033" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="g" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4"/>
+      <feComponentTransfer><feFuncA type="linear" slope="1.2"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="88" fill="#050505"/>
+  <circle cx="256" cy="256" r="220" fill="url(#core)" opacity="0.25"/>
+
+  <!-- Infinite S arcs -->
+  <!-- Gold soul arc -->
+  <path d="M 120 140
+           Q 60 250 130 340
+           T 280 420
+           Q 340 450 350 256
+           Q 360 110 430 90"
+        fill="none" stroke="url(#gold)" stroke-width="22" stroke-linecap="round" filter="url(#g)"/>
+  <!-- Silver hustle arc -->
+  <path d="M 430 90
+           Q 360 110 350 256
+           Q 340 450 280 420
+           Q 180 400 130 480"
+        fill="none" stroke="url(#silver)" stroke-width="18" stroke-linecap="round"/>
+
+  <!-- Arrow heads -->
+  <g transform="translate(130 480) rotate(50)">
+    <path d="M 0 0 L -18 -8 L -11 0 L -18 8 Z" fill="url(#gold)"/>
+  </g>
+  <g transform="translate(430 90) rotate(-30)">
+    <path d="M 0 0 L 18 -8 L 11 0 L 18 8 Z" fill="url(#silver)"/>
+  </g>
+
+  <!-- Compass core -->
+  <g transform="translate(256 256)">
+    <circle r="108" fill="url(#core)" opacity="0.6"/>
+    <circle r="84" fill="none" stroke="url(#gold)" stroke-width="3"/>
+    <circle r="79" fill="none" stroke="#F2C95C" stroke-width="0.8" opacity="0.5"/>
+    <!-- 12 ticks -->
+    <g stroke="#C9A033" stroke-width="2" stroke-linecap="round">
+      <line x1="0" y1="-90" x2="0" y2="-76"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(30)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(60)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(90)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(120)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(150)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(180)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(210)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(240)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(270)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(300)"/>
+      <line x1="0" y1="-90" x2="0" y2="-76" transform="rotate(330)"/>
+    </g>
+    <!-- Inner face -->
+    <circle r="60" fill="#080808" stroke="url(#gold)" stroke-width="2"/>
+    <!-- 4-point star -->
+    <g filter="url(#g)">
+      <path d="M 0 -50 L 10 0 L 0 50 L -10 0 Z" fill="url(#gold)"/>
+      <path d="M -50 0 L 0 10 L 50 0 L 0 -10 Z" fill="url(#gold)"/>
+      <circle r="7" fill="#F7DB7A"/>
+      <circle r="3" fill="#FFFFFF"/>
+    </g>
+  </g>
+</svg>
